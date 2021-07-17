@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.chen</groupId>
-    <artifactId>MyBlog</artifactId>
+    <artifactId>ChenetBlog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>MyBlog</name>
-    <description>Demo project for Spring Boot</description>
+    <name>ChenetBlog</name>
+    <description>My Blog Website</description>
     <properties>
         <java.version>11</java.version>
     </properties>

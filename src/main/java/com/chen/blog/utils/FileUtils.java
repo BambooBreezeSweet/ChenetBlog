@@ -17,7 +17,7 @@ public class FileUtils {
     public final static String IMG_PATH_PREFIX = "static/upload/images";
 
     /**
-     * 使用这个方法，controller中应该如下写：
+     * 使用此方法，controller中应该如下写：
      * String fileName = System.currentTimeMillis()+"_"+file.getOriginalFilename();
      *         System.out.println("文件名："+fileName);
      *
@@ -40,7 +40,7 @@ public class FileUtils {
      */
     public static File getImgDirFile(){
         // 构建上传文件的存放 "文件夹" 路径
-        String fileDirPath = new String("src/main/resources/" + IMG_PATH_PREFIX);
+        String fileDirPath = "src/main/resources/" + IMG_PATH_PREFIX;
 
         File fileDir = new File(fileDirPath);
         if(!fileDir.exists()){
@@ -52,7 +52,7 @@ public class FileUtils {
 
     public static String uploadFile(MultipartFile file) throws IOException {
         //创建文件夹
-        String fileDirPath = new String("src/main/resources/"+IMG_PATH_PREFIX);
+        String fileDirPath = "src/main/resources/" + IMG_PATH_PREFIX;
         File fileDir = new File(fileDirPath);
         if (!fileDir.exists()) fileDir.mkdirs();
         //获取文件名

@@ -11,19 +11,19 @@ import com.chen.blog.domain.BlogQuery;
 import com.chen.blog.domain.User;
 import com.chen.blog.service.BlogService;
 import com.chen.blog.service.TypeService;
+import com.chen.blog.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/admin")
@@ -130,7 +130,13 @@ public class AdminBlogController {
      * @return
      */
     @PostMapping("/blog/input")
-    public String post(Blog blog, RedirectAttributes attributes, HttpSession session){
+    public String post(Blog blog, @RequestParam("filePath")MultipartFile file, RedirectAttributes attributes, HttpSession session){
+        try {
+            blog.setPicture(FileUtils.uploadFile(file));
+        } catch (IOException e) {
+            System.err.println("文件上传失败");
+            e.printStackTrace();
+        }
         blog.setUser((User) session.getAttribute("adminUser"));
         blog.setType(typeService.getType(blog.getType().getId()));
         Blog b;
