@@ -42,6 +42,10 @@ spring:
       max-file-size: 10MB
       max-request-size: 20MB
 
+uploadFile:
+  linux-path: /project/ChenetBlog/src/main/resources/static/upload/images/   #Linux下上传文件所在路径
+  windows-path: \\src\\main\\resources\\static\\upload\\images\\   #Windows下上传文件所在路径
+
 logging:
   level:
     root: info

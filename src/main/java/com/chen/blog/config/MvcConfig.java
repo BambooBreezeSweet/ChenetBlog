@@ -6,6 +6,7 @@
  */
 package com.chen.blog.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -16,6 +17,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
+
+    //定义文件路径
+    //String fileLinuxPath = "/project/ChenetBlog/src/main/resources/static/upload/images";
+    //String fileWindowsPath = "file:"+System.getProperty("user.dir")+"\\src\\main\\resources\\static\\upload\\images\\";
+    @Value("${uploadFile.linux-path}")
+    private String fileLinuxPath;
+
+    @Value("${uploadFile.windows-path}")
+    private String fileWindowsPath;
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -39,7 +49,8 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/upload/images/**")
-                .addResourceLocations("file:"+System.getProperty("user.dir")+"\\src\\main\\resources\\static\\upload\\images\\");
+                //.addResourceLocations("file:"+System.getProperty("user.dir")+fileWindowsPath);  //Windows下
+                .addResourceLocations("file:"+fileLinuxPath);  //Linux下
     }
 
     /**
