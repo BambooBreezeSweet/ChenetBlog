@@ -51,7 +51,7 @@ application.yml           配置文件
 logs                      日志文件
 ```
 
-###相关资源
+### 相关资源
 
 [Semantic UI官网](https://semantic-ui.com/)
 
