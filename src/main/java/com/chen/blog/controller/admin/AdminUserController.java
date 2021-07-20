@@ -99,12 +99,13 @@ public class AdminUserController {
 
     /**
      * 后台删除用户
+     * 前端最初拼接的th:href无效，所以需要拼接href，因为th标签的解析在js之前，所以占位符也失效，抛出StringToLong的异常。
      * @param id
      * @param attributes
      * @return
      */
-    @GetMapping("/user/{id}/delete")
-    public String delete(@PathVariable Long id, RedirectAttributes attributes){
+    @GetMapping("/user/delete")
+    public String delete(Long id, RedirectAttributes attributes){
         userService.deleteUser(id);
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/users";

@@ -121,7 +121,7 @@
 
     function deleteType(typeId) {
         $('.ui.mini.modal').modal('show');
-        $("#deleteType").attr("th:href", "@{/admin/blog/{id}/delete(id=typeId)}");
+        $("#deleteType").attr("href", "blog/{id}/delete?id=typeId");
     }
 
     /*消息提示关闭*/

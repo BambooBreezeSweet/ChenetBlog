@@ -116,7 +116,7 @@
                         否
                     </div>
                     <div class="ui positive right labeled icon button">
-                        <a id="deleteBlog" href="#" th:href="@{/admin/blog/{id}/delete}" class="m-white button">是</a>
+                        <a id="deleteBlog" href="#" class="m-white button">是</a>
                         <i class="checkmark icon"></i>
                     </div>
                 </div>
@@ -157,7 +157,8 @@
 
     function deleteBlog(blogId) {
         $('.ui.mini.modal').modal('show');
-        $("#deleteBlog").attr("th:href","@{/admin/blog/{id}/delete(id=blogId)}");
+        $("#deleteBlog").attr("href","blog/delete?id="+blogId);
+        console.log(blogId)
     }
 
     function loaddate() {

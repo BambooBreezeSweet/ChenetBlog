@@ -114,12 +114,13 @@ public class AdminTypeController {
 
     /**
      * 后台删除分类
+     * 前端最初拼接的th:href无效，所以需要拼接href，因为th标签的解析在js之前，所以占位符也失效，抛出StringToLong的异常。
      * @param id
      * @param attributes
      * @return
      */
-    @GetMapping("/types/{id}/delete")
-    public String delete(@PathVariable Long id,RedirectAttributes attributes){
+    @GetMapping("/types/delete")
+    public String delete(Long id,RedirectAttributes attributes){
         typeService.deleteType(id);
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/types";
