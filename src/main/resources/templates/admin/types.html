@@ -47,30 +47,8 @@
                     <td style="text-align: center" th:text="${#arrays.length(type.blogs)}+' 篇'">1</td>
                     <td style="text-align: center">
                         <a href="#" th:href="@{/admin/types/{id}/input(id=${type.id})}" class="ui mini basic teal button">编辑</a>
-                        <button id="deleteType" th:onclick="function(${type.id})" class="ui mini basic yellow button">删除</button>
-                        <a href="#" class="ui mini basic red button">删除</a>
+                        <button th:onclick="deleteType([[${type.id}]]);" class="ui mini basic red button">删除</button>
                     </td>
-                    <div class="ui mini modal">
-                        <i class="close icon"></i>
-                        <div class="header">
-                            删除分类
-                        </div>
-                        <div class="content">
-                            <div class="description">
-                                <div class="ui header">删除后不可恢复</div>
-                                <p>分类下的博客将被删除</p>
-                            </div>
-                        </div>
-                        <div class="actions">
-                            <div class="ui red deny button">
-                                否
-                            </div>
-                            <div class="ui positive right labeled icon button">
-                                <a href="#" th:href="@{/admin/types/{id}/delete(id=${type.id})}" class="m-white button">是</a>
-                                <i class="checkmark icon"></i>
-                            </div>
-                        </div>
-                    </div>
                 </tr>
             </tobody>
             <tfoot>
@@ -95,6 +73,32 @@
             </tr>
             </tfoot>
         </table>
+        <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <div class="header">提示：</div>
+            <p th:text="${message}">操作提示</p>
+        </div>
+        <div class="ui mini modal">
+            <i class="close icon"></i>
+            <div class="header">
+                删除分类
+            </div>
+            <div class="content">
+                <div class="description">
+                    <div class="ui header">删除后不可恢复</div>
+                    <p>分类下的博客将被删除</p>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui red deny button">
+                    否
+                </div>
+                <div class="ui positive right labeled icon button">
+                    <a id="deleteType" href="#" th:href="@{/admin/types/{id}/delete}" class="m-white button">是</a>
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <br>
@@ -115,12 +119,9 @@
         on: 'hover'
     });
 
-    $('.mini.red.button').click(function () {
+    function deleteType(typeId) {
         $('.ui.mini.modal').modal('show');
-    });
-
-    function deleteType(id){
-        $('.ui.mini.modal').modal('show');
+        $("#deleteType").attr("th:href", "@{/admin/blog/{id}/delete(id=typeId)}");
     }
 
     /*消息提示关闭*/

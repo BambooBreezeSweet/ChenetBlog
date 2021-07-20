@@ -69,33 +69,10 @@
                         <td style="text-align: center">
                             <a href="#" th:href="@{/admin/blog/{id}(id=${blog.id})}" class="ui mini basic blue button">查看</a>
                             <a href="#" th:href="@{/admin/blog/{id}/input(id=${blog.id})}" class="ui mini basic teal button">编辑</a>
-                            <a href="#" class="ui mini basic red button">删除</a>
+                            <button th:onclick="deleteBlog([[${blog.id}]]);" class="ui mini basic red button">删除</button>
                         </td>
-                        <div class="ui mini modal">
-                            <i class="close icon"></i>
-                            <div class="header">
-                                删除博客<span th:text="${blog.id}">0</span>
-                            </div>
-                            <div class="content">
-                                <div class="description">
-                                    <div class="ui header">删除后不可恢复</div>
-                                    <p>博客的相关评论将会被删除。</p>
-                                    <p>博客的参赛用户将会取消。</p>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <div class="ui red deny button">
-                                    否
-                                </div>
-                                <div class="ui positive right labeled icon button">
-                                    <a href="#" th:href="@{/admin/blog/{id}/delete(id=${blog.id})}" class="m-white button">是</a>
-                                    <i class="checkmark icon"></i>
-                                </div>
-                            </div>
-                        </div>
                     </tr>
                 </tobody>
-
                 <tfoot>
                 <tr>
                     <th colspan="7">
@@ -122,6 +99,27 @@
                 <i class="close icon"></i>
                 <div class="header">提示：</div>
                 <p th:text="${message}">操作提示</p>
+            </div>
+            <div class="ui mini modal">
+                <i class="close icon"></i>
+                <div class="header">
+                    删除博客
+                </div>
+                <div class="content">
+                    <div class="description">
+                        <div class="ui header">删除后不可恢复</div>
+                        <p>博客的相关评论将会被删除。</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="ui red deny button">
+                        否
+                    </div>
+                    <div class="ui positive right labeled icon button">
+                        <a id="deleteBlog" href="#" th:href="@{/admin/blog/{id}/delete}" class="m-white button">是</a>
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -157,9 +155,10 @@
         $(this).closest('.message').transition('fade');
     });
 
-    $('.mini.red.button').click(function () {
+    function deleteBlog(blogId) {
         $('.ui.mini.modal').modal('show');
-    });
+        $("#deleteBlog").attr("th:href","@{/admin/blog/{id}/delete(id=blogId)}");
+    }
 
     function loaddate() {
         $('#table-container').load("/admin/blogs/search",{

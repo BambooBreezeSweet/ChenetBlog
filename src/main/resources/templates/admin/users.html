@@ -41,8 +41,7 @@
                     <td style="text-align: center">
                         <a href="#" th:href="@{/admin/user/{id}/{n}/updateRole(id=${user.id},n=1)}" class="ui mini basic blue button">升级权限</a>
                         <a href="#" th:href="@{/admin/user/{id}/{n}/updateRole(id=${user.id},n=0)}" class="ui mini basic teal button">降级权限</a>
-                        <a href="#" th:href="@{/admin/user/{id}/delete(id=${user.id})}" class="ui mini basic red button">删除</a>
-<!--                        <button th:value="${user.id}" th:onclick="delete(this)" class="ui mini basic red button">删除</button>-->
+                        <button th:onclick="deleteUser([[${user.id}]]);" class="ui mini basic red button">删除</button>
                     </td>
 
                 </tr>
@@ -62,14 +61,12 @@
                     </tr>
                 </tfoot>
             </table>
-
             <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
                 <i class="close icon"></i>
                 <div class="header">提示：</div>
                 <p th:text="${message}">操作提示</p>
             </div>
-
-            <!--<div class="ui mini modal">
+            <div class="ui mini modal">
                 <i class="close icon"></i>
                 <div class="header">
                     删除账户
@@ -85,11 +82,11 @@
                         否
                     </div>
                     <div class="ui positive right labeled icon button">
-                        <a class="m-white button" href="#" th:href="@{/admin/user/{id}/delete(id=${user.id})}">是</a>
+                        <a id="deleteUser" class="m-white button" href="#" th:href="@{/admin/user/{id}/delete}">是</a>
                         <i class="checkmark icon"></i>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
         </div>
     </div>
@@ -116,12 +113,9 @@
         $(this).closest('.message').transition('fade');
     });
 
-    $('.mini.red.button').click(function () {
+    function deleteUser(userId) {
         $('.ui.mini.modal').modal('show');
-    });
-
-    function deletUser(){
-
+        $("#deleteUser").attr("th:href","@{/admin/blog/{id}/delete(id=userId)}");
     }
 
     function page(obj) {
