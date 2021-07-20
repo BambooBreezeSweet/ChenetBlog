@@ -110,6 +110,13 @@ public class AdminUserController {
         return "redirect:/admin/users";
     }
 
+    /**
+     * 后台修改用户权限
+     * @param id
+     * @param n
+     * @param attributes
+     * @return
+     */
     @GetMapping("/user/{id}/{n}/updateRole")
     public String updateRole(@PathVariable("id") Long id,@PathVariable("n") int n,RedirectAttributes attributes){
         if (n==1){

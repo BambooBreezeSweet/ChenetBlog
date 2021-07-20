@@ -46,10 +46,12 @@
             </div>
 
             <div class="required field">
-                <div class="ui left labeled input">
+                <div class="ui labeled input">
                     <label class="ui teal basic label" style="text-align: center;width: 70px">首 图</label>
-                    <div class="ui labeled input">
-                        <input type="file" name="filePath" placeholder="首图文件或链接地址">
+                    <div class="ui action input">
+                        <input id="filePath" name="filePath" style="display: none" type="file">
+                        <input id="fileLink" name="fileLink" type="text" th:value="${blog.picture}">
+                        <a id="switch" class="ui button">切换</a>
                     </div>
                 </div>
             </div>
@@ -78,9 +80,8 @@
 <!-- 底部 -->
 <footer th:replace="admin/_fragment_admin :: footer" class="ui inverted vertical segment m-padded-tb-large-half"></footer>
 <script th:src="@{/js/jquery-3.5.1.min.js}" src="../../static/js/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script th:src="@{/lib/semantic/semantic.min.js}" src="../../static/lib/semantic/semantic.min.js"></script>
 <script th:src="@{/lib/editormd/editormd.min.js}" src="../../static/lib/editormd/editormd.min.js"></script>
-<script th:href="@{/lib/laydate/laydate.js}" src="../../static/lib/laydate/laydate.js"></script>
 <script>
     /* editormd初始化 */
     var contextEditor;
@@ -152,10 +153,15 @@
         }
     });
 
-    laydate.render({
-        elem: '#date'
-        ,range: ['#startDate', '#endDate']
-    });
+    $('#switch').click(function () {
+        if ($("#fileLink").is(":hidden")){
+            $('#fileLink').show();
+            $('#filePath').hide();
+        }else {
+            $('#fileLink').hide();
+            $('#filePath').show();
+        }
+    })
 </script>
 </body>
 </html>

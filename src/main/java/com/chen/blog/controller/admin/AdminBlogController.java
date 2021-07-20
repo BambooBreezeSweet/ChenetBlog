@@ -130,12 +130,16 @@ public class AdminBlogController {
      * @return
      */
     @PostMapping("/blog/input")
-    public String post(Blog blog, @RequestParam("filePath")MultipartFile file, RedirectAttributes attributes, HttpSession session){
-        try {
-            blog.setPicture(FileUtils.uploadFile(file));
-        } catch (IOException e) {
-            System.err.println("文件上传失败");
-            e.printStackTrace();
+    public String post(Blog blog, @RequestParam("filePath") MultipartFile file, @RequestParam("fileLink") String link, RedirectAttributes attributes, HttpSession session){
+        if (!file.isEmpty()) {
+            try {
+                blog.setPicture(FileUtils.uploadFile(file));
+            } catch (IOException e) {
+                System.err.println("文件上传失败");
+                e.printStackTrace();
+            }
+        }else {
+            blog.setPicture(link);
         }
         blog.setUser((User) session.getAttribute("adminUser"));
         blog.setType(typeService.getType(blog.getType().getId()));
