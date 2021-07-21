@@ -92,7 +92,7 @@ public class AdminBlogController {
     @GetMapping("/blog/{id}/input")
     public String editInput(@PathVariable Long id, Model model){
         setType(model);
-        Blog blog = blogService.getBlog(id);
+        Blog blog = blogService.getBlogById(id);
         model.addAttribute("blog",blog);    //拿到tagIds
         return "admin/edit";
     }
@@ -143,7 +143,7 @@ public class AdminBlogController {
             blog.setPicture(link);
         }
         blog.setUser((User) session.getAttribute("adminUser"));
-        blog.setType(typeService.getType(blog.getType().getId()));
+        blog.setType(typeService.getTypeById(blog.getType().getId()));
         Blog b;
 
         //处理view为0

@@ -63,7 +63,7 @@ public class BlogController {
     @PostMapping("/blog/input")
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session) {
         blog.setUser((User) session.getAttribute("user"));   //这里采用session中的取值
-        blog.setType(typeService.getType(blog.getType().getId()));
+        blog.setType(typeService.getTypeById(blog.getType().getId()));
         Blog b;
 
         //处理view为0

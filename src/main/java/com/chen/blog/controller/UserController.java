@@ -8,7 +8,10 @@ package com.chen.blog.controller;
 
 import com.chen.blog.domain.User;
 import com.chen.blog.service.UserService;
-import com.chen.blog.utils.*;
+import com.chen.blog.utils.MD5Utils;
+import com.chen.blog.utils.MailUtils;
+import com.chen.blog.utils.RedisUtils;
+import com.chen.blog.utils.VerifyCodeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -97,8 +100,7 @@ public class UserController {
     public String verCode(String email,Model model,HttpSession session){
         String ver = VerifyCodeUtils.getVerCode(6);
         //存入redis，并设置过期时间
-        redisUtils.set("verCode",ver);
-        redisUtils.expire("verCode",120);
+        redisUtils.set("verCode",ver,120);
         try {
             MailUtils.sendMail(email,"竹风博客注册",ver);
         } catch (Exception e) {
@@ -129,7 +131,7 @@ public class UserController {
         }
         User user1 = userService.checkUserByUsername(username, MD5Utils.code(password));
         User user2 = userService.checkUserByUsername(email, MD5Utils.code(password));
-        String ver = redisUtils.get("verCode");
+        String ver = (String) redisUtils.get("verCode");
         if (user1 != null){
             model.addAttribute("message","用户名已注册");
         }if (user2 != null){

@@ -50,7 +50,7 @@ public class CommentController {
     @PostMapping("/comments")
     public String post(Comment comment, HttpSession session){
         Long blogId = comment.getBlog().getId();
-        comment.setBlog(blogService.getBlog(blogId));
+        comment.setBlog(blogService.getBlogById(blogId));
         User user = (User) session.getAttribute("user"); //当前登录用户
         if (user == null){
             return "login";

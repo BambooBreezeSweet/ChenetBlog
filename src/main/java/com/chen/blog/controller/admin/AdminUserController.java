@@ -10,6 +10,7 @@ import com.chen.blog.domain.User;
 import com.chen.blog.service.TypeService;
 import com.chen.blog.service.UserService;
 import com.chen.blog.utils.MD5Utils;
+import com.chen.blog.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,6 +31,9 @@ public class AdminUserController {
 
     @Autowired
     private TypeService typeService;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     /**
      * 设置分类
@@ -106,6 +110,8 @@ public class AdminUserController {
      */
     @GetMapping("/user/delete")
     public String delete(Long id, RedirectAttributes attributes){
+        User userbak = userService.findUserById(id);
+        //redisUtils.set("user"+id,userbak,120); //使用redis备份120秒
         userService.deleteUser(id);
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/users";
