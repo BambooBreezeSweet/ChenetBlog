@@ -17,8 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisUtils {
 
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
-
+    private RedisTemplate<String, Object> redisTemplate;
 
     /**
      * 指定缓存失效的时间
@@ -67,7 +66,7 @@ public class RedisUtils {
      * @param value
      * @return
      */
-    public boolean set(final String key, String value) {
+    public boolean set(final String key, Object value) {
         try {
             redisTemplate.opsForValue().set(key, value);
             return true;
@@ -77,10 +76,18 @@ public class RedisUtils {
         return false;
     }
 
-    public boolean setList(final String key, String value){
+    /**
+     * 写入缓存并设置过期时间
+     * @param key
+     * @param value
+     * @param time
+     * @return
+     */
+    public boolean set(final String key, Object value, long time) {
         try {
-            redisTemplate.opsForList().rightPush(key, value);
-        }catch (Exception e){
+            redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
+            return true;
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -91,18 +98,9 @@ public class RedisUtils {
      * @param key
      * @return
      */
-    public String get(final String key){
+    public Object get(final String key){
         try {
             return redisTemplate.opsForValue().get(key);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public List getList(final String key){
-        try {
-            return redisTemplate.opsForList().range(key,0,-1);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -115,7 +113,7 @@ public class RedisUtils {
      * @param value
      * @return
      */
-    public boolean getAndSet(final String key, String value) {
+    public boolean update(final String key, String value) {
         try {
             redisTemplate.opsForValue().getAndSet(key, value);
             return true;
