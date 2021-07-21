@@ -115,7 +115,7 @@
 
     function deleteUser(userId) {
         $('.ui.mini.modal').modal('show');
-        $("#deleteUser").attr("href","blog/{id}/delete？id=userId}");
+        $("#deleteUser").attr("href","user/delete?id="+userId);
     }
 
     function page(obj) {
