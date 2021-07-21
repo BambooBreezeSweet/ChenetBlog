@@ -6,14 +6,17 @@
  */
 package com.chen.blog.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "blog")
-public class Blog {
+public class Blog implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
@@ -33,12 +36,15 @@ public class Blog {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     //发布人
+    @JsonIgnore
     @ManyToOne
     private User user;
     //所属分类
+    @JsonIgnore
     @ManyToOne
     private Type type;
     //博客评论
+    @JsonIgnore
     @OneToMany(mappedBy = "blog",cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
 
@@ -55,9 +61,6 @@ public class Blog {
                 ", views=" + views +
                 ", description='" + description + '\'' +
                 ", createTime=" + createTime +
-                ", user=" + user +
-                ", type=" + type +
-                ", comments=" + comments +
                 '}';
     }
 

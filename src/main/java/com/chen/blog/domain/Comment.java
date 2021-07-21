@@ -44,11 +44,9 @@ public class Comment {
     public String toString() {
         return "Comment{" +
                 "id=" + id +
-                ", user=" + user +
                 ", content='" + content + '\'' +
                 ", adminComment=" + adminComment +
                 ", createTime=" + createTime +
-                ", blog=" + blog +
                 ", replyComments=" + replyComments +
                 ", parentComment=" + parentComment +
                 '}';

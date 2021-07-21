@@ -6,14 +6,17 @@
  */
 package com.chen.blog.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
@@ -33,6 +36,7 @@ public class User {
     //角色
     private Integer role;
     //发布的博客
+    @JsonIgnore
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
     @Cascade(value = {org.hibernate.annotations.CascadeType.REMOVE})
     private List<Blog> blogs = new ArrayList<>();
@@ -60,7 +64,6 @@ public class User {
                 ", description='" + description + '\'' +
                 ", createTime=" + createTime +
                 ", role=" + role +
-                ", blogs=" + blogs +
                 '}';
     }
 

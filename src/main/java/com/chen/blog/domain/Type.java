@@ -6,15 +6,18 @@
  */
 package com.chen.blog.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "type")
-public class Type {
+public class Type implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
@@ -22,6 +25,7 @@ public class Type {
     @NotBlank(message = "分类名称不能为空")
     private String name;
     //比赛列表
+    @JsonIgnore
     @OneToMany(mappedBy = "type",cascade = CascadeType.REMOVE)
     private List<Blog> blogs = new ArrayList<>();
     //创建时间
@@ -40,7 +44,6 @@ public class Type {
         return "Type{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", blogs=" + blogs +
                 ", createTime=" + createTime +
                 '}';
     }
