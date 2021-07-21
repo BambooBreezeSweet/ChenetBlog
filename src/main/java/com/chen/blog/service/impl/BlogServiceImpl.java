@@ -13,7 +13,6 @@ import com.chen.blog.domain.Type;
 import com.chen.blog.service.BlogService;
 import com.chen.blog.utils.MarkdownUtils;
 import com.chen.blog.utils.MyBeanUtils;
-import com.chen.blog.utils.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,8 +35,9 @@ public class BlogServiceImpl implements BlogService {
     private BlogRepository blogRepository;
 
     @Override
-    public Blog getBlog(Long id) {
-        return blogRepository.getById(id);
+    public Blog getBlogById(Long id) {
+        Optional<Blog> blogStatus = blogRepository.findById(id);
+        return blogStatus.orElse(null);
     }
 
     /**
@@ -49,9 +49,6 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog getAndConvert(Long id) {
         Blog blog = blogRepository.getById(id);
-        if (blog == null){
-            throw new NotFoundException("博客不存在");
-        }
         Blog newBlog = new Blog();
         BeanUtils.copyProperties(blog,newBlog);
         String content = newBlog.getContent();
@@ -90,7 +87,7 @@ public class BlogServiceImpl implements BlogService {
                 if (blogQuery.getTypeId()!=null){
                     predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"),blogQuery.getTypeId()));
                 }
-                criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+                criteriaQuery.where(predicates.toArray(new Predicate[0]));
                 return null;
             }
         },pageable);
@@ -187,9 +184,6 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog updateBlog(Long id, Blog blog) {
         Blog blogCopy = blogRepository.getById(id);
-        if (blogCopy == null){
-            throw new NotFoundException("该博客并不存在");
-        }
         BeanUtils.copyProperties(blog,blogCopy, MyBeanUtils.getNullPropertyNames(blog));
         blogCopy.setCreateTime(new Date());
         return blogRepository.save(blogCopy);

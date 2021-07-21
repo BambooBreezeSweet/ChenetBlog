@@ -17,7 +17,7 @@ import java.util.Map;
 public interface BlogService {
 
     //通过id获取博客
-    Blog getBlog(Long id);
+    Blog getBlogById(Long id);
 
     //通过id获取博客，在同通过工具类复制对象，用于格式转换并显示
     Blog getAndConvert(Long id);

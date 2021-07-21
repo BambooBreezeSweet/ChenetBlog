@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TypeServiceImpl implements TypeService {
@@ -35,9 +36,9 @@ public class TypeServiceImpl implements TypeService {
 
     //通过ID获取分类
     @Transactional
-    @Override
-    public Type getType(Long id) {
-        return typeRepository.getById(id);
+    public Type getTypeById(Long id) {
+        Optional<Type> typeStatus = typeRepository.findById(id);
+        return typeStatus.orElse(null);
     }
 
     //通过类别名获取分类
@@ -71,9 +72,6 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type updateType(Long id, Type type) {
         Type t = typeRepository.getById(id);
-        if (t == null){
-            throw new NotFoundException("不存在该分类");
-        }
         BeanUtils.copyProperties(type,t);
         return typeRepository.save(t);
     }

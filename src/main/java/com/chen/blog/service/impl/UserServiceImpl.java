@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -57,7 +58,8 @@ public class UserServiceImpl implements UserService {
     //通过ID查询
     @Override
     public User findUserById(Long id) {
-        return userRepository.getById(id);
+        Optional<User> userStatus = userRepository.findById(id);
+        return userStatus.orElse(null);
     }
 
     //通过用户名查询

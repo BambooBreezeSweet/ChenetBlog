@@ -18,7 +18,7 @@ public interface TypeService {
     Type saveType(Type type);
 
     //通过id获取分类
-    Type getType(Long id);
+    Type getTypeById(Long id);
 
     //通过分类名称获取分类
     Type getTypeByName(String typeName);
