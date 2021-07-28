@@ -18,6 +18,22 @@
         <java.version>11</java.version>
     </properties>
 
+    <developers>
+        <developer>
+            <id>ChenetChen</id>
+            <name>ChenetChen</name>
+            <email>chenaichenet@yeah.net</email>
+            <url>https://github.com/chenaichenet</url>
+            <roles>
+                <role>Project Manager</role>
+                <role>Architect</role>
+            </roles>
+            <organization>BambooBreezeSweet</organization>
+            <organizationUrl>https://github.com/BambooBreezeSweet</organizationUrl>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+
     <dependencies>
         <!--SpringBoot起步依赖-->
         <dependency>
