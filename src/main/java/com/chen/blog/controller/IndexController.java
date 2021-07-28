@@ -109,4 +109,26 @@ public class IndexController {
         model.addAttribute("blogs", blogService.listBlogByTypeName("%"+typename+"%",pageable));
         return "search";
     }
+
+    /**
+     * 隐私政策
+     * @param model
+     * @return
+     */
+    @GetMapping("/privacy")
+    public String privacyProtocol(Model model){
+        model.addAttribute("types",typeService.listType());
+        return "protocol/privacy";
+    }
+
+    /**
+     * 隐私政策
+     * @param model
+     * @return
+     */
+    @GetMapping("/disclaimer")
+    public String disclaimerProtocol(Model model){
+        model.addAttribute("types",typeService.listType());
+        return "protocol/disclaimer";
+    }
 }

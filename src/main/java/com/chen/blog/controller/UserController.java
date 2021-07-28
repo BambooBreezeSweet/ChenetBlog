@@ -8,10 +8,7 @@ package com.chen.blog.controller;
 
 import com.chen.blog.domain.User;
 import com.chen.blog.service.UserService;
-import com.chen.blog.utils.MD5Utils;
-import com.chen.blog.utils.MailUtils;
-import com.chen.blog.utils.RedisUtils;
-import com.chen.blog.utils.VerifyCodeUtils;
+import com.chen.blog.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.FilterConfig;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -34,11 +35,6 @@ public class UserController {
     @GetMapping("/chenet")
     public String chenet(){
         return "chenet";
-    }
-
-    @GetMapping("/user")
-    public String userCenter(){
-        return "userInfo";
     }
 
     /**
@@ -201,8 +197,11 @@ public class UserController {
      * @return
      */
     @GetMapping("/user/userInfo")
-    public String userInfo(Long userId,Model model){
+    public String userInfo(Long userId, Model model, HttpServletRequest request,FilterConfig config){
         model.addAttribute("user",userService.findUserById(userId));
+        System.err.println("IP地址："+IPUtils.getIpAddr(request));
+        System.err.println("IPMap"+config.getServletContext().getAttribute("ipMap"));
+        System.err.println("limitedMap"+config.getServletContext().getAttribute("limitedIpMap"));
         return "userInfo";
     }
 }

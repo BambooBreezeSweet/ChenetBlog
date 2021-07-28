@@ -6,6 +6,7 @@
  */
 package com.chen.blog.aspect;
 
+import com.chen.blog.utils.IPUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ public class LogAspect {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution(* com.chen.blog.controller.*.*(..))")   //拦截web包下所有的方法
+    @Pointcut("execution(* com.chen.blog.controller.*.*(..))")
     public void log(){
 
     }
@@ -33,13 +34,14 @@ public class LogAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         String url = request.getRequestURL().toString();
-        String ip = request.getLocalAddr();
-        String classMethod = joinPoint.getSignature().getDeclaringTypeName()+"."+joinPoint.getSignature().getName();
+        String localIp = request.getLocalAddr();
+        String remoteIp = IPUtils.getIpAddr(request);
+        String classMethod = joinPoint.getSignature().getDeclaringTypeName()+":"+joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
 
-        RequestLog requestLog = new RequestLog(url,ip,classMethod,args);
-
-        logger.info("Request:{}",requestLog);
+        RequestLog requestLog = new RequestLog(url, localIp, remoteIp, classMethod, args);
+        logger.info("-----doBefore-----");
+        logger.info(requestLog.toString());
     }
 
     @After("log()")
@@ -50,27 +52,30 @@ public class LogAspect {
     @AfterReturning(returning = "result",pointcut = "log()")
     public void doAfterReturning(Object result){
         logger.info("-----doAfterReturning-----");
-        logger.info("Result : {}"+result);
+        logger.info("Result : {}",result);
     }
 
-    private class RequestLog{
-        private String url;
-        private String ip;
-        private String classMethod;
-        private Object[] args;
+    private static class RequestLog{
+        private final String url;
+        private final String localIp;
+        private final String remoteIp;
+        private final String classMethod;
+        private final Object[] args;
 
-        public RequestLog(String url, String ip, String classMethod, Object[] args) {
+        public RequestLog(String url, String localIp, String remoteIp, String classMethod, Object[] args) {
             this.url = url;
-            this.ip = ip;
+            this.localIp = localIp;
+            this.remoteIp = remoteIp;
             this.classMethod = classMethod;
             this.args = args;
         }
 
         @Override
         public String toString() {
-            return "RequestLog{" +
+            return "RequestLog : {" +
                     "url='" + url + '\'' +
-                    ", ip='" + ip + '\'' +
+                    ", localIp='" + localIp + '\'' +
+                    ", remoteIp='" + remoteIp + '\'' +
                     ", classMethod='" + classMethod + '\'' +
                     ", args=" + Arrays.toString(args) +
                     '}';

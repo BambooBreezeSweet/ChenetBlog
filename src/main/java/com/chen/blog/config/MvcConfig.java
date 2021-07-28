@@ -19,8 +19,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
 
     //定义文件路径
-    //String fileLinuxPath = "/project/ChenetBlog/src/main/resources/static/upload/images";
-    //String fileWindowsPath = "file:"+System.getProperty("user.dir")+"\\src\\main\\resources\\static\\upload\\images\\";
     @Value("${uploadFile.linux-path}")
     private String fileLinuxPath;
 
