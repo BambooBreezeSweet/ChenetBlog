@@ -6,7 +6,7 @@
     <title>用户详情</title>
     <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../static/lib/semantic/semantic.min.css">
     <link rel="stylesheet" th:href="@{/css/my.css}" href="../static/css/my.css"/>
-    <link rel="icon" href="../static/images/material/favicon.ico" th:href="@{/images/material/favicon.ico}">
+    <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../static/images/material/favicon.ico">
 </head>
 <body>
 <!-- 导航 -->
@@ -17,7 +17,7 @@
     <div class="ui container">
         <div class="ui stackable grid">
             <!--左边卡片-->
-            <div class="five w  ide column">
+            <div class="five wide column">
                 <div class="ui card">
                     <div class="ui image" th:replace="_fragment::images(${user.avatar})">
                         <img src="../static/images/me.jpg">

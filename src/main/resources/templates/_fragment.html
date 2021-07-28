@@ -14,7 +14,7 @@
     <!--markdown插件-->
     <link rel="stylesheet" th:href="@{/lib/editormd/css/editormd.min.css}" href="../static/lib/editormd/css/editormd.min.css">
     <!--图标-->
-    <link rel="icon" href="../static/images/material/favicon.ico" th:href="@{/images/material/favicon.ico}">
+    <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../static/images/material/favicon.ico">
 </head>
 <body>
 
@@ -34,7 +34,6 @@
             </div>
             <a href="archives.html" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="archive icon"></i>归档</a>
             <a href="about.html" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="info icon"></i>关于</a>
-            <a href="about.html" th:href="@{/navigation}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="idea icon"></i>更多</a>
             <!--搜索栏-->
             <div class="m-item right item m-mobile-hide">
                 <form name="search" action="#" th:action="@{/search}" method="post" >
@@ -169,28 +168,41 @@
                     <a href="#" class="item"><p>QQ : 1950679747</p></a>
                 </div>
             </div>
-            <div class="six wide column">
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">相关说明</h4>
+                <div class="ui inverted link list">
+                    <a class="item" th:href="@{/privacy}" href="#">隐私政策</a>
+                    <a class="item" th:href="@{/disclaimer}" href="#">免责声明</a>
+                    <a class="item" href="www.cac.gov.cn/2019-12/20/c_1578375159509309.htm">网络信息内容生态治理规定</a>
+                </div>
+            </div>
+            <div class="three wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced">关于</h4>
-                <p class="m-text-thin m-text-spaced m-opaciby-mini">
+                <p class="m-text-thin m-text-spaced m-opacity-tiny">
                     个人博客网站
                     <br>
-                    个人博客网站，旨在记录生活。
+                    旨在记录生活
                     <br>
-                    分享生活日常、学习笔记、搞机趣事、独特idea。
+                    分享生活日常
+                    <br>
+                    学习笔记
+                    <br>
+                    搞机趣事
+                    <br>
+                    独特idea
                 </p>
             </div>
         </div>
         <div class="ui inverted section divider"></div>
         <div class="ui very relaxed horizontal list">
-            <a class="item m-grey" style="color: gray" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502030143" rel="noreferrer" target="_blank">公安备案号11010502030143</a>
-            <a class="item m-grey" style="color: gray" href="http://beian.miit.gov.cn/publish/query/indexFirst.action" rel="noreferrer" target="_blank">京ICP备19004658号</a>
-            <a class="item m-grey" style="color: gray" href="https://csdnimg.cn/release/live_fe/culture_license.png" rel="noreferrer" target="_blank">京网文〔2020〕1039-165号</a>
-            <a class="item m-grey" style="color: gray" href="https://csdnimg.cn/cdn/content-toolbar/csdn-ICP.png" target="_blank">经营性网站备案信息</a>
-            <a class="item m-grey" style="color: gray" href="http://www.bjjubao.org/" target="_blank">北京互联网违法和不良信息举报中心</a>
+            <a class="item m-grey" style="color: gray" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052302000137" rel="noreferrer" target="_blank">公安备案号43052302000137</a>
             <a class="item m-grey" style="color: gray" href="http://www.cyberpolice.cn/" target="_blank">网络110报警服务</a>
             <a class="item m-grey" style="color: gray" href="http://www.12377.cn/" target="_blank">中国互联网举报中心</a>
+            <a class="item m-grey" style="color: gray" href="http://www.shdf.gov.cn/shdf/channels/740.html">扫黄打非举报</a>
+            <a class="item m-grey" style="color: gray" href="https://www.12377.cn/">中国互联网违法和不良信息举报中心</a>
         </div>
         <p class="m-text-thin m-text-spaced m-opacity-tiny">
+            Copyright
             <i class="copyright outline icon"></i>
             2020 - 2021 Chenet Blog Website by
             <a href="chenet.html" th:href="@{/chenet}" class="m-white">陈十七</a>
