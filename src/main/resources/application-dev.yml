@@ -19,11 +19,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    #show-sql: true #关闭SQL日志
   mail:
-    host: smtp.yeah.net
-    username: chenaichenet@yeah.net
-    password: QNBVBXLJCBFGQPTV
+    host: smtp.163.com
+    username: chenaichenet@163.com
+    password: LTXPVFLJINODVNEL
     protocol: SMTP
     templatePath: templates/mailTemplate.html
   redis:
