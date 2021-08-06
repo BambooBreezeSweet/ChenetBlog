@@ -109,9 +109,9 @@ public class AdminUserController {
      * @return
      */
     @GetMapping("/user/delete")
-    public String delete(Long id, RedirectAttributes attributes){
-        User userbak = userService.findUserById(id);
-        //redisUtils.set("user"+id,userbak,120); //使用redis备份120秒
+    public String delete(Long id, RedirectAttributes attributes,Model model){
+        User userBak = userService.findUserById(id);
+        redisUtils.set("user"+id,userBak,120); //使用redis备份120秒
         userService.deleteUser(id);
         attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/users";
