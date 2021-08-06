@@ -1,7 +1,7 @@
 server:
   port: 80
 #  ssl:
-#    key-store: classpath:5947600_chenetchen.ltd.pfx
+#    key-store: classpath:/static/file/5947600_chenetchen.ltd.pfx
 #    key-store-password: 6mcKnQ6f
 #    key-store-type: PKCS12
 
