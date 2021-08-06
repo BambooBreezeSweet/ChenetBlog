@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-Hans-CN" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="_fragment :: head(~{::title})">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -107,6 +107,22 @@
                             <div class="avatar">
                                 <img th:replace="_fragment::images(${comment.user.avatar})" src="../static/images/me.jpg">
                             </div>
+
+                            <div style="float: right" class="ui icon top left pointing dropdown">
+                                <i style="float: right" class="ellipsis horizontal icon"></i>
+                                <div class="menu">
+                                    <div class="divider"></div>
+                                    <div class="item">
+                                        <i class="trash icon"></i>
+                                        <a style="color: black" href="#" th:href="@{/comment/{id}/delete(id=${comment.id})}">删除</a>
+                                    </div>
+                                    <div class="item">
+                                        <i class="exclamation icon"></i>
+                                        <a style="color: black">举报</a>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="content">
                                 <a class="author" th:href="@{/user/userInfo(userId=${comment.user.id})}">
                                     <span th:text="${comment.user.username}">Matt</span>
@@ -128,7 +144,9 @@
                                         <a class="avatar" th:href="@{/user/userInfo(userId=${reply.user.id})}">
                                             <img th:replace="_fragment::images(${reply.user.avatar})" src="../static/images/me.jpg">
                                         </a>
-                                        <a style="color: black" href="#"><i style="float: right" class="ellipsis horizontal icon"></i></a>
+
+
+
                                         <div class="content">
                                             <a class="author" th:href="@{/user/userInfo(userId=${reply.user.id})}">
                                                 <span th:text="${reply.user.username}">Matt</span>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-Hans-CN" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="_fragment :: head(~{::title})">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -14,10 +14,10 @@
 <nav th:replace="_fragment :: menu(null)" class="ui segment m-padded-tb-mini"></nav>
 
 <!-- 中间内容 -->
-<div class="m-container" style="max-width: 30em !important;">
+<div class="m-container m-padded-tb-large-half">
     <div class="ui container">
         <div class="ui middle aligned center aligned grid">
-            <div class="column">
+            <div class="seven wide column">
                 <h2 class="ui teal image header">
                     <img class="image" src="../static/images/material/logo.png" th:src="@{/images/material/logo.png}">
                     <div class="content">

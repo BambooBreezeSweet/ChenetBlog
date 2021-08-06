@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-Hans-CN" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head(title)">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -101,7 +101,7 @@
     <img class="ui image" src="../static/images/avatar/avatar28.png" th:src="@{/images/avatar/avatar28.png}" th:case="'27'">
     <img class="ui image" src="../static/images/avatar/avatar29.png" th:src="@{/images/avatar/avatar29.png}" th:case="'28'">
     <img class="ui image" src="../static/images/avatar/avatar30.png" th:src="@{/images/avatar/avatar30.png}" th:case="'29'">
-</div>1
+</div>
 <!--头像-->
 <div style="text-align: center" class="text item" th:switch="${n}" th:fragment="avatar(n,content,span)">
     <img class="ui avatar image" src="../static/images/avatar/avatar1.png" th:src="@{/images/avatar/avatar1.png}" th:case="'0'">
@@ -149,7 +149,6 @@
                     <h4 class="ui inverted header m-text-thin m-text-spaced">关注公众号</h4>
                     <img th:src="@{/images/material/QR.jpg}" src="../static/images/material/QR.jpg" class="ui rounded image centered" alt="" style="width: 8em;">
                 </div>
-
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced">其他平台</h4>
@@ -173,7 +172,7 @@
                 <div class="ui inverted link list">
                     <a class="item" th:href="@{/privacy}" href="#">隐私政策</a>
                     <a class="item" th:href="@{/disclaimer}" href="#">免责声明</a>
-                    <a class="item" href="www.cac.gov.cn/2019-12/20/c_1578375159509309.htm">网络信息内容生态治理规定</a>
+                    <a class="item" href="http://www.cac.gov.cn/2019-12/20/c_1578375159509309.htm">网络信息内容生态治理规定</a>
                 </div>
             </div>
             <div class="three wide column">
