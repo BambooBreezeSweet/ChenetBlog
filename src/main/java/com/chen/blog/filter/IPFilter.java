@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Stream;
 
 @WebFilter(urlPatterns = "/*")
 public class IPFilter implements Filter {
@@ -25,17 +24,23 @@ public class IPFilter implements Filter {
     private static final long MIN_SAFE_TIME = 5000;
 
     //连续访问阈值
-    private static final int LIMIT_NUMBER = 50;
+    private static final int LIMIT_NUMBER = 500;
 
     private FilterConfig config;
+
+    @Override
+    public void destroy() {
+        Filter.super.destroy();
+    }
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.config = filterConfig;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         ServletContext context = config.getServletContext();
@@ -55,6 +60,7 @@ public class IPFilter implements Filter {
                 long limitedTime = limitedIpMap.get(ip) - System.currentTimeMillis();
                 request.setAttribute("remainingTime",((limitedTime / 1000) + (limitedTime %1000 > 0 ? 1 : 0)));
                 System.err.println("IP访问频繁："+ip);
+                return;
             }
             //判断IP是否存在，如果存在比较访问次数，大于阈值判断时间，超过安全时间跳到异常，不存在则视为初次访问，初始化IP
             if (ipMap.containsKey(ip)) {
@@ -77,12 +83,7 @@ public class IPFilter implements Filter {
             }
             context.setAttribute("ipMap", ipMap);
         }
-        chain.doFilter(request, response);
-    }
-
-    @Override
-    public void destroy() {
-        Filter.super.destroy();
+        filterChain.doFilter(request, response);
     }
 
     /**
