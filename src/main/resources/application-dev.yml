@@ -53,7 +53,7 @@ uploadFile:
 ipFilter:
   limited-time: 600000 #默认限制时间（毫秒）
   safe-time: 5000      #最小安全时间
-  limit-number: 5      #限制访问次数
+  limit-number: 50      #限制访问次数
 
 logging:
   level:
