@@ -197,11 +197,8 @@ public class UserController {
      * @return
      */
     @GetMapping("/user/userInfo")
-    public String userInfo(Long userId, Model model, HttpServletRequest request,FilterConfig config){
+    public String userInfo(Long userId, Model model){
         model.addAttribute("user",userService.findUserById(userId));
-        System.err.println("IP地址："+IPUtils.getIpAddr(request));
-        System.err.println("IPMap"+config.getServletContext().getAttribute("ipMap"));
-        System.err.println("limitedMap"+config.getServletContext().getAttribute("limitedIpMap"));
         return "userInfo";
     }
 }
