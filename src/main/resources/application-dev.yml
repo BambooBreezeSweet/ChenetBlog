@@ -1,9 +1,12 @@
 server:
-  port: 80
-#  ssl:
-#    key-store: classpath:/static/file/5947600_chenetchen.ltd.pfx
-#    key-store-password: 6mcKnQ6f
-#    key-store-type: PKCS12
+  port: 443
+  httpPort: 80
+  portStatus: true #true表示80和443都能使用，false表示80转发到443
+  ssl:
+    enabled: true
+    key-store: classpath:chenetchen.ltd.pfx
+    key-store-password: 6mcKnQ6f
+    key-store-type: PKCS12
 
 spring:
   application:
@@ -19,7 +22,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    #show-sql: true #关闭SQL日志
+    #show-sql: true
   mail:
     host: smtp.163.com
     username: chenaichenet@163.com
@@ -44,7 +47,7 @@ spring:
       max-request-size: 20MB
 
 uploadFile:
-  linux-path: /project/ChenetBlog/src/main/resources/static/upload/images/   #Linux下上传文件所在路径
+  linux-path: /root/project/ChenetBlog/src/main/resources/static/upload/images/   #Linux下上传文件所在路径
   windows-path: \\src\\main\\resources\\static\\upload\\images\\   #Windows下上传文件所在路径
 
 logging:
