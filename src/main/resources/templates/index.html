@@ -32,7 +32,7 @@
                         <div class="ui middle aligned mobile reversed stackable grid">
                             <div class="eleven wide column">
                                 <h3 class="ui header"><a href="blog.html" class="m-black" th:text="${blog.title}" th:href="@{/blog/{id}(id=${blog.id})}" >荷塘月色</a></h3>
-                                <p class="m-text" th:text="|${blog.description}......|">《荷塘月色》写了荷塘月色美丽的景象，含蓄而又委婉地抒发了作者不满现实，渴望自由，想超脱现实而又不能的复杂的思想感情，为后人留下了旧中国正直知识分子在苦难中徘徊前进的足迹。</p>
+                                <p class="m-text" th:text="${#strings.abbreviate(blog.description,70)}">《荷塘月色》写了荷塘月色美丽的景象，含蓄而又委婉地抒发了作者不满现实，渴望自由，想超脱现实而又不能的复杂的思想感情，为后人留下了旧中国正直知识分子在苦难中徘徊前进的足迹。</p>
                                 <div class="ui grid">
                                     <div class="eleven wide column">
                                         <div class="ui mini horizontal link list">
