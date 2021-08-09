@@ -42,11 +42,6 @@ public class IPFilter implements Filter {
     private FilterConfig config;
 
     @Override
-    public void destroy() {
-        Filter.super.destroy();
-    }
-
-    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.config = filterConfig;
     }
@@ -72,6 +67,7 @@ public class IPFilter implements Filter {
             if (isLimitedIp(limitedIpMap, ip)){
                 long limitedTime = limitedIpMap.get(ip) - System.currentTimeMillis();
                 request.setAttribute("remainingTime",((limitedTime / 1000) + (limitedTime %1000 > 0 ? 1 : 0)));
+                request.getRequestDispatcher("/error/ipError").forward(request,response);
                 System.err.println("IP访问频繁："+ip);
                 return;
             }
@@ -97,6 +93,11 @@ public class IPFilter implements Filter {
             context.setAttribute("ipMap", ipMap);
         }
         filterChain.doFilter(request, response);
+    }
+
+    @Override
+    public void destroy() {
+        Filter.super.destroy();
     }
 
     /**

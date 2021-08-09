@@ -111,6 +111,15 @@ public class IndexController {
     }
 
     /**
+     * IP异常跳转
+     * @return
+     */
+    @GetMapping("/error/ipError")
+    public String ipError(){
+        return "/error/ipError";
+    }
+
+    /**
      * 隐私政策
      * @param model
      * @return
