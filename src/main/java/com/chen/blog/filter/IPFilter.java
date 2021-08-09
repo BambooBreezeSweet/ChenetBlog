@@ -7,6 +7,7 @@
 package com.chen.blog.filter;
 
 import com.chen.blog.utils.IPUtils;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -18,13 +19,25 @@ import java.util.*;
 @WebFilter(urlPatterns = "/*")
 public class IPFilter implements Filter {
     //默认限制时间（单位：毫秒）
-    private static final long LIMITED_TIME_MILLIS = 60 * 30 * 1000;
+    private static long LIMITED_TIME_MILLIS;
+    @Value("${ipFilter.limited-time}")
+    public void setLimitedTimeMillis(long limitedTimeMillis){
+        IPFilter.LIMITED_TIME_MILLIS = limitedTimeMillis;
+    }
 
     //最小安全时间（单位：毫秒）
-    private static final long MIN_SAFE_TIME = 5000;
+    private static long MIN_SAFE_TIME;
+    @Value("${ipFilter.safe-time}")
+    public void setMinSafeTime(long minSafeTime){
+        IPFilter.MIN_SAFE_TIME = minSafeTime;
+    }
 
     //连续访问阈值
-    private static final int LIMIT_NUMBER = 500;
+    private static int LIMIT_NUMBER;
+    @Value("${ipFilter.limit-number}")
+    public void setLimitNumber(int limitNumber){
+        IPFilter.LIMIT_NUMBER = limitNumber;
+    }
 
     private FilterConfig config;
 

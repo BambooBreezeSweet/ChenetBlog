@@ -50,6 +50,11 @@ uploadFile:
   linux-path: /root/project/ChenetBlog/src/main/resources/static/upload/images/   #Linux下上传文件所在路径
   windows-path: \\src\\main\\resources\\static\\upload\\images\\   #Windows下上传文件所在路径
 
+ipFilter:
+  limited-time: 600000 #默认限制时间（毫秒）
+  safe-time: 5000      #最小安全时间
+  limit-number: 5      #限制访问次数
+
 logging:
   level:
     root: info
