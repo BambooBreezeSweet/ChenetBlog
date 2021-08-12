@@ -17,12 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.FilterConfig;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.Map;
 
 @Controller
 public class UserController {
@@ -89,11 +85,10 @@ public class UserController {
      * 验证码
      * @param email 邮箱，用于发送验证码
      * @param model
-     * @param session
      * @return
      */
-    @RequestMapping("/user/verCode")
-    public String verCode(String email,Model model,HttpSession session){
+    @RequestMapping("/verCode")
+    public String verCode(String email,Model model){
         String ver = VerifyCodeUtils.getVerCode(6);
         //存入redis，并设置过期时间
         redisUtils.set("verCode",ver,120);
@@ -112,7 +107,6 @@ public class UserController {
      * @param password
      * @param email
      * @param verCode
-     * @param session
      * @param model
      * @return
      */
@@ -121,16 +115,16 @@ public class UserController {
                           @RequestParam String password,
                           @RequestParam String email,
                           @RequestParam String verCode,
-                          HttpSession session,Model model){
+                          Model model){
         if (!MailUtils.checkMail(email)){
             model.addAttribute("message","请输入正确的邮箱");
         }
-        User user1 = userService.checkUserByUsername(username, MD5Utils.code(password));
-        User user2 = userService.checkUserByUsername(email, MD5Utils.code(password));
+        User userByUsername = userService.findUserByUsername(username);
+        User userByEmail = userService.findUserByEmail(email);
         String ver = (String) redisUtils.get("verCode");
-        if (user1 != null){
+        if (userByUsername != null){
             model.addAttribute("message","用户名已注册");
-        }if (user2 != null){
+        }if (userByEmail != null){
             model.addAttribute("message","邮箱已经注册");
         }if(!verCode.equals(ver)){
             model.addAttribute("message","验证码错误");

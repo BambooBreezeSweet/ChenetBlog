@@ -71,7 +71,7 @@ public class AdminUserController {
             user1.setPassword(null);
             session.setAttribute("adminUser",user1);
             return "admin/index";
-        }else if (user2 != null && (user1.getRole()==1 || user1.getRole() == 2)){
+        }else if (user2 != null && (user2.getRole()==1 || user2.getRole() == 2)){
             user2.setPassword(null);
             session.setAttribute("adminUser",user2);
             return "admin/index";
