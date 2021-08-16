@@ -6,6 +6,8 @@
  */
 package com.chen.blog.domain;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,7 +33,8 @@ public class Comment {
     @ManyToOne
     private Blog blog;
     //回复评论
-    @OneToMany(mappedBy = "parentComment")
+    @OneToMany(mappedBy = "parentComment",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    @Cascade(value = {org.hibernate.annotations.CascadeType.REMOVE})
     private List<Comment> replyComments = new ArrayList<>();
     //父评论
     @ManyToOne

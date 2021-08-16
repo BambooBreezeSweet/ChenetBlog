@@ -17,4 +17,7 @@ public interface CommentService {
 
     //保存评论
     Comment saveComment(Comment comment);
+
+    //删除评论
+    void deleteComment(Long id);
 }

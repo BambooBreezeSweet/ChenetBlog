@@ -22,7 +22,7 @@
         <div class="ui top attached segment">
             <div class="ui horizontal link list">
                 <div class="item" th:replace="_fragment::avatar(${blog.user.avatar},~{::#username},~{})">
-                    <img src="../static/images/me.jpg" class="ui avatar image">
+                    <img src="../static/images/me.jpg" class="ui avatar image" alt="头像">
                     <div id="username" class="content">
                         <a href="#" class="header" th:href="@{/user/userInfo(userId=${blog.user.id})}" th:text="${blog.user.username}">Chenet</a>
                     </div>
@@ -38,7 +38,7 @@
 
         <!-- 图片区域 -->
         <div class="ui attached segment">
-            <img src="http://cdn1.52jingsai.com/portal/202012/25/132810p6iav66w96ztfrei.jpg" th:src="@{${blog.picture}}" class="ui fluid rounded image">
+            <img src="http://cdn1.52jingsai.com/portal/202012/25/132810p6iav66w96ztfrei.jpg" th:src="@{${blog.picture}}" class="ui fluid rounded image" alt="博客图片">
         </div>
 
         <!-- 内容 -->
@@ -105,24 +105,8 @@
                         <h3 class="ui dividing header">评论</h3>
                         <div class="comment" th:each="comment:${comments}">
                             <div class="avatar">
-                                <img th:replace="_fragment::images(${comment.user.avatar})" src="../static/images/me.jpg">
+                                <img th:replace="_fragment::images(${comment.user.avatar})" src="../static/images/me.jpg" alt="头像">
                             </div>
-
-                            <div style="float: right" class="ui icon top left pointing dropdown">
-                                <i style="float: right" class="ellipsis horizontal icon"></i>
-                                <div class="menu">
-                                    <div class="divider"></div>
-                                    <div class="item">
-                                        <i class="trash icon"></i>
-                                        <a style="color: black" href="#" th:href="@{/comment/{id}/delete(id=${comment.id})}">删除</a>
-                                    </div>
-                                    <div class="item">
-                                        <i class="exclamation icon"></i>
-                                        <a style="color: black">举报</a>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="content">
                                 <a class="author" th:href="@{/user/userInfo(userId=${comment.user.id})}">
                                     <span th:text="${comment.user.username}">Matt</span>
@@ -134,7 +118,7 @@
                                 <div class="text" th:text="${comment.content}">写的太好了！</div>
                                 <div class="actions">
                                     <a class="reply" data-commentid="1" data-commentusername="Matt" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" onclick="reply(this)">回复</a>
-                                    <a class="reply" th:if="${session.user.id} == ${comment.user.id}" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" onclick="deleteComment(this)">删除</a>
+                                    <a class="reply" th:if="${session.user.id == comment.user.id || session.user.role == 2 || session.user.id == comment.blog.user.id}" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${comment.id}]]);">删除</a>
                                 </div>
                             </div>
 
@@ -142,11 +126,8 @@
                                 <div class="content">
                                     <div class="comment" th:each="reply:${comment.replyComments}">
                                         <a class="avatar" th:href="@{/user/userInfo(userId=${reply.user.id})}">
-                                            <img th:replace="_fragment::images(${reply.user.avatar})" src="../static/images/me.jpg">
+                                            <img th:replace="_fragment::images(${reply.user.avatar})" src="../static/images/me.jpg" alt="头像">
                                         </a>
-
-
-
                                         <div class="content">
                                             <a class="author" th:href="@{/user/userInfo(userId=${reply.user.id})}">
                                                 <span th:text="${reply.user.username}">Matt</span>
@@ -159,7 +140,7 @@
                                             <div class="text" th:text="${reply.content}">没错！</div>
                                             <div class="actions">
                                                 <a class="reply" data-commentid="1" data-commentusername="Matt" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" onclick="reply(this)">回复</a>
-                                                <a class="delete" th:if="${session.user.id} == ${reply.id}" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" onclick="deleteComment(this)">删除</a>
+                                                <a class="delete" th:if="${session.user.id == reply.user.id || session.user.role == 2 || session.user.id == reply.blog.user.id}" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${reply.id}]]);">删除</a>
                                             </div>
                                         </div>
                                     </div>
@@ -181,6 +162,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="ui mini modal">
+                <i class="close icon"></i>
+                <div class="header">
+                    删除评论
+                </div>
+                <div class="content">
+                    <div class="description">
+                        <div class="ui header">删除后不可恢复</div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="ui red deny button">
+                        否
+                    </div>
+                    <div class="ui positive right button">
+                        <a id="deleteComment" style="color: white">是</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -212,7 +214,7 @@
 <!-- 二维码生成 -->
 <script th:src="@{/lib/qrcode/qrcode.min.js}" src="../static/lib/qrcode/qrcode.min.js"></script>
 <!-- 平滑滚动 -->
-<script th:src="@{/lib/scrollTo/jquery.scrollTo.min.js}" src="../static/lib/scrollTo/jquery.scrollTo.min.js"></script>
+<script th:src="@{/js/jquery.scrollTo.min.js}" src="../static/js/jquery.scrollTo.min.js"></script>
 <!-- 滚动侦测 -->
 <script th:src="@{/lib/waypoint/jquery.waypoints.min.js}" src="../static/lib/waypoint/jquery.waypoints.min.js"></script>
 <script th:inline="javascript">
@@ -259,9 +261,9 @@
 
     /* 生成二维码 */
     var serverurl="https://www.chenetchen.ltd"
-    var url = "/blog/"+[[${blog.id}]];
+    //var url = "/blog/"+[[${blog.id}]];
     var qrcode = new QRCode("qrcode", {
-        text: serverurl+url,
+        text: serverurl,//+url,
         width: 110,
         height: 110,
         colorDark: "#000000",
@@ -315,7 +317,7 @@
 
     /* 评论提交数据 */
     function postData() {
-        $("#comment-container").load(/*[[@{/comments}]]*/"",{   //发送Ajax请求到comments
+        $("#comment-container").load(/*[[@{/comment}]]*/"",{   //发送Ajax请求到comment
            "parentComment.id":$("[name='parentComment.id']").val(),
             "blog.id":$("[name='blog.id']").val(),
             "content":$("[name='content']").val(),
@@ -337,6 +339,18 @@
         $("[name='content']").attr("placeholder","@"+commentUsername).focus();
         $("[name='parentComment.id']").val(commentId);
         $(window).scrollTo($('#comment-form'),500);
+    }
+
+    /* 删除评论 */
+    function deleteComment(blogId,commentId) {
+        $('.ui.mini.modal').modal('show');
+        // $("#deleteComment").attr("href","comment/delete?blogId="+blogId+"&commentId="+commentId);
+        $('#deleteComment').click(function (){
+            $("#comment-container").load("/comment/delete",{
+                "blogId": blogId,
+                "commentId": commentId,
+            })
+        })
     }
 
 </script>

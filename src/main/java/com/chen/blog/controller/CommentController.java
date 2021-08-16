@@ -47,7 +47,7 @@ public class CommentController {
      * @param session
      * @return
      */
-    @PostMapping("/comments")
+    @PostMapping("/comment")
     public String post(Comment comment, HttpSession session){
         Long blogId = comment.getBlog().getId();
         comment.setBlog(blogService.getBlogById(blogId));
@@ -65,4 +65,11 @@ public class CommentController {
         commentService.saveComment(comment);
         return "redirect:/comments/"+blogId;
     }
+
+    @PostMapping ("/comment/delete")
+    public String deleteComment(Long blogId,Long commentId){
+        commentService.deleteComment(commentId);
+        return "redirect:/comments/"+blogId;
+    }
+
 }

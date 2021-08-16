@@ -44,6 +44,11 @@ public class CommentServiceImpl implements CommentService {
         return commentRepository.save(comment);
     }
 
+    @Override
+    public void deleteComment(Long id) {
+        commentRepository.deleteById(id);
+    }
+
     /*处理评论区的层级关系*/
 
     //存放迭代找出的所有子代集合
