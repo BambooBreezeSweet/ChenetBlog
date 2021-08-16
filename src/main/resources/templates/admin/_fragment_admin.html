@@ -31,7 +31,7 @@
             <div class="right menu m-item m-mobile-hide" th:if="${session.adminUser} != null">
                 <div class="ui dropdown item">
                     <div class="text" th:replace="_fragment::avatar(${session.adminUser.avatar},~{},~{::#username})">
-                        <img src="../../static/images/me.jpg" class="ui avatar image">
+                        <img src="../../static/images/me.jpg" class="ui avatar image" alt="头像">
                         <span id="username" href="#" class="header m-black" th:text="${session.adminUser.username}">陈十七</span>
                     </div>
                     <i class="dropdown icon"></i>
@@ -54,7 +54,7 @@
             <div class="three wide column">
                 <div class="ui inverted link list">
                     <h4 class="ui inverted header m-text-thin m-text-spaced">关注公众号</h4>
-                    <img th:src="@{/images/material/QR.jpg}" src="../../static/images/material/QR.jpg" class="ui rounded image centered" alt="" style="width: 8em;">
+                    <img th:src="@{/images/material/QR.jpg}" src="../../static/images/material/QR.jpg" class="ui rounded image centered" alt="二维码" style="width: 8em;">
                 </div>
             </div>
             <div class="three wide column">

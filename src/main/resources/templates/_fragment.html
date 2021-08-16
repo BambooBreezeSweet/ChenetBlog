@@ -23,7 +23,7 @@
     <div class="ui container">
         <div class="ui secondary stackable menu">
             <a href="index.html" th:href="@{/index}" class="m-black">
-                <img th:src="@{/images/material/zhufeng.png}" src="../static/images/material/zhufeng.png" class="ui m-image-tiny left floated image">
+                <img th:src="@{/images/material/zhufeng.png}" src="../static/images/material/zhufeng.png" class="ui m-image-tiny left floated image" alt="网站图标">
             </a>
             <a href="index.html" th:href="@{/index}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
             <div class="ui m-item simple dropdown item m-mobile-hide">
@@ -52,7 +52,7 @@
             <div id="users" class="right menu m-item m-mobile-hide" th:if="${session.user} != null">
                 <div class="ui dropdown item">
                     <div class="text" th:replace="_fragment :: avatar(${session.user.avatar},~{},~{::#uname})">
-                        <img src="../static/images/me.jpg" class="ui avatar image">
+                        <img src="../static/images/me.jpg" class="ui avatar image" alt="用户头像">
                         <span id="uname" th:text="${session.user.username}">陈十七</span>
                     </div>
                     <i class="dropdown icon"></i>
@@ -71,69 +71,69 @@
 
 <!--图片-->
 <div class="text item" th:switch="${n}" th:fragment="images(n)">
-    <img class="ui image" src="../static/images/avatar/avatar1.png" th:src="@{/images/avatar/avatar1.png}" th:case="'0'">
-    <img class="ui image" src="../static/images/avatar/avatar2.png" th:src="@{/images/avatar/avatar2.png}" th:case="'1'">
-    <img class="ui image" src="../static/images/avatar/avatar3.png" th:src="@{/images/avatar/avatar3.png}" th:case="'2'">
-    <img class="ui image" src="../static/images/avatar/avatar4.png" th:src="@{/images/avatar/avatar4.png}" th:case="'3'">
-    <img class="ui image" src="../static/images/avatar/avatar5.png" th:src="@{/images/avatar/avatar5.png}" th:case="'4'">
-    <img class="ui image" src="../static/images/avatar/avatar6.png" th:src="@{/images/avatar/avatar6.png}" th:case="'5'">
-    <img class="ui image" src="../static/images/avatar/avatar7.png" th:src="@{/images/avatar/avatar7.png}" th:case="'6'">
-    <img class="ui image" src="../static/images/avatar/avatar8.png" th:src="@{/images/avatar/avatar8.png}" th:case="'7'">
-    <img class="ui image" src="../static/images/avatar/avatar9.png" th:src="@{/images/avatar/avatar9.png}" th:case="'8'">
-    <img class="ui image" src="../static/images/avatar/avatar10.png" th:src="@{/images/avatar/avatar10.png}" th:case="'9'">
-    <img class="ui image" src="../static/images/avatar/avatar11.png" th:src="@{/images/avatar/avatar11.png}" th:case="'10'">
-    <img class="ui image" src="../static/images/avatar/avatar12.png" th:src="@{/images/avatar/avatar12.png}" th:case="'11'">
-    <img class="ui image" src="../static/images/avatar/avatar13.png" th:src="@{/images/avatar/avatar13.png}" th:case="'12'">
-    <img class="ui image" src="../static/images/avatar/avatar14.png" th:src="@{/images/avatar/avatar14.png}" th:case="'13'">
-    <img class="ui image" src="../static/images/avatar/avatar15.png" th:src="@{/images/avatar/avatar15.png}" th:case="'14'">
-    <img class="ui image" src="../static/images/avatar/avatar16.png" th:src="@{/images/avatar/avatar16.png}" th:case="'15'">
-    <img class="ui image" src="../static/images/avatar/avatar17.png" th:src="@{/images/avatar/avatar17.png}" th:case="'16'">
-    <img class="ui image" src="../static/images/avatar/avatar18.png" th:src="@{/images/avatar/avatar18.png}" th:case="'17'">
-    <img class="ui image" src="../static/images/avatar/avatar19.png" th:src="@{/images/avatar/avatar19.png}" th:case="'18'">
-    <img class="ui image" src="../static/images/avatar/avatar20.png" th:src="@{/images/avatar/avatar20.png}" th:case="'19'">
-    <img class="ui image" src="../static/images/avatar/avatar21.png" th:src="@{/images/avatar/avatar21.png}" th:case="'20'">
-    <img class="ui image" src="../static/images/avatar/avatar22.png" th:src="@{/images/avatar/avatar22.png}" th:case="'21'">
-    <img class="ui image" src="../static/images/avatar/avatar23.png" th:src="@{/images/avatar/avatar23.png}" th:case="'22'">
-    <img class="ui image" src="../static/images/avatar/avatar24.png" th:src="@{/images/avatar/avatar24.png}" th:case="'23'">
-    <img class="ui image" src="../static/images/avatar/avatar25.png" th:src="@{/images/avatar/avatar25.png}" th:case="'24'">
-    <img class="ui image" src="../static/images/avatar/avatar26.png" th:src="@{/images/avatar/avatar26.png}" th:case="'25'">
-    <img class="ui image" src="../static/images/avatar/avatar27.png" th:src="@{/images/avatar/avatar27.png}" th:case="'26'">
-    <img class="ui image" src="../static/images/avatar/avatar28.png" th:src="@{/images/avatar/avatar28.png}" th:case="'27'">
-    <img class="ui image" src="../static/images/avatar/avatar29.png" th:src="@{/images/avatar/avatar29.png}" th:case="'28'">
-    <img class="ui image" src="../static/images/avatar/avatar30.png" th:src="@{/images/avatar/avatar30.png}" th:case="'29'">
+    <img class="ui image" src="../static/images/avatar/avatar1.png" th:src="@{/images/avatar/avatar1.png}" th:case="'0'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar2.png" th:src="@{/images/avatar/avatar2.png}" th:case="'1'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar3.png" th:src="@{/images/avatar/avatar3.png}" th:case="'2'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar4.png" th:src="@{/images/avatar/avatar4.png}" th:case="'3'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar5.png" th:src="@{/images/avatar/avatar5.png}" th:case="'4'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar6.png" th:src="@{/images/avatar/avatar6.png}" th:case="'5'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar7.png" th:src="@{/images/avatar/avatar7.png}" th:case="'6'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar8.png" th:src="@{/images/avatar/avatar8.png}" th:case="'7'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar9.png" th:src="@{/images/avatar/avatar9.png}" th:case="'8'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar10.png" th:src="@{/images/avatar/avatar10.png}" th:case="'9'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar11.png" th:src="@{/images/avatar/avatar11.png}" th:case="'10'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar12.png" th:src="@{/images/avatar/avatar12.png}" th:case="'11'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar13.png" th:src="@{/images/avatar/avatar13.png}" th:case="'12'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar14.png" th:src="@{/images/avatar/avatar14.png}" th:case="'13'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar15.png" th:src="@{/images/avatar/avatar15.png}" th:case="'14'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar16.png" th:src="@{/images/avatar/avatar16.png}" th:case="'15'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar17.png" th:src="@{/images/avatar/avatar17.png}" th:case="'16'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar18.png" th:src="@{/images/avatar/avatar18.png}" th:case="'17'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar19.png" th:src="@{/images/avatar/avatar19.png}" th:case="'18'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar20.png" th:src="@{/images/avatar/avatar20.png}" th:case="'19'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar21.png" th:src="@{/images/avatar/avatar21.png}" th:case="'20'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar22.png" th:src="@{/images/avatar/avatar22.png}" th:case="'21'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar23.png" th:src="@{/images/avatar/avatar23.png}" th:case="'22'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar24.png" th:src="@{/images/avatar/avatar24.png}" th:case="'23'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar25.png" th:src="@{/images/avatar/avatar25.png}" th:case="'24'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar26.png" th:src="@{/images/avatar/avatar26.png}" th:case="'25'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar27.png" th:src="@{/images/avatar/avatar27.png}" th:case="'26'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar28.png" th:src="@{/images/avatar/avatar28.png}" th:case="'27'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar29.png" th:src="@{/images/avatar/avatar29.png}" th:case="'28'" alt="头像">
+    <img class="ui image" src="../static/images/avatar/avatar30.png" th:src="@{/images/avatar/avatar30.png}" th:case="'29'" alt="头像">
 </div>
 <!--头像-->
 <div style="text-align: center" class="text item" th:switch="${n}" th:fragment="avatar(n,content,span)">
-    <img class="ui avatar image" src="../static/images/avatar/avatar1.png" th:src="@{/images/avatar/avatar1.png}" th:case="'0'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar2.png" th:src="@{/images/avatar/avatar2.png}" th:case="'1'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar3.png" th:src="@{/images/avatar/avatar3.png}" th:case="'2'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar4.png" th:src="@{/images/avatar/avatar4.png}" th:case="'3'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar5.png" th:src="@{/images/avatar/avatar5.png}" th:case="'4'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar6.png" th:src="@{/images/avatar/avatar6.png}" th:case="'5'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar7.png" th:src="@{/images/avatar/avatar7.png}" th:case="'6'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar8.png" th:src="@{/images/avatar/avatar8.png}" th:case="'7'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar9.png" th:src="@{/images/avatar/avatar9.png}" th:case="'8'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar10.png" th:src="@{/images/avatar/avatar10.png}" th:case="'9'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar11.png" th:src="@{/images/avatar/avatar11.png}" th:case="'10'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar12.png" th:src="@{/images/avatar/avatar12.png}" th:case="'11'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar13.png" th:src="@{/images/avatar/avatar13.png}" th:case="'12'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar14.png" th:src="@{/images/avatar/avatar14.png}" th:case="'13'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar15.png" th:src="@{/images/avatar/avatar15.png}" th:case="'14'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar16.png" th:src="@{/images/avatar/avatar16.png}" th:case="'15'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar17.png" th:src="@{/images/avatar/avatar17.png}" th:case="'16'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar18.png" th:src="@{/images/avatar/avatar18.png}" th:case="'17'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar19.png" th:src="@{/images/avatar/avatar19.png}" th:case="'18'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar20.png" th:src="@{/images/avatar/avatar20.png}" th:case="'19'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar21.png" th:src="@{/images/avatar/avatar21.png}" th:case="'20'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar22.png" th:src="@{/images/avatar/avatar22.png}" th:case="'21'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar23.png" th:src="@{/images/avatar/avatar23.png}" th:case="'22'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar24.png" th:src="@{/images/avatar/avatar24.png}" th:case="'23'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar25.png" th:src="@{/images/avatar/avatar25.png}" th:case="'24'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar26.png" th:src="@{/images/avatar/avatar26.png}" th:case="'25'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar27.png" th:src="@{/images/avatar/avatar27.png}" th:case="'26'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar28.png" th:src="@{/images/avatar/avatar28.png}" th:case="'27'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar29.png" th:src="@{/images/avatar/avatar29.png}" th:case="'28'">
-    <img class="ui avatar image" src="../static/images/avatar/avatar30.png" th:src="@{/images/avatar/avatar30.png}" th:case="'29'">
+    <img class="ui avatar image" src="../static/images/avatar/avatar1.png" th:src="@{/images/avatar/avatar1.png}" th:case="'0'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar2.png" th:src="@{/images/avatar/avatar2.png}" th:case="'1'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar3.png" th:src="@{/images/avatar/avatar3.png}" th:case="'2'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar4.png" th:src="@{/images/avatar/avatar4.png}" th:case="'3'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar5.png" th:src="@{/images/avatar/avatar5.png}" th:case="'4'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar6.png" th:src="@{/images/avatar/avatar6.png}" th:case="'5'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar7.png" th:src="@{/images/avatar/avatar7.png}" th:case="'6'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar8.png" th:src="@{/images/avatar/avatar8.png}" th:case="'7'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar9.png" th:src="@{/images/avatar/avatar9.png}" th:case="'8'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar10.png" th:src="@{/images/avatar/avatar10.png}" th:case="'9'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar11.png" th:src="@{/images/avatar/avatar11.png}" th:case="'10'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar12.png" th:src="@{/images/avatar/avatar12.png}" th:case="'11'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar13.png" th:src="@{/images/avatar/avatar13.png}" th:case="'12'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar14.png" th:src="@{/images/avatar/avatar14.png}" th:case="'13'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar15.png" th:src="@{/images/avatar/avatar15.png}" th:case="'14'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar16.png" th:src="@{/images/avatar/avatar16.png}" th:case="'15'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar17.png" th:src="@{/images/avatar/avatar17.png}" th:case="'16'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar18.png" th:src="@{/images/avatar/avatar18.png}" th:case="'17'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar19.png" th:src="@{/images/avatar/avatar19.png}" th:case="'18'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar20.png" th:src="@{/images/avatar/avatar20.png}" th:case="'19'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar21.png" th:src="@{/images/avatar/avatar21.png}" th:case="'20'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar22.png" th:src="@{/images/avatar/avatar22.png}" th:case="'21'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar23.png" th:src="@{/images/avatar/avatar23.png}" th:case="'22'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar24.png" th:src="@{/images/avatar/avatar24.png}" th:case="'23'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar25.png" th:src="@{/images/avatar/avatar25.png}" th:case="'24'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar26.png" th:src="@{/images/avatar/avatar26.png}" th:case="'25'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar27.png" th:src="@{/images/avatar/avatar27.png}" th:case="'26'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar28.png" th:src="@{/images/avatar/avatar28.png}" th:case="'27'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar29.png" th:src="@{/images/avatar/avatar29.png}" th:case="'28'" alt="头像">
+    <img class="ui avatar image" src="../static/images/avatar/avatar30.png" th:src="@{/images/avatar/avatar30.png}" th:case="'29'" alt="头像">
 
     <div class="content" th:replace="${content}"></div>
 
@@ -147,7 +147,7 @@
             <div class="three wide column">
                 <div class="ui inverted link list">
                     <h4 class="ui inverted header m-text-thin m-text-spaced">关注公众号</h4>
-                    <img th:src="@{/images/material/QR.jpg}" src="../static/images/material/QR.jpg" class="ui rounded image centered" alt="" style="width: 8em;">
+                    <img th:src="@{/images/material/QR.jpg}" src="../static/images/material/QR.jpg" class="ui rounded image centered" alt="二维码" style="width: 8em;">
                 </div>
             </div>
             <div class="three wide column">
@@ -164,7 +164,7 @@
                 <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
                 <div class="ui inverted link list">
                     <a href="mailto:chenaichenet@yeah.net" class="item"><p>Email : chenaichenet@yeah.net</p></a>
-                    <a href="#" class="item"><p>QQ : 1950679747</p></a>
+                    <a href="" class="item"><p>QQ : 1950679747</p></a>
                 </div>
             </div>
             <div class="three wide column">
@@ -198,7 +198,7 @@
             <a class="item m-grey" style="color: gray" href="http://www.12377.cn/" target="_blank" rel="nofollow noopener noreferrer">中国互联网举报中心</a>
             <a class="item m-grey" style="color: gray" href="https://www.12377.cn/" target="_blank" rel="nofollow noopener noreferrer">中国互联网违法和不良信息举报中心</a>
             <a class="item m-grey" style="color: gray" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43052302000137" rel="nofollow noopener noreferrer" target="_blank">
-                <img class="ui spaced image" src="../static/images/cooperative/ghs.png" th:src="@{/images/cooperative/ghs.png}" alt="">公安备案号43052302000137</a>
+                <img class="ui spaced image" src="../static/images/cooperative/ghs.png" th:src="@{/images/cooperative/ghs.png}" alt="公安徽章">公安备案号43052302000137</a>
             <a class="item m-grey" style="color: gray" href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener noreferrer">湘ICP备2021012892号-1</a>
         </div>
         <p class="m-text-thin m-text-spaced m-opacity-tiny">

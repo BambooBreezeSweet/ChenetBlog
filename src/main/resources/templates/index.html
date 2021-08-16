@@ -37,7 +37,7 @@
                                     <div class="eleven wide column">
                                         <div class="ui mini horizontal link list">
                                             <div class="item" th:replace="_fragment::avatar(${blog.user.avatar},~{::#username},~{})">
-                                                <img src="../static/images/me.jpg" class="ui avatar image">
+                                                <img src="../static/images/me.jpg" class="ui avatar image" alt="头像">
                                                 <div id="username" class="content">
                                                     <a href="userInfo.html" th:href="@{/user/userInfo(userId=${blog.user.id})}" style="float: bottom" class="header" th:text="${blog.user.username}"><h5>陈十七</h5></a>
                                                 </div>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="five wide column">
                                 <a href="#" th:href="@{/blog/{id}(id=${blog.id})}">
-                                    <img src="http://cdn1.52jingsai.com/portal/202012/29/171742imrdr6crj4pmrjbc.jpg" class="ui rounded image" th:src="@{${blog.picture}}">
+                                    <img src="http://cdn1.52jingsai.com/portal/202012/29/171742imrdr6crj4pmrjbc.jpg" class="ui rounded image" th:src="@{${blog.picture}}" alt="博客图片">
                                 </a>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
 
                 <!-- 关注我们 -->
                 <h4 class="ui horizontal divider header">关注我们</h4>
-                <img th:src="@{/images/material/QR.jpg}" src="../static/images/material/QR.jpg" class="ui rounded image centered" alt="" style="width: 8em;">
+                <img th:src="@{/images/material/QR.jpg}" src="../static/images/material/QR.jpg" class="ui rounded image centered" alt="二维码" style="width: 8em;">
 
             </div>
         </div>

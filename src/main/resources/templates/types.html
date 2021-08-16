@@ -44,7 +44,7 @@
                             <div class="eleven wide column">
                                 <div class="ui mini horizontal link list">
                                     <div class="item" th:replace="_fragment::avatar(${blog.user.avatar},~{::#username},~{})">
-                                        <img src="../static/images/me.jpg" class="ui avatar image">
+                                        <img src="../static/images/me.jpg" class="ui avatar image" alt="头像">
                                         <div id="username" class="content">
                                             <a href="#" class="header" th:text="${blog.user.username}">Chenet</a>
                                         </div>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="five wide column">
                         <a href="#" target="_blank">
-                            <img src="http://cdn1.52jingsai.com/portal/202012/29/171742imrdr6crj4pmrjbc.jpg" th:src="@{${blog.picture}}" class="ui rounded image">
+                            <img src="http://cdn1.52jingsai.com/portal/202012/29/171742imrdr6crj4pmrjbc.jpg" th:src="@{${blog.picture}}" class="ui rounded image" alt="博客图片">
                         </a>
                     </div>
                 </div>

@@ -162,7 +162,7 @@
     function getEmail(){
         var email = document.getElementById("email");
         $.ajax({
-            url: "/user/verCode",
+            url: "/verCode",
             type: "GET",
             data: {"email":email.value},
         })

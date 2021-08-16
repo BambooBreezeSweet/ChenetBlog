@@ -20,7 +20,7 @@
             <div class="five wide column">
                 <div class="ui card">
                     <div class="ui image" th:replace="_fragment::images(${user.avatar})">
-                        <img src="../static/images/me.jpg">
+                        <img src="../static/images/me.jpg" alt="头像">
                     </div>
                     <div class="content">
                         <a class="header" th:text="${user.username}">陈十七</a>
@@ -60,129 +60,129 @@
                                 <div class="ui label" style="text-align: center;width: 80px" th:if="${session.user.id} == ${user.id}">
                                     <div style="float: right" class="ui inline dropdown">
                                         <div class="text" th:replace="_fragment :: avatar(n=${user.avatar},content=~{},span=~{})">
-                                            <img class="ui avatar image" src="../static/images/avatar/avatar1.png">
+                                            <img class="ui avatar image" src="../static/images/avatar/avatar1.png" alt="头像">
                                         </div>
                                         <i class="dropdown icon"></i>
                                         <!--头像-->
                                         <div class="menu">
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar1.png}" src="../static/images/avatar/avatar1.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar1.png}" src="../static/images/avatar/avatar1.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="0">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar2.png}" src="../static/images/avatar/avatar2.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar2.png}" src="../static/images/avatar/avatar2.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="1">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar3.png}" src="../static/images/avatar/avatar3.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar3.png}" src="../static/images/avatar/avatar3.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="2">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar4.png}" src="../static/images/avatar/avatar4.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar4.png}" src="../static/images/avatar/avatar4.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="3">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar5.png}" src="../static/images/avatar/avatar5.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar5.png}" src="../static/images/avatar/avatar5.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="4">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar6.png}" src="../static/images/avatar/avatar6.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar6.png}" src="../static/images/avatar/avatar6.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="5">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar7.png}" src="../static/images/avatar/avatar7.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar7.png}" src="../static/images/avatar/avatar7.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="6">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar8.png}" src="../static/images/avatar/avatar8.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar8.png}" src="../static/images/avatar/avatar8.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="7">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar9.png}" src="../static/images/avatar/avatar9.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar9.png}" src="../static/images/avatar/avatar9.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="8">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar10.png}" src="../static/images/avatar/avatar10.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar10.png}" src="../static/images/avatar/avatar10.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="9">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar11.png}" src="../static/images/avatar/avatar11.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar11.png}" src="../static/images/avatar/avatar11.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="10">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar12.png}" src="../static/images/avatar/avatar12.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar12.png}" src="../static/images/avatar/avatar12.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="11">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar13.png}" src="../static/images/avatar/avatar13.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar13.png}" src="../static/images/avatar/avatar13.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="12">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar14.png}" src="../static/images/avatar/avatar14.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar14.png}" src="../static/images/avatar/avatar14.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="13">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar15.png}" src="../static/images/avatar/avatar15.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar15.png}" src="../static/images/avatar/avatar15.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="14">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar16.png}" src="../static/images/avatar/avatar16.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar16.png}" src="../static/images/avatar/avatar16.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="15">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar17.png}" src="../static/images/avatar/avatar17.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar17.png}" src="../static/images/avatar/avatar17.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="16">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar18.png}" src="../static/images/avatar/avatar18.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar18.png}" src="../static/images/avatar/avatar18.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="17">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar19.png}" src="../static/images/avatar/avatar19.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar19.png}" src="../static/images/avatar/avatar19.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="18">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar20.png}" src="../static/images/avatar/avatar20.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar20.png}" src="../static/images/avatar/avatar20.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="19">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar21.png}" src="../static/images/avatar/avatar21.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar21.png}" src="../static/images/avatar/avatar21.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="20">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar22.png}" src="../static/images/avatar/avatar22.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar22.png}" src="../static/images/avatar/avatar22.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="21">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar23.png}" src="../static/images/avatar/avatar23.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar23.png}" src="../static/images/avatar/avatar23.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="22">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar24.png}" src="../static/images/avatar/avatar24.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar24.png}" src="../static/images/avatar/avatar24.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="23">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar25.png}" src="../static/images/avatar/avatar25.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar25.png}" src="../static/images/avatar/avatar25.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="24">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar26.png}" src="../static/images/avatar/avatar26.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar26.png}" src="../static/images/avatar/avatar26.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="25">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar27.png}" src="../static/images/avatar/avatar27.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar27.png}" src="../static/images/avatar/avatar27.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="26">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar28.png}" src="../static/images/avatar/avatar28.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar28.png}" src="../static/images/avatar/avatar28.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="27">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar29.png}" src="../static/images/avatar/avatar29.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar29.png}" src="../static/images/avatar/avatar29.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="28">
                                             </div>
                                             <div class="item">
-                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar30.png}" src="../static/images/avatar/avatar30.png">
+                                                <img class="ui avatar image" th:src="@{/images/avatar/avatar30.png}" src="../static/images/avatar/avatar30.png" alt="头像">
                                                 <input name="avatar" style="display: none" type="text" value="29">
                                             </div>
                                         </div>
@@ -215,7 +215,7 @@
                     </form>
                 </div>
 
-                <!--比赛-->
+                <!--博客-->
                 <div class="m-mobile-hide">
                     <div id="blogList" class="ui segment" th:fragment="blogList">
                         <div class="ui padded vertical segment m-padded-tb-large" th:each="blog:${blogs}">
@@ -227,7 +227,7 @@
                                         <div class="eleven wide column">
                                             <div class="ui mini horizontal link list">
                                                 <div class="item" th:replace="_fragment::avatar(${blog.user.avatar},~{::#username},~{})">
-                                                    <img src="../static/images/me.jpg" class="ui avatar image">
+                                                    <img src="../static/images/me.jpg" class="ui avatar image" alt="头像">
                                                     <div id="username" class="content">
                                                         <a href="userInfo.html" th:href="@{/user/userInfo}" style="float: bottom" class="header" th:text="${blog.user.username}"><h5>陈十七</h5></a>
                                                     </div>
@@ -247,7 +247,7 @@
                                 </div>
                                 <div class="five wide column">
                                     <a href="#" th:href="@{/blog/{id}(id=${blog.id})}">
-                                        <img src="http://cdn1.52jingsai.com/portal/202012/29/171742imrdr6crj4pmrjbc.jpg" class="ui rounded image" th:src="@{${blog.picture}}" >
+                                        <img src="http://cdn1.52jingsai.com/portal/202012/29/171742imrdr6crj4pmrjbc.jpg" class="ui rounded image" th:src="@{${blog.picture}}" alt="博客图片">
                                     </a>
                                     <ui class="dropdown">
                                         <a style="color: black" href="#"><i style="float: right" class="ellipsis horizontal icon"></i></a>

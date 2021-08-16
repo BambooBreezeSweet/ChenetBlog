@@ -32,7 +32,7 @@
             <div class="ui relaxed horizontal list">
                 <div class="item" th:each="user:${users}">
                     <div style="text-align: center" th:replace="_fragment::avatar(${user.avatar},~{::#searchUsername},~{})">
-                        <img class="ui avatar image" src="../static/images/avatar/elyse.png">
+                        <img class="ui avatar image" src="../static/images/avatar/elyse.png" alt="头像">
                         <div class="content">
                             <a id="searchUsername" class="mini header" th:href="@{/user/userInfo(userId=${user.id})}" th:text="${user.username}">丹尼尔</a>
                         </div>
@@ -52,7 +52,7 @@
                             <div class="eleven wide column">
                                 <div class="ui mini horizontal link list">
                                     <div class="item" th:replace="_fragment::avatar(${blog.user.avatar},~{::#username},~{})">
-                                        <img src="../static/images/me.jpg" class="ui avatar image">
+                                        <img src="../static/images/me.jpg" class="ui avatar image"> alt="头像">
                                         <div id="username" class="content">
                                             <a href="#" class="header" th:href="@{/user/userInfo(userId=${blog.user.id})}" th:text="${blog.user.username}">Chenet</a>
                                         </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="five wide column">
                         <a href="#" th:href="@{/competition/{id}(id=${blog.id})}">
-                            <img src="https://unsplash.it/800/450?image=101" alt="" class="ui rounded image" th:src="@{${blog.picture}}" >
+                            <img src="https://unsplash.it/800/450?image=101" alt="" class="ui rounded image" th:src="@{${blog.picture}}" alt="博客图片">
                         </a>
                     </div>
                 </div>

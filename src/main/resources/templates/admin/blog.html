@@ -23,7 +23,7 @@
         <div class="ui top attached segment">
             <div class="ui horizontal link list">
                 <div class="item" th:replace="_fragment::avatar(${blog.user.avatar},~{::#username},~{})">
-                    <img src="../static/images/me.jpg" class="ui avatar image">
+                    <img src="../static/images/me.jpg" class="ui avatar image" alt="头像">
                     <div id="username" class="content">
                         <a href="#" class="header" th:href="@{/user/userInfo(userId=${blog.user.id})}" th:text="${blog.user.username}">Chenet</a>
                     </div>
@@ -39,7 +39,7 @@
 
         <!-- 图片区域 -->
         <div class="ui attached segment">
-            <img src="http://cdn1.52jingsai.com/portal/202012/25/132810p6iav66w96ztfrei.jpg" th:src="@{${blog.picture}}" class="ui fluid rounded image">
+            <img src="http://cdn1.52jingsai.com/portal/202012/25/132810p6iav66w96ztfrei.jpg" th:src="@{${blog.picture}}" class="ui fluid rounded image" alt="博客图片">
         </div>
 
         <!-- 内容 -->
@@ -107,7 +107,7 @@
                         <h3 class="ui dividing header">评论</h3>
                         <div class="comment" th:each="comment:${comments}">
                             <div class="avatar">
-                                <img th:replace="_fragment::images(${comment.user.avatar})" src="../static/images/me.jpg">
+                                <img th:replace="_fragment::images(${comment.user.avatar})" src="../static/images/me.jpg" alt="头像">
                             </div>
                             <div class="content">
                                 <a class="author" th:href="@{/user/userInfo(userId=${comment.user.id})}">
@@ -127,7 +127,7 @@
                                 <div class="content">
                                     <div class="comment" th:each="reply:${comment.replyComments}">
                                         <a class="avatar" th:href="@{/user/userInfo(userId=${reply.user.id})}">
-                                            <img th:replace="_fragment::images(${reply.user.avatar})" src="../static/images/me.jpg">
+                                            <img th:replace="_fragment::images(${reply.user.avatar})" src="../static/images/me.jpg" alt="头像">
                                         </a>
                                         <div class="content">
                                             <a class="author" th:href="@{/user/userInfo(userId=${reply.user.id})}">
