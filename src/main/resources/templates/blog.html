@@ -261,9 +261,9 @@
 
     /* 生成二维码 */
     var serverurl="https://www.chenetchen.ltd"
-    //var url = "/blog/"+[[${blog.id}]];
+    var url = "/blog/"+[[${blog.id}]];
     var qrcode = new QRCode("qrcode", {
-        text: serverurl,//+url,
+        text: serverurl,+url,
         width: 110,
         height: 110,
         colorDark: "#000000",
