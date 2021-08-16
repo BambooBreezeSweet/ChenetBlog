@@ -15,7 +15,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/blog?useUnicode=true&serverTimezone=UTC
     username: root
-    password: 123456
+    password: chenaichenet
   thymeleaf:
     mode: HTML
     cache: false
@@ -31,7 +31,7 @@ spring:
     templatePath: templates/mailTemplate.html
   redis:
     host: 127.0.0.1
-    #password: chenaichenet
+    password: chenaichenet
     port: 6379
     database: 0
     jedis:
