@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragment_admin :: head(~{::title})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>发布博客</title>
+    <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../../static/lib/semantic/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/my.css}" href="../../static/css/my.css"/>
+    <link rel="stylesheet" th:href="@{/lib/editormd/css/editormd.min.css}" href="../../static/lib/editormd/css/editormd.min.css">
+    <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../../static/images/material/favicon.ico">
+</head>
+<body>
+<!-- 导航 -->
+<nav th:replace="admin/_fragment_admin :: menu(null)" class="ui segment m-padded-tb-mini"></nav>
+
+<!-- 中间内容 -->
+<div class=" m-padded-tb-large">
+    <div class="ui container">
+        <form id="notice-form" action="#" th:action="*{id}==null ? @{/admin/notice/input} : @{/admin/notice/{id}(id=*{id})}" class="ui form" method="post" th:object="${notice}">
+            <input type="hidden" name="id" th:value="*{id}">
+            <div class="required field">
+                <div class="ui left labeled input">
+                    <input type="text" name="title" placeholder="标题" th:value="*{title}">
+                </div>
+            </div>
+
+            <div class="required field">
+                <div id="md-content" style="z-index: 1 !important;">
+                    <textarea placeholder="公告内容" name="content" style="display: none;" th:text="*{content}"></textarea>
+                </div>
+            </div>
+
+            <div class="required field">
+                <textarea name="description" th:text="*{description}" placeholder="公告描述" maxlength="200"></textarea>
+            </div>
+
+            <div class="ui checkbox">
+                <input type="checkbox" id="protocol" name="protocol" class="hidden">
+                <label for="protocol">我已同意<a href="#">《竹风博客网发布公告规范》</a></label>
+            </div>
+
+            <div class="ui error message"></div>
+
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button id="admin-publish-btn" type="button" class="ui teal button">发布</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<br>
+<br>
+<!-- 底部 -->
+<footer th:replace="admin/_fragment_admin :: footer" class="ui inverted vertical segment m-padded-tb-large-half"></footer>
+<script th:src="@{/js/jquery-3.5.1.min.js}" src="../../static/js/jquery-3.5.1.min.js"></script>
+<script th:src="@{/lib/semantic/semantic.min.js}" src="../../static/lib/semantic/semantic.min.js"></script>
+<script th:src="@{/lib/editormd/editormd.min.js}" src="../../static/lib/editormd/editormd.min.js"></script>
+<script>
+    /* editormd初始化 */
+    var contextEditor;
+    $(function () {
+        contentEditor = editormd("md-content", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+
+            path: "/lib/editormd/lib/"
+        });
+    });
+
+    /* 通过按钮中的class值定位到按钮 */
+    $('.menu.toggle').click(function () {
+        /* 点击去除m-mobile-hide样式 */
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    });
+
+    $('#admin-publish-btn').click(function () {
+        $('#notice-form').submit();
+    });
+
+    $('.ui.tag.dropdown').dropdown({
+        allowAdditions:true
+    });
+
+    $('.ui.form').form({
+        fields: {
+            title: {
+                identifier: 'title',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入公告标题'
+                }]
+            },
+            content: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入公告详情内容'
+                }]
+            },
+            protocol: {
+                identifier: 'protocol',
+                rules: [{
+                    type: 'checked',
+                    prompt: '请勾选相关协议'
+                }]
+            }
+        }
+    });
+</script>
+</body>
+</html>

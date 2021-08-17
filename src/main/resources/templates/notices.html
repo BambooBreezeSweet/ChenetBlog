@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragment::head(~{::title})">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>公告</title>
+    <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../static/lib/semantic/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/my.css}" href="../static/css/my.css"/>
+    <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../static/images/material/favicon.ico">
+</head>
+<body>
+<!-- 导航 -->
+<nav th:replace="_fragment :: menu(4)" class="ui segment m-padded-tb-mini"></nav>
+
+<!-- 中间内容 -->
+<div class=" m-container m-padded-tb-large">
+    <div class="ui container">
+        <!-- 头 -->
+        <div class="ui top attached segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui teal header">公告</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${notices.totalElements}"> 10 </h2> 个
+                </div>
+            </div>
+        </div>
+
+        <div class="ui top attached teal segment">
+            <div class="ui vertical segment m-padded" th:each="notice:${notices}">
+                <div class="ui mobile reversed stackable grid">
+                    <div class="column">
+                        <a class="ui header" style="font-size: 24px" th:text="${notice.title}" th:href="@{/notice/{id}(id=${notice.id})}">2019.10.21 新增公告功能</a>
+                        <p class="m-text" th:text="${#strings.abbreviate(notice.description,70)}">长期有效</p>
+                        <div class="ui stackable grid">
+                            <div class="column">
+                                <div class="ui mini horizontal link list">
+                                    <div class="item">
+                                        <i class="calendar alternate outline icon"></i><span th:text="${#dates.format(notice.createTime,'yyyy-MM-dd')}">2021-1-20</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--翻页-->
+        <div class="ui bottom attached segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <a href="#" class="ui mini teal basic button" th:href="@{/(page=${notices.number}-1)}" th:unless="${notices.first}">
+                        <span>
+                            <i class="left chevron icon"></i>
+                            上一页
+                        </span>
+                    </a>
+                </div>
+                <div class="right aligned column">
+                    <a href="#" class="ui mini teal basic button" th:href="@{/(page=${notices.number}+1)}" th:unless="${notices.last}">
+                        <span>
+                            下一页
+                            <i class="right chevron icon"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<!-- 底部 -->
+<footer th:replace="_fragment :: footer"  class="ui inverted vertical segment m-padded-tb-large-half"></footer>
+<script th:src="@{/js/jquery-3.5.1.min.js}" src="../static/js/jquery-3.5.1.min.js"></script>
+<script th:src="@{/lib/semantic/semantic.min.js}" src="../static/lib/semantic/semantic.min.js"></script>
+<script>
+    /* 通过按钮中的class值定位到按钮 */
+    $('.menu.toggle').click(function () {
+        /* 点击去除m-mobile-hide样式 */
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    });
+</script>
+</body>
+</html>
