@@ -27,13 +27,14 @@
             </a>
             <a href="index.html" th:href="@{/index}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
             <div class="ui m-item simple dropdown item m-mobile-hide">
-                <a href="types.html" th:href="@{/types}" class="m-item m-black m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="tags icon"></i>博客</a>
+                <a href="types.html" th:href="@{/types}" class="m-item m-black m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="tags icon"></i>分类</a>
                 <div class="menu stackable">
                     <div class="item" th:each="type:${types}"><a href="#" th:href="@{/search/{typename}(typename=${type.name})}" class="m-item m-black m-mobile-hide"><span th:text="${type.name}"></span></a></div>
                 </div>
             </div>
             <a href="archives.html" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="archive icon"></i>归档</a>
-            <a href="about.html" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="info icon"></i>关于</a>
+            <a href="notices.html" th:href="@{/notices}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="bell icon"></i>公告</a>
+            <a href="about.html" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="info icon"></i>关于</a>
             <!--搜索栏-->
             <div class="m-item right item m-mobile-hide">
                 <form name="search" action="#" th:action="@{/search}" method="post" >

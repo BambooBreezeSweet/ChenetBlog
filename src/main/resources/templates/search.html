@@ -47,7 +47,7 @@
                 <div class="ui middle aligned mobile reversed stackable grid">
                     <div class="eleven wide column">
                         <h3 class="ui header"><a href="#" class="m-black" th:text="${blog.title}" th:href="@{/blog/{id}(id=${blog.id})}" >博客标题</a></h3>
-                        <p class="m-text" th:text="|${blog.description}......|">博客描述：社区为 Semantic UI 持续不断的发展提供了直接的支持。</p>
+                        <p class="m-text" th:text="${#strings.abbreviate(blog.description,70)}">博客描述：社区为 Semantic UI 持续不断的发展提供了直接的支持。</p>
                         <div class="ui grid">
                             <div class="eleven wide column">
                                 <div class="ui mini horizontal link list">

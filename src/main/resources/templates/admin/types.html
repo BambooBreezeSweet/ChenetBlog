@@ -24,27 +24,22 @@
 <!-- 中间内容 -->
 <div class=" m-container m-padded-tb-large">
     <div class="ui container">
-        <!--消息提示-->
-        <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
-            <i class="close icon"></i>
-            <div class="header">提示：</div>
-            <p th:text="${message}">操作成功与否</p>
-        </div>
-
         <table class="ui table">
             <thead>
             <tr>
                 <th style="text-align: center">ID</th>
                 <th style="text-align: center">名称</th>
                 <th style="text-align: center">所属博客</th>
+                <th style="text-align: center">创建时间</th>
                 <th style="text-align: center">操作</th>
             </tr>
             </thead>
             <tobody>
-                <tr th:each="type,iterStat : ${types.content}">
+                <tr th:each="type,iterStat : ${types}">
                     <td style="text-align: center" th:text="${iterStat.count}">1</td>
                     <td style="text-align: center" th:text="${type.name}">公益活动</td>
                     <td style="text-align: center" th:text="${#arrays.length(type.blogs)}+' 篇'">1</td>
+                    <td style="text-align: center" th:text="${#dates.format(type.createTime,'yyyy-MM-dd')}">2021-1-20</td>
                     <td style="text-align: center">
                         <a href="#" th:href="@{/admin/type/{id}/input(id=${type.id})}" class="ui mini basic teal button">编辑</a>
                         <button th:onclick="deleteType([[${type.id}]]);" class="ui mini basic red button">删除</button>

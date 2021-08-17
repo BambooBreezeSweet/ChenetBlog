@@ -27,6 +27,7 @@
             <a href="blogs.html" th:href="@{/admin/blogs}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>博客管理</a>
             <a href="types.html" th:href="@{/admin/types}" th:if="${session.adminUser.role == 2}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>分类管理</a>
             <a href="types.html" th:href="@{/admin/users}" th:if="${session.adminUser.role == 2}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="user icon"></i>用户管理</a>
+            <a href="types.html" th:href="@{/admin/notices}" th:if="${session.adminUser.role == 2}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="bell icon"></i>公告管理</a>
 
             <div class="right menu m-item m-mobile-hide" th:if="${session.adminUser} != null">
                 <div class="ui dropdown item">

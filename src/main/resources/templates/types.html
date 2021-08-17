@@ -39,7 +39,7 @@
                 <div class="ui mobile reversed stackable grid">
                     <div class="eleven wide column">
                         <a class="ui header" th:text="${blog.title}" th:href="@{/blog/{id}(id=${blog.id})}">中国扶贫基金会志愿者招募</a>
-                        <p class="m-text" th:text="|${blog.description}......|">长期有效；招募方：中国扶贫基金会 | 由国务院扶贫办主管的全国性扶贫公益组织，是中国扶贫公益领域规模最大、最具影响力的公益组织之一。</p>
+                        <p class="m-text" th:text="${#strings.abbreviate(blog.description,70)}">长期有效</p>
                         <div class="ui stackable grid">
                             <div class="eleven wide column">
                                 <div class="ui mini horizontal link list">
