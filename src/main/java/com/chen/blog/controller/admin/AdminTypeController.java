@@ -48,10 +48,10 @@ public class AdminTypeController {
      * @param model
      * @return
      */
-    @GetMapping("/types/input")
+    @GetMapping("/type/input")
     public String input(Model model){
-        model.addAttribute("type",new Type(new Date()));
-        return "admin/types-input";
+        model.addAttribute("type",new Type());
+        return "admin/type-input";
     }
 
     /**
@@ -60,10 +60,10 @@ public class AdminTypeController {
      * @param model
      * @return
      */
-    @GetMapping("/types/{id}/input")
+    @GetMapping("/type/{id}/input")
     public String editInput(@PathVariable Long id, Model model){
         model.addAttribute("type",typeService.getTypeById(id));
-        return "admin/types-input";
+        return "admin/type-input";
     }
 
     /**
@@ -73,7 +73,7 @@ public class AdminTypeController {
      * @param attributes
      * @return
      */
-    @PostMapping("/types")
+    @PostMapping("/type/input")
     public String post(@Valid Type type, BindingResult result, RedirectAttributes attributes){
         Type type1 = typeService.getTypeByName(type.getName());
         //业务方法验证
@@ -82,8 +82,9 @@ public class AdminTypeController {
         }
         //有错误返回
         if (result.hasErrors()){
-            return "admin/types-input";
+            return "admin/type-input";
         }
+        type.setCreateTime(new Date());
         Type t = typeService.saveType(type);
 
         if (t == null){
@@ -95,7 +96,7 @@ public class AdminTypeController {
     }
 
     /*更新的方法，可以和上面共用*/
-    @PostMapping("/types/{id}")
+    @PostMapping("/type/{id}")
     public String editPost(@Valid Type type, BindingResult result,@PathVariable Long id, RedirectAttributes attributes){
         Type type1 = typeService.getTypeByName(type.getName());
         //业务方法验证
@@ -119,7 +120,7 @@ public class AdminTypeController {
      * @param attributes
      * @return
      */
-    @GetMapping("/types/delete")
+    @GetMapping("/type/delete")
     public String delete(Long id,RedirectAttributes attributes){
         typeService.deleteType(id);
         attributes.addFlashAttribute("message","删除成功");

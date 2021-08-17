@@ -35,10 +35,6 @@ public class Type implements Serializable {
     public Type() {
     }
 
-    public Type(Date createTime) {
-        this.createTime = createTime;
-    }
-
     @Override
     public String toString() {
         return "Type{" +
