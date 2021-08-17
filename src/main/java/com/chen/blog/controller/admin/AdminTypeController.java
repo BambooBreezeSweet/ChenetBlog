@@ -55,18 +55,6 @@ public class AdminTypeController {
     }
 
     /**
-     * 后台编辑分类
-     * @param id
-     * @param model
-     * @return
-     */
-    @GetMapping("/type/{id}/input")
-    public String editInput(@PathVariable Long id, Model model){
-        model.addAttribute("type",typeService.getTypeById(id));
-        return "admin/type-input";
-    }
-
-    /**
      * 后台提交新建分类
      * @Valid注解表示接受校验，校验结果由BindResult接受
      * @param type
@@ -93,6 +81,18 @@ public class AdminTypeController {
             attributes.addFlashAttribute("message","新增成功");
         }
         return "redirect:/admin/types";
+    }
+
+    /**
+     * 后台编辑分类
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/type/{id}/input")
+    public String editInput(@PathVariable Long id, Model model){
+        model.addAttribute("type",typeService.getTypeById(id));
+        return "admin/type-input";
     }
 
     /*更新的方法，可以和上面共用*/
