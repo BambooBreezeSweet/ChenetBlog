@@ -7,6 +7,7 @@
 package com.chen.blog.controller;
 
 import com.chen.blog.service.BlogService;
+import com.chen.blog.service.NoticeService;
 import com.chen.blog.service.TypeService;
 import com.chen.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class IndexController {
 
     @Autowired
     private TypeService typeService;
+
+    @Autowired
+    private NoticeService noticeService;
 
     /**
      * 首页定位
@@ -67,6 +71,24 @@ public class IndexController {
         model.addAttribute("archiveMap", blogService.archiveBlog());
         model.addAttribute("blogCount", blogService.countBlog());
         return "archives";
+    }
+
+    /**
+     * 公告通知页面
+     * @param pageable
+     * @param model
+     * @return
+     */
+    @GetMapping("/notices")
+    public String notices(@PageableDefault(size = 5,sort = {"createTime"},direction = Sort.Direction.DESC)Pageable pageable,Model model){
+        model.addAttribute("notices",noticeService.listNotices(pageable));
+        return "notices";
+    }
+
+    @GetMapping("/notice/{id}")
+    public String notice(@PathVariable Long id, Model model){
+        model.addAttribute("notice",noticeService.getAndConvert(id));
+        return "notice";
     }
 
     /**

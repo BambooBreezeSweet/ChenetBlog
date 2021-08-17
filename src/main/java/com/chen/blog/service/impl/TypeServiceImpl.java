@@ -9,7 +9,6 @@ package com.chen.blog.service.impl;
 import com.chen.blog.dao.TypeRepository;
 import com.chen.blog.domain.Type;
 import com.chen.blog.service.TypeService;
-import com.chen.blog.utils.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
