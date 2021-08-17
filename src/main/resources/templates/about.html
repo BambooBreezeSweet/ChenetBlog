@@ -3,7 +3,7 @@
 <head th:replace="_fragment::head(~{::title})">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>关于我</title>
+    <title>关于</title>
     <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../static/lib/semantic/semantic.min.css">
     <link rel="stylesheet" th:href="@{/css/my.css}" href="../static/css/my.css"/>
     <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../static/images/material/favicon.ico">
@@ -26,17 +26,30 @@
             </div>
         </div>
         <div class="ui top attached segment">
-            <div class="ui header">关 于 我</div>
+            <div class="ui header">关于网站</div>
         </div>
-        <div class="ui attached segment">
-            <p>竹风有点甜</p>
-            <p>毕业于湖南农业大学，计算机科学与技术专业。</p>
-            <p></p>
+        <div class="ui attached segment m-padded-lr-responsive m-padded-tb-large">
+            <h5>✨ 竹风小站</h5>
+            <p>个人博客网站，是一个便于搭建和部署的小型个人博客项目。</p>
+            <p>该项目采用了IntelliJ IDEA作为开发工具，使用Spring Boot框架基于MVC框架进行开发，使用MySQL数据库，利用HTML，JavaScript，Ajax，Thymeleaf模板引擎和Semantic UI完成界面设计。</p>
+            <h5>该项目中的内容仅供技术研究与学习，不作为任何结论性依据，不提供任何商业化应用授权。</h5>
         </div>
-        <div class="ui bottom attached segment">
+        <div class="ui top attached segment">
+            <div class="ui header">关于作者</div>
+        </div>
+        <div class="ui attached segment m-padded-lr-responsive m-padded-tb-large">
+            <p>👋 竹风有点甜</p>
+            <p>🌏 湖南长沙</p>
+            <p>🍻 湖南农业大学计算机专业</p>
+            <p>⚡ Java / Python / Go / C++</p>
+            <p>🏃 乒乓球 / 篮球 / 骑行 / 拳击 / 中国象棋</p>
+            <p>📫 chenaichenet@yeah.net</p>
+            <p>🔖 吾生也有涯，而知也无涯 。以有涯随无涯，虽殆已，然乐也。</p>
+        </div>
+        <div class="ui bottom attached segment m-padded-lr-responsive ">
             <a href="https://github.com/chenaichenet" class="ui circular icon button"><i class="github icon"></i></a>
-            <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
-            <a href="#" class="ui qq circular icon button" data-content="QQ群:514202239" data-position="bottom center"><i class="qq icon"></i></a>
+            <a href="" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+            <a href="" class="ui qq circular icon button" data-content="QQ群:514202239" data-position="bottom center"><i class="qq icon"></i></a>
         </div>
         <div class="ui wechat-QR flowing popup transit hidden">
             <img th:src="@{/images/QR.jpg}" src="../static/images/material/QR.jpg" alt="二维码" class="ui rounded image" style="width: 100px;">
