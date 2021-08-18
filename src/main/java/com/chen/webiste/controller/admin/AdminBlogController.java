@@ -134,7 +134,7 @@ public class AdminBlogController {
     public String post(Blog blog, @RequestParam("filePath") MultipartFile file, @RequestParam("fileLink") String link, RedirectAttributes attributes, HttpSession session){
         if (!file.isEmpty()) {
             try {
-                blog.setPicture(FileUtils.uploadFile(file));
+                blog.setPicture(FileUtils.uploadFile("blogPicture", file));
             } catch (IOException e) {
                 System.err.println("文件上传失败");
                 e.printStackTrace();

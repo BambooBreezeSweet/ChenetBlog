@@ -19,10 +19,10 @@ public class MvcConfig implements WebMvcConfigurer {
 
     //定义文件路径
     @Value("${uploadFile.images.linux-path}")
-    private String blogPicturefileLinuxPath;
+    private String blogPictureFileLinuxPath;
 
     @Value("${uploadFile.images.windows-path}")
-    private String blogPicturefileWindowsPath;
+    private String blogPictureFileWindowsPath;
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -46,8 +46,8 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/upload/images/**")
-                //.addResourceLocations("file:"+System.getProperty("user.dir")+fileWindowsPath);  //Windows下
-                .addResourceLocations("file:"+ blogPicturefileLinuxPath);  //Linux下
+                .addResourceLocations("file:"+System.getProperty("user.dir")+blogPictureFileWindowsPath);  //Windows下
+                //.addResourceLocations("file:"+ blogPictureFileLinuxPath);  //Linux下
     }
 
     /**

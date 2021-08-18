@@ -14,7 +14,8 @@ import java.io.IOException;
 public class FileUtils {
 
     // 项目根路径下的目录  -- SpringBoot static 目录相当于是根路径下（SpringBoot 默认）
-    public final static String IMG_PATH_PREFIX = "static/upload/images";
+    public final static String BLOG_IMG_PATH = "static/upload/images";
+    public final static String FILE_PATH = "static/upload/files";
 
     /**
      * 使用此方法，controller中应该如下写：
@@ -40,7 +41,7 @@ public class FileUtils {
      */
     public static File getImgDirFile(){
         // 构建上传文件的存放 "文件夹" 路径
-        String fileDirPath = "src/main/resources/" + IMG_PATH_PREFIX;
+        String fileDirPath = "src/main/resources/" + BLOG_IMG_PATH;
 
         File fileDir = new File(fileDirPath);
         if(!fileDir.exists()){
@@ -50,9 +51,9 @@ public class FileUtils {
         return fileDir;
     }
 
-    public static String uploadFile(MultipartFile file) throws IOException {
+    public static String uploadFile(String type, MultipartFile file) throws IOException {
         //创建文件夹
-        String fileDirPath = "src/main/resources/" + IMG_PATH_PREFIX;
+        String fileDirPath = "src/main/resources/" + BLOG_IMG_PATH;
         File fileDir = new File(fileDirPath);
         if (!fileDir.exists()) fileDir.mkdirs();
         //获取文件名
