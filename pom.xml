@@ -9,11 +9,11 @@
         <relativePath/>
     </parent>
     <groupId>com.chen</groupId>
-    <artifactId>ChenetBlog</artifactId>
+    <artifactId>ChenetWebsite</artifactId>
     <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>ChenetBlog</name>
-    <description>My Blog Website</description>
+    <name>ChenetWebsite</name>
+    <description>My Website</description>
     <properties>
         <java.version>11</java.version>
     </properties>
