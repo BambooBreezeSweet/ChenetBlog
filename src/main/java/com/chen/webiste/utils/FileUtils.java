@@ -8,13 +8,13 @@ package com.chen.webiste.utils;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 
 public class FileUtils {
 
     // 项目根路径下的目录  -- SpringBoot static 目录相当于是根路径下（SpringBoot 默认）
-    public final static String BLOG_IMG_PATH = "static/upload/images";
+    public final static String BLOG_IMG_PATH = "static/upload/blogPictures";
     public final static String FILE_PATH = "static/upload/files";
 
     /**
@@ -52,8 +52,17 @@ public class FileUtils {
     }
 
     public static String uploadFile(String type, MultipartFile file) throws IOException {
+        System.err.println("Utils");
         //创建文件夹
-        String fileDirPath = "src/main/resources/" + BLOG_IMG_PATH;
+        String fileDirPath;
+        String filePath;
+        if (type.equals("blogPicture")) {
+            fileDirPath = "src/main/resources/" + BLOG_IMG_PATH;
+            filePath = "/upload/blogPictures/";
+        }else {
+            fileDirPath = "src/main/resources/" + FILE_PATH;
+            filePath = "/upload/files/";
+        }
         File fileDir = new File(fileDirPath);
         if (!fileDir.exists()) fileDir.mkdirs();
         //获取文件名
@@ -61,7 +70,48 @@ public class FileUtils {
         File newFile = new File(fileDir.getAbsolutePath()+File.separator+fileName);
         file.transferTo(newFile);
         //因为要设置数据库中的file字段，所以返回一个文件路径
-        return "/upload/images/"+fileName;
+        return filePath + fileName;
+    }
+
+    public static Boolean downloadFile(HttpServletResponse response, String path){
+        File file = new File(path);
+        String fileName = path.substring(14);//文件路径前缀长度固定
+        if (file.exists()){
+            response.setContentType("application/force-download");// 设置强制下载不打开
+            response.addHeader("Content-Disposition", "attachment;fileName="+fileName);// 设置文件名
+            byte[] buffer = new byte[1024];
+            FileInputStream fis = null;
+            BufferedInputStream bis = null;
+            try {
+                fis = new FileInputStream(file);
+                bis = new BufferedInputStream(fis);
+                OutputStream os = response.getOutputStream();
+                int i = bis.read(buffer);
+                while (i != -1) {
+                    os.write(buffer, 0, i);
+                    i = bis.read(buffer);
+                }
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (bis != null) {
+                    try {
+                        bis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (fis != null) {
+                    try {
+                        fis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     public static String deleteFile(String path){

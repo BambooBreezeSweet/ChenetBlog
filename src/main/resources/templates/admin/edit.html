@@ -49,8 +49,8 @@
                 <div class="ui labeled input">
                     <label class="ui teal basic label" style="text-align: center;width: 70px">首 图</label>
                     <div class="ui action input">
-                        <input id="filePath" name="filePath" style="display: none" type="file">
-                        <input id="fileLink" name="fileLink" type="text" th:value="${blog.picture}">
+                        <input id="blogPictureFile" name="blogPictureFile" style="display: none" type="file">
+                        <input id="blogPictureFileLink" name="blogPictureFileLink" type="text" th:value="${blog.picture}">
                         <a id="switch" class="ui button">切换</a>
                     </div>
                 </div>
@@ -154,12 +154,12 @@
     });
 
     $('#switch').click(function () {
-        if ($("#fileLink").is(":hidden")){
-            $('#fileLink').show();
-            $('#filePath').hide();
+        if ($("#blogPictureFileLink").is(":hidden")){
+            $('#blogPictureFileLink').show();
+            $('#blogPictureFile').hide();
         }else {
-            $('#fileLink').hide();
-            $('#filePath').show();
+            $('#blogPictureFileLink').hide();
+            $('#blogPictureFile').show();
         }
     })
 </script>
