@@ -10,10 +10,10 @@ server:
 
 spring:
   application:
-    name: ChenetBlog
+    name: ChenetWebsite
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/website?useUnicode=true&serverTimezone=UTC
     username: root
     password: chenaichenet
   thymeleaf:
@@ -48,10 +48,8 @@ spring:
 
 uploadFile:
   images:
-    linux-path: /root/project/ChenetWebsite/src/main/resources/static/upload/images/   #Linux下上传文件所在路径
-    windows-path: \\src\\main\\resources\\static\\upload\\images\\   #Windows下上传文件所在路径
-  files:
-    linux-path: /root/project/ChenetWebsite/src/main/resources/static/upload/files/
+    linux-path: /root/project/ChenetWebsite/src/main/resources/static/upload/blogPictures/   #Linux下上传文件所在路径
+    windows-path: \\src\\main\\resources\\static\\upload\\blogPictures\\   #Windows下上传文件所在路径
 
 ipFilter:
   limited-time: 600000 #默认限制时间（毫秒）
