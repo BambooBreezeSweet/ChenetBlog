@@ -19,9 +19,9 @@
         <div class="ui middle aligned center aligned grid">
             <div class="seven wide column">
                 <h2 class="ui teal image header">
-                    <img class="image" src="../static/images/material/logo.png" th:src="@{/images/material/logo.png}" alt="图标">
+                    <img class="image" src="../static/images/material/astro.png" th:src="@{/images/material/astro.png}" alt="图标">
                     <div class="content">
-                        Log-in to your account
+                        <span th:text="#{login.header}">登 录 您 的 账 号</span>
                     </div>
                 </h2>
                 <form class="ui large form" method="post" action="#" th:action="@{/login}">
@@ -29,28 +29,28 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
-                                <input name="username" placeholder="用户名 / 邮箱" type="text">
+                                <input name="username" placeholder="用户名 / 邮箱" type="text" th:placeholder="#{login.input.tip.one}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input name="password" placeholder="密码" type="password">
+                                <input name="password" placeholder="密码" type="password" th:placeholder="#{login.input.tip.two}">
                             </div>
                         </div>
-                        <button id="login_btn" class="ui fluid large teal submit button">Login</button>
+                        <button id="login_btn" class="ui fluid large teal submit button" th:text="#{login.button}">登录</button>
                     </div>
                     <div class="ui error message mini"></div>
                     <div class="ui message negative mini" th:text="${message}" th:unless="${#strings.isEmpty(message)}">
                         <i class="close icon"></i>
-                        <div class="header">提示：</div>
-                        <p>用户名或密码错误</p>
+                        <div class="header" th:text="#{login.tip.header}">提 示</div>
+                        <p th:text="#{login.tip.message}">用户名或密码错误</p>
                     </div>
                 </form>
                 <div class="ui message">
-                    New to us? <a href="registered.html" th:href="@{/toRegistered}">Sign-Up</a>
+                    <span th:text="#{login.footer.message}">现在加入我们</span><a href="registered.html" th:href="@{/toRegistered}" th:text="#{login.footer.registered}">注册</a>
                     <br>
-                    <a th:href="@{/admin}">管理员登录</a>
+                    <a th:href="@{/admin}" th:text="#{login.footer.adminLogin}">管理员登录</a>
                 </div>
             </div>
         </div>

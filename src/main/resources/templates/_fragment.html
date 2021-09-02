@@ -25,16 +25,16 @@
             <a href="index.html" th:href="@{/index}" class="m-black">
                 <img th:src="@{/images/material/zhufeng.png}" src="../static/images/material/zhufeng.png" class="ui m-image-tiny left floated image" alt="网站图标">
             </a>
-            <a href="index.html" th:href="@{/index}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
+            <a href="index.html" th:href="@{/index}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'" th:text="#{_fragment.home}"><i class="home icon"></i>首页</a>
             <div class="ui m-item simple dropdown item m-mobile-hide">
-                <a href="types.html" th:href="@{/types}" class="m-item m-black m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="tags icon"></i>分类</a>
+                <a href="types.html" th:href="@{/types}" class="m-item m-black m-mobile-hide" th:classappend="${n==2} ? 'active'" th:text="#{_fragment.types}"><i class="tags icon"></i>分类</a>
                 <div class="menu stackable">
                     <div class="item" th:each="type:${types}"><a href="#" th:href="@{/search/{typename}(typename=${type.name})}" class="m-item m-black m-mobile-hide"><span th:text="${type.name}"></span></a></div>
                 </div>
             </div>
-            <a href="archives.html" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="archive icon"></i>归档</a>
-            <a href="notices.html" th:href="@{/notices}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="bell icon"></i>公告</a>
-            <a href="about.html" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="info icon"></i>关于</a>
+            <a href="archives.html" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'" th:text="#{_fragment.archives}"><i class="archive icon"></i>归档</a>
+            <a href="notices.html" th:href="@{/notices}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'" th:text="#{_fragment.notices}"><i class="bell icon"></i>公告</a>
+            <a href="about.html" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'" th:text="#{_fragment.about}"><i class="info icon"></i>关于</a>
             <!--搜索栏-->
             <div class="m-item right item m-mobile-hide">
                 <form name="search" action="#" th:action="@{/search}" method="post" >
@@ -46,8 +46,8 @@
             </div>
             <!--登录注册-->
             <div id="loginAndReg" class="ui secondary stackable menu" th:if="${session.user} == null">
-                <a href="login.html" th:href="@{/toLogin}" class="m-item item m-mobile-hide m-black">登录</a>
-                <a href="registered.html" th:href="@{/toRegistered}" class="m-item item m-mobile-hide m-black">注册</a>
+                <a href="login.html" th:href="@{/toLogin}" class="m-item item m-mobile-hide m-black" th:text="#{_fragment.login}">登录</a>
+                <a href="registered.html" th:href="@{/toRegistered}" class="m-item item m-mobile-hide m-black" th:text="#{_fragment.registered}">注册</a>
             </div>
             <!--用户头像和用户名-->
             <div id="users" class="right menu m-item m-mobile-hide" th:if="${session.user} != null">
@@ -58,8 +58,19 @@
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a href="userInfo.html" th:href="@{/user/userInfo(userId=${session.user.id})}" class="item">个人中心</a>
-                        <a href="#" th:href="@{/logout}" class="item logout">注销</a>
+                        <a href="userInfo.html" th:href="@{/user/userInfo(userId=${session.user.id})}" class="item" th:text="#{_fragment.personalCenter}">个人中心</a>
+                        <a href="#" th:href="@{/logout}" class="item logout" th:text="#{_fragment.logout}">注销</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right menu m-item m-mobile-hide">
+                <div class="ui dropdown item">
+                    <i class="world icon"></i>
+                    <span class="text">选择语言</span>
+                    <div class="menu">
+                        <div class="item"><a th:href="@{/locale(lang=es_ES)}" th:text="#{Chinese}">中文</a></div>
+                        <div class="item"><a th:text="#{English}" th:href="@{/locale(lang=en_US)}">英文</a></div>
                     </div>
                 </div>
             </div>
@@ -147,12 +158,12 @@
         <div class="ui inverted divided stackable grid">
             <div class="three wide column">
                 <div class="ui inverted link list">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">关注公众号</h4>
+                    <h4 class="ui inverted header m-text-thin m-text-spaced" th:text="#{_fragment.followUs}">关注公众号</h4>
                     <img th:src="@{/images/material/QR.jpg}" src="../static/images/material/QR.jpg" class="ui rounded image centered" alt="二维码" style="width: 8em;">
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced">其他平台</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced" th:text="#{_fragment.otherPlatforms}">其他平台</h4>
                 <div class="ui inverted link list">
                     <a href="https://github.com/chenaichenet" class="item">GitHub</a>
                     <a href="https://gitee.com/chenaichenet" class="item">Gitee</a>
@@ -162,14 +173,14 @@
                 </div>
             </div>
             <div class="four wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced" th:text="#{_fragment.contactUs}">联系我</h4>
                 <div class="ui inverted link list">
                     <a href="mailto:chenaichenet@yeah.net" class="item"><p>Email : chenaichenet@yeah.net</p></a>
                     <a href="" class="item"><p>QQ : 1950679747</p></a>
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced">相关说明</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced" th:text="#{_fragment.relevantDescription}">相关说明</h4>
                 <div class="ui inverted link list">
                     <a class="item" th:href="@{/privacy}" href="#">隐私政策</a>
                     <a class="item" th:href="@{/disclaimer}" href="#">免责声明</a>
@@ -177,7 +188,7 @@
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced">关于</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced" th:text="#{_fragment.about}">关于</h4>
                 <p class="m-text-thin m-text-spaced m-opacity-tiny">
                     个人博客网站
                     <br>

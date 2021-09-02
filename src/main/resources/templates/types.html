@@ -19,7 +19,7 @@
         <div class="ui top attached segment">
             <div class="ui middle aligned two column grid">
                 <div class="column">
-                    <h3 class="ui teal header">分类</h3>
+                    <h3 class="ui teal header" th:text="#{types.header}">分类</h3>
                 </div>
                 <div class="right aligned column">
                     共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${types.totalElements}"> 10 </h2> 个
@@ -78,14 +78,14 @@
                     <a href="#" class="ui mini teal basic button" th:href="@{/(page=${blogs.number}-1)}" th:unless="${blogs.first}">
                         <span>
                             <i class="left chevron icon"></i>
-                            上一页
+                            <span th:text="#{lastPage}">上一页</span>
                         </span>
                     </a>
                 </div>
                 <div class="right aligned column">
                     <a href="#" class="ui mini teal basic button" th:href="@{/(page=${blogs.number}+1)}" th:unless="${blogs.last}">
                         <span>
-                            下一页
+                            <span th:text="#{nextPage}">下一页</span>
                             <i class="right chevron icon"></i>
                         </span>
                     </a>

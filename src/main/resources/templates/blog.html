@@ -88,9 +88,9 @@
             <div class="ui middle aligned grid">
                 <div class="column">
                     <ui class="list">
-                        <li>作者：<span th:text="${blog.user.username}">陈十七</span><a href="#" th:href="'mailto:'+${blog.user.email}">（联系作者）</a></li>
-                        <li>发表时间：<span th:text="${#dates.format(blog.createTime,'yyyy-MM-dd')}">2021-5-9</span></li>
-                        <li>公众号转载：请在文末添加公众号二维码</li>
+                        <li><span th:text="#{blog.author}">作者：</span><span th:text="${blog.user.username}">陈十七</span><a href="#" th:href="'mailto:'+${blog.user.email}" th:text="#{blog.author.contact}">（联系作者）</a></li>
+                        <li><span th:text="#{blog.publicationTime}">发表时间：</span><span th:text="${#dates.format(blog.createTime,'yyyy-MM-dd')}">2021-5-9</span></li>
+                        <li th:text="#{blog.other}">转载：请联系作者授权</li>
                     </ui>
                 </div>
             </div>
@@ -102,7 +102,7 @@
             <div id="comment-container" class="ui teal segment">
                 <div th:fragment="commentList">
                     <div class="ui threaded comments" style="max-width: 100%">
-                        <h3 class="ui dividing header">评论</h3>
+                        <h3 class="ui dividing header" th:text="#{blog.comment.header}">评论</h3>
                         <div class="comment" th:each="comment:${comments}">
                             <div class="avatar">
                                 <img th:replace="_fragment::images(${comment.user.avatar})" src="../static/images/me.jpg" alt="头像">
@@ -110,15 +110,15 @@
                             <div class="content">
                                 <a class="author" th:href="@{/user/userInfo(userId=${comment.user.id})}">
                                     <span th:text="${comment.user.username}">Matt</span>
-                                    <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${comment.adminComment}">作者</div>
+                                    <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${comment.adminComment}" th:text="#{blog.comment.tip}">作者</div>
                                 </a>
                                 <div class="metadata">
                                     <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">今天下午 5:42</span>
                                 </div>
                                 <div class="text" th:text="${comment.content}">写的太好了！</div>
                                 <div class="actions">
-                                    <a class="reply" data-commentid="1" data-commentusername="Matt" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" onclick="reply(this)">回复</a>
-                                    <a class="reply" th:if="${session.user.id == comment.user.id || session.user.role == 2 || session.user.id == comment.blog.user.id}" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${comment.id}]]);">删除</a>
+                                    <a class="reply" data-commentid="1" data-commentusername="Matt" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" onclick="reply(this)" th:text="#{blog.comment.reply}">回复</a>
+                                    <a class="reply" th:if="${session.user.id == comment.user.id || session.user.role == 2 || session.user.id == comment.blog.user.id}" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${comment.id}]]);" th:text="#{blog.comment.delete}">删除</a>
                                 </div>
                             </div>
 
@@ -131,7 +131,7 @@
                                         <div class="content">
                                             <a class="author" th:href="@{/user/userInfo(userId=${reply.user.id})}">
                                                 <span th:text="${reply.user.username}">Matt</span>
-                                                <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${reply.adminComment}">作者</div>
+                                                <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${reply.adminComment}" th:text="#{blog.comment.tip}">作者</div>
                                             </a>
                                             <a th:text="|@${reply.parentComment.user.username}|" style="color: teal" th:href="@{/user/userInfo(userId=${reply.parentComment.user.id})}">@ Elliot Fu</a>
                                             <div class="metadata">
@@ -139,8 +139,8 @@
                                             </div>
                                             <div class="text" th:text="${reply.content}">没错！</div>
                                             <div class="actions">
-                                                <a class="reply" data-commentid="1" data-commentusername="Matt" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" onclick="reply(this)">回复</a>
-                                                <a class="delete" th:if="${session.user.id == reply.user.id || session.user.role == 2 || session.user.id == reply.blog.user.id}" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${reply.id}]]);">删除</a>
+                                                <a class="reply" data-commentid="1" data-commentusername="Matt" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" onclick="reply(this)" th:text="#{blog.comment.reply}">回复</a>
+                                                <a class="delete" th:if="${session.user.id == reply.user.id || session.user.role == 2 || session.user.id == reply.blog.user.id}" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${reply.id}]]);" th:text="#{blog.comment.delete}">删除</a>
                                             </div>
                                         </div>
                                     </div>
@@ -154,31 +154,31 @@
                 <input type="hidden" name="blog.id" th:value="${blog.id}">
                 <input type="hidden" name="parentComment.id" value="-1">
                 <div class="field">
-                    <textarea name="content" placeholder="输入评论..."></textarea>
+                    <textarea name="content" placeholder="输入评论..." th:text="#{blog.comment.enterComments}"></textarea>
                 </div>
                 <div class="fields">
                     <div style="float: right" class="field m-mobile-wide m-margin-bottom-mini">
-                        <button id="commentPost-btn" type="button" style="float: right" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                        <button id="commentPost-btn" type="button" style="float: right" class="ui teal button m-mobile-wide" th:text="#{blog.comment.send}"><i class="edit icon"></i>发送</button>
                     </div>
                 </div>
             </div>
 
             <div class="ui mini modal">
                 <i class="close icon"></i>
-                <div class="header">
+                <div class="header" th:text="#{blog.comment.delete.header}">
                     删除评论
                 </div>
                 <div class="content">
                     <div class="description">
-                        <div class="ui header">删除后不可恢复</div>
+                        <div class="ui header" th:text="#{blog.comment.delete.tip}">删除后不可恢复</div>
                     </div>
                 </div>
                 <div class="actions">
-                    <div class="ui red deny button">
+                    <div class="ui red deny button" th:text="#{blog.comment.delete.no}">
                         否
                     </div>
                     <div class="ui positive right button">
-                        <a id="deleteComment" style="color: white">是</a>
+                        <a id="deleteComment" style="color: white" th:text="#{blog.comment.delete.yes}">是</a>
                     </div>
                 </div>
             </div>
@@ -189,8 +189,8 @@
 <!-- 导航条 -->
 <div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none;">
     <div class="ui vertical icon buttons" th:fragment="toolbar">
-        <button type="button" class="ui toc teal button">目录</button>
-        <a href="#comment-container" class="ui teal button">评论</a>
+        <button type="button" class="ui toc teal button" th:text="#{blog.catalogue}">目录</button>
+        <a href="#comment-container" class="ui teal button" th:text="#{blog.comment}">评论</a>
         <button class="ui wechat icon button"><i class="weixin icon"></i></button>
         <button id="toTop-button" class="ui icon button"><i class="chevron up icon"></i></button>
     </div>

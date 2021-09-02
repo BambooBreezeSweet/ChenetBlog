@@ -21,12 +21,12 @@
                 <div class="ui top attached segment">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <h3 class="ui teal header">今日焦点</h3>
+                            <h3 class="ui teal header" th:text="#{index.headerTitle}">今日最新</h3>
                         </div>
                     </div>
                 </div>
 
-                <!-- 今日焦点 -->
+                <!-- 今日最新 -->
                 <div class="ui attached segment">
                     <div class="ui padded vertical segment m-padded-tb-large" th:if="${blogs}!=null" th:each="blog:${blogs}">
                         <div class="ui middle aligned mobile reversed stackable grid">
@@ -71,14 +71,14 @@
                             <a href="#" class="ui mini teal basic button" th:href="@{/(page=${blogs.number}-1)}" th:unless="${blogs.first}">
                                 <span>
                                     <i class="left chevron icon"></i>
-                                    上一页
+                                    <span th:text="#{index.lastPage}">上一页</span>
                                 </span>
                             </a>
                         </div>
                         <div class="right aligned column">
                             <a href="#" class="ui mini teal basic button" th:href="@{/(page=${blogs.number}+1)}" th:unless="${blogs.last}">
                                 <span>
-                                    下一页
+                                    <span th:text="#{index.nextPage}">下一页</span>
                                     <i class="right chevron icon"></i>
                                 </span>
                             </a>
@@ -95,10 +95,10 @@
                     <div class="ui secondary segment">
                         <div class="ui two column grid">
                             <div class="column">
-                                <h5><i class="th large icon"></i>热门分类</h5>
+                                <h5><i class="th large icon"></i><span th:text="#{index.hotTypes}">热门分类</span></h5>
                             </div>
                             <div class="right aligned column">
-                                <a href="types.html" th:href="@{/types}">more <i class="angle double right icon"></i></a>
+                                <a href="types.html" th:href="@{/types}" th:text="#{index.more}">更多 <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
@@ -117,10 +117,10 @@
                     <div class="ui secondary segment">
                         <div class="ui two column grid">
                             <div class="column">
-                                <h5><i class="th large icon"></i>热门博客</h5>
+                                <h5><i class="th large icon"></i><span th:text="#{index.hotBlogs}">热门博客</span></h5>
                             </div>
                             <div class="right aligned column">
-                                <a href="#" th:href="@{/types}">more <i class="angle double right icon"></i></a>
+                                <a href="#" th:href="@{/types}" th:text="#{index.more}">更多 <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                 <div class="ui segments">
                     <div class="ui secondary segment">
                         <div class="column">
-                            <h5><i class="th large icon"></i>友情链接</h5>
+                            <h5><i class="th large icon"></i><span th:text="#{index.friendlyLink}">友情链接</span></h5>
                         </div>
                     </div>
                     <div class="ui center aligned segment">
@@ -164,11 +164,11 @@
 
                 <!-- 发布博客 -->
                 <div class="ui centered card" style="width: 40em;">
-                    <a class="ui button disabled red" th:href="@{/blog/input}">发布博客</a>
+                    <a class="ui button disabled red" th:href="@{/blog/input}" th:text="#{index.releaseBlog}">发布博客</a>
                 </div>
 
                 <!-- 关注我们 -->
-                <h4 class="ui horizontal divider header">关注我们</h4>
+                <h4 class="ui horizontal divider header" th:text="#{index.followUs}">关注我们</h4>
                 <img th:src="@{/images/material/QR.jpg}" src="../static/images/material/QR.jpg" class="ui rounded image centered" alt="二维码" style="width: 8em;">
 
             </div>
@@ -176,6 +176,8 @@
     </div>
 </div>
 <br>
+<span><a th:href="@{/locale(lang=es_ES)}">中文</a></span>
+<span style="float: right"><a th:align="center" th:href="@{/locale(lang=en_US)}">English</a></span>
 <br>
 
 <!-- 底部 -->

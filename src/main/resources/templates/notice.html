@@ -65,9 +65,9 @@
             <div class="ui middle aligned grid">
                 <div class="column">
                     <ui class="list">
-                        <li>来源：<span>陈十七</span><a href="mailto:chenaichenet@yeah.net">（联系我）</a></li>
-                        <li>发表时间：<span th:text="${#dates.format(notice.createTime,'yyyy-MM-dd')}">2021-5-9</span></li>
-                        <li>阅读及同意该公告同意，有异议、疑问或建议可联系管理员</li>
+                        <li><span th:text="#{notice.from}">来源：</span><span>陈十七</span><a href="mailto:chenaichenet@yeah.net"><span th:text="#{notice.contact}">（联系我）</span></a></li>
+                        <li><span th:text="#{notice.publicationTime}">发表时间：</span><span th:text="${#dates.format(notice.createTime,'yyyy-MM-dd')}">2021-5-9</span></li>
+                        <li th:text="#{notice.message}">阅读即代表同意该公告，有异议、疑问或建议可联系管理员</li>
                     </ui>
                 </div>
             </div>
