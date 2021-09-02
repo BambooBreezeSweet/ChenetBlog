@@ -1,20 +1,27 @@
 package com.chen.website.config;
 
+import com.chen.website.interceptor.AdminLoginInterceptor;
+import com.chen.website.interceptor.UserInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+
+import java.util.Locale;
 
 /**
- * MVC配置类
+ * 拦截配置
  * @author ChenetChen
- * @since 2021/6/18 13:51
+ * @since 2021/6/18 13:53
  */
 @Configuration
-public class MvcConfig implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer {
 
     //定义文件路径
     @Value("${uploadFile.images.linux-path}")
@@ -29,13 +36,41 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/index.html").setViewName("index");
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        //管理员
+        registry.addInterceptor(new AdminLoginInterceptor())
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin")
+                .excludePathPatterns("/admin/login");
+        //用户页面
+        registry.addInterceptor(new UserInterceptor())
+                .addPathPatterns("/user/**")
+                .excludePathPatterns("/user/verCode");
+        //博客详情页面
+//        registry.addInterceptor(new BlogInterceptor())
+//                .addPathPatterns("/blog/**");
+
+        registry.addInterceptor(localeChangeInterceptor());
+    }
+
     /**
      * 区域信息解析器手动创建会覆盖系统自动的，所以自己添加到容器中
      * @return
      */
+
     @Bean
     public LocaleResolver localeResolver(){
-        return new MyLocaleResolverConfig();
+        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+        localeResolver.setDefaultLocale(new Locale("es", "ES"));
+        return localeResolver;
+    }
+
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+        localeChangeInterceptor.setParamName("lang");
+        return localeChangeInterceptor;
     }
 
     /**
