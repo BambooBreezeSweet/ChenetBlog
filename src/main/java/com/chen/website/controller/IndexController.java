@@ -5,6 +5,7 @@ import com.chen.website.service.NoticeService;
 import com.chen.website.service.TypeService;
 import com.chen.website.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Locale;
 
 /**
  * 前台首页的所有请求的处理类
@@ -35,6 +39,9 @@ public class IndexController {
     @Autowired
     private NoticeService noticeService;
 
+    @Autowired
+    private MessageSource messageSource;
+
     /**
      * 首页定位
      * @param pageable
@@ -42,12 +49,18 @@ public class IndexController {
      * @return
      */
     @GetMapping({"/","/index"})
-    public String index(@PageableDefault(size = 5,sort = {"createTime"},direction = Sort.Direction.DESC)Pageable pageable, Model model){
+    public String index(@PageableDefault(size = 5,sort = {"createTime"},direction = Sort.Direction.DESC)Pageable pageable, Model model, Locale locale){
         model.addAttribute("types",typeService.listType(pageable));
         model.addAttribute("blogs", blogService.listBlog(pageable));//查询所有比赛并分页
         model.addAttribute("hotTypes",typeService.listTypeTop(5));  //前6个分类
         model.addAttribute("hotBlogs", blogService.listBlogTop(5)); //前6个比赛
         return "index";
+    }
+
+    @GetMapping(value = "/locale")
+    public String localeHandler(HttpServletRequest request) {
+        String lastUrl = request.getHeader("referer");
+        return "redirect:" + lastUrl;
     }
 
     /**
