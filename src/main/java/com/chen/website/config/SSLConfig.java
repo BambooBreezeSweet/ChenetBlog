@@ -1,9 +1,3 @@
-/**
- * FileName: SSLConfig
- * Author:   嘉平十七
- * Date:     2021/8/6 12:43
- * Description: 服务转发配置类
- */
 package com.chen.website.config;
 
 import org.apache.catalina.Context;
@@ -15,6 +9,11 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 服务转发配置类
+ * @author ChenetChen
+ * @since 2021/8/6 12:43
+ */
 @Configuration
 public class SSLConfig {
     @Value("${server.httpPort}")

@@ -1,9 +1,3 @@
-/**
- * FileName: LocaleResolverConfig
- * Author:   嘉平十七
- * Date:     2021/6/18 13:51
- * Description: 语言环境解析配置类
- */
 package com.chen.website.config;
 
 import org.springframework.util.StringUtils;
@@ -13,6 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 
+/**
+ * 语言环境解析配置类
+ * @author ChenetChen
+ * @since 2021/6/18 13:51
+ */
 public class MyLocaleResolverConfig implements LocaleResolver {
 
     @Override

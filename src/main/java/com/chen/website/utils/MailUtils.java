@@ -1,9 +1,3 @@
-/**
- * FileName: TestMail
- * Author:   嘉平十七
- * Date:     2021/2/8 15:28
- * Description:
- */
 package com.chen.website.utils;
 
 import com.chen.website.config.MailConfig;
@@ -27,6 +21,11 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 邮件模板工具类
+ * @author ChenetChen
+ * @since 2021/2/8 15:28
+ */
 @Component
 public class MailUtils {
     private final static Logger logger = LoggerFactory.getLogger(MailUtils.class);

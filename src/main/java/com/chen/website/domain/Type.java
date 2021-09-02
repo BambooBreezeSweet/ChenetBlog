@@ -1,9 +1,3 @@
-/**
- * FileName: Type
- * Author:   嘉平十七
- * Date:     2021/6/18 10:12
- * Description: 类型实体类
- */
 package com.chen.website.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,6 +9,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 类型实体类
+ * @author ChenetChen
+ * @since 2021/6/18 10:12
+ */
 @Entity
 @Table(name = "type")
 public class Type implements Serializable {

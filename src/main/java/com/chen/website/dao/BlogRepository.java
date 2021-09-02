@@ -1,9 +1,3 @@
-/**
- * FileName: BlogRepository
- * Author:   嘉平十七
- * Date:     2021/1/29 16:36
- * Description:
- */
 package com.chen.website.dao;
 
 import com.chen.website.domain.Blog;
@@ -17,6 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * @author ChenetChen
+ * @since 2021/1/29 16:36
+ */
 public interface BlogRepository extends JpaRepository<Blog,Long>, JpaSpecificationExecutor<Blog> {
     /**
      * 更新浏览次数

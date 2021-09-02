@@ -1,9 +1,3 @@
-/**
- * FileName: UserInterceptor
- * Author:   嘉平十七
- * Date:     2021/6/18 13:52
- * Description: 用户过滤，重定向到登录页面
- */
 package com.chen.website.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,6 +5,11 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 用户未登录拦截
+ * @author ChenetChen
+ * @since 2021/6/18 13:52
+ */
 public class UserInterceptor implements HandlerInterceptor {
 
     @Override

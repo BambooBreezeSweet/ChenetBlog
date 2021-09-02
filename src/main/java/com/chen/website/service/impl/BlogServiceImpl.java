@@ -1,9 +1,3 @@
-/**
- * FileName: BlogServiceImpl
- * Author:   嘉平十七
- * Date:     2021/6/18 14:04
- * Description:
- */
 package com.chen.website.service.impl;
 
 import com.chen.website.dao.BlogRepository;
@@ -29,6 +23,10 @@ import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.util.*;
 
+/**
+ * @author ChenetChen
+ * @since 2021/6/18 14:04
+ */
 @Service
 public class BlogServiceImpl implements BlogService {
     @Resource

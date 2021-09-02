@@ -1,15 +1,14 @@
-/**
- * FileName: IPUtils
- * Author:   嘉平十七
- * Date:     2021/7/22 9:27
- * Description: IP工具类
- */
 package com.chen.website.utils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/**
+ * IP工具类
+ * @author ChenetChen
+ * @since 2021/7/22 9:27
+ */
 public class IPUtils {
     public static String getIpAddr(HttpServletRequest request) {
         String ipAddress = null;

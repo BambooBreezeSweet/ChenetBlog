@@ -1,9 +1,3 @@
-/**
- * FileName: LogAspect
- * Author:   嘉平十七
- * Date:     2021/6/18 13:46
- * Description: 日志配置
- */
 package com.chen.website.aspect;
 
 import com.chen.website.utils.IPUtils;
@@ -18,6 +12,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
+/**
+ * 日志配置
+ * @author ChenetChen
+ * @since 2021/6/18 13:46
+ */
 @Aspect
 @Component
 public class LogAspect {

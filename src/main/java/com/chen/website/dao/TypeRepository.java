@@ -1,9 +1,3 @@
-/**
- * FileName: TypeRepository
- * Author:   嘉平十七
- * Date:     2021/1/29 16:35
- * Description:
- */
 package com.chen.website.dao;
 
 import com.chen.website.domain.Type;
@@ -13,6 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * @author ChenetChen
+ * @since 2021/1/29 16:35
+ */
 public interface TypeRepository extends JpaRepository<Type,Long> {
     /**
      * 通过分类名查询

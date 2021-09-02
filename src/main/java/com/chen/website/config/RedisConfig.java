@@ -1,9 +1,3 @@
-/**
- * FileName: RedisConfig
- * Author:   嘉平十七
- * Date:     2021/3/14 22:10
- * Description: Redis配置
- */
 package com.chen.website.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -19,6 +13,11 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+/**
+ * Redis配置
+ * @author ChenetChen
+ * @since 2021/3/14 22:10
+ */
 @Configuration
 public class RedisConfig {
 

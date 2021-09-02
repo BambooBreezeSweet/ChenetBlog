@@ -1,13 +1,12 @@
-/**
- * FileName: CommentFilterUtils
- * Author:   嘉平十七
- * Date:     2021/4/29 13:52
- * Description: 评论过滤工具类
- */
 package com.chen.website.utils;
 
 import java.util.*;
 
+/**
+ * 评论过滤工具类
+ * @author ChenetChen
+ * @since 2021/4/29 13:52
+ */
 public class BadWordUtils {
 
     public static Set<String> words;

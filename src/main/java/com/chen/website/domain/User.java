@@ -1,9 +1,3 @@
-/**
- * FileName: User
- * Author:   嘉平十七
- * Date:     2021/6/18 9:54
- * Description: 用户实体类
- */
 package com.chen.website.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,6 +9,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 用户实体类
+ * @author ChenetChen
+ * @since 2021/6/18 9:54
+ */
 @Entity
 @Table(name = "user")
 public class User implements Serializable {

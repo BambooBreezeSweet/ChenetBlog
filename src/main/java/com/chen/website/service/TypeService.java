@@ -1,9 +1,3 @@
-/**
- * FileName: TypeService
- * Author:   嘉平十七
- * Date:     2021/6/18 13:54
- * Description: 分类服务
- */
 package com.chen.website.service;
 
 import com.chen.website.domain.Type;
@@ -12,6 +6,11 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
+/**
+ * 分类服务接口
+ * @author ChenetChen
+ * @since 2021/6/18 13:54
+ */
 public interface TypeService {
 
     //保存分类

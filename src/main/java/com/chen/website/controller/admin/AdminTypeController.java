@@ -1,9 +1,3 @@
-/**
- * FileName: AdminTypeController
- * Author:   嘉平十七
- * Date:     2021/3/11 13:16
- * Description: 后台分类管理
- */
 package com.chen.website.controller.admin;
 
 import com.chen.website.domain.Type;
@@ -24,6 +18,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.Date;
 
+/**
+ * 后台分类管理
+ * @author ChenetChen
+ * @since 2021/3/11 13:16
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminTypeController {

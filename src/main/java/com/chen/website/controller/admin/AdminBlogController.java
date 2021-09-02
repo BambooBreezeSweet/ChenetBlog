@@ -1,9 +1,3 @@
-/**
- * FileName: AdminBlogController
- * Author:   嘉平十七
- * Date:     2021/3/11 11:06
- * Description: 后台比赛管理
- */
 package com.chen.website.controller.admin;
 
 import com.chen.website.domain.Blog;
@@ -25,6 +19,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * 后台博客管理
+ * @author ChenetChen
+ * @since2021/3/11 11:06
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminBlogController {

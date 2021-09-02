@@ -1,9 +1,3 @@
-/**
- * FileName: UserServiceImpl
- * Author:   嘉平十七
- * Date:     2021/6/18 10:51
- * Description:
- */
 package com.chen.website.service.impl;
 
 import com.chen.website.dao.UserRepository;
@@ -20,6 +14,10 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
+/**
+ * @author ChenetChen
+ * @since 2021/6/18 10:51
+ */
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired

@@ -1,9 +1,3 @@
-/**
- * FileName: CommentServiceImpl
- * Author:   嘉平十七
- * Date:     2021/6/18 14:00
- * Description:
- */
 package com.chen.website.service.impl;
 
 import com.chen.website.dao.CommentRepository;
@@ -19,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author ChenetChen
+ * @since 2021/6/18 14:00
+ */
 @Service
 public class CommentServiceImpl implements CommentService {
     @Autowired

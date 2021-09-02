@@ -1,9 +1,3 @@
-/**
- * FileName: ControllerExceptionHandler
- * Author:   嘉平十七
- * Date:     2021/6/19 14:25
- * Description: 异常处理
- */
 package com.chen.website.handler;
 
 import org.slf4j.Logger;
@@ -16,6 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 异常处理
+ * @author ChenetChen
+ * @since 2021/6/19 14:25
+ */
 @ControllerAdvice
 public class ControllerExceptionHandler {
 

@@ -1,9 +1,3 @@
-/**
- * FileName: BlogController
- * Author:   嘉平十七
- * Date:     2021/1/31 15:42
- * Description: 处理比赛相关请求
- */
 package com.chen.website.controller;
 
 import com.chen.website.domain.Blog;
@@ -20,6 +14,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * 处理比赛相关请求
+ * @author ChenetChen
+ * @since 2021/1/31 15:42
+ */
 @Controller
 public class BlogController {
 

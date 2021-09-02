@@ -1,9 +1,3 @@
-/**
- * FileName: CommentController
- * Author:   嘉平十七
- * Date:     2021/1/28 10:31
- * Description: 前台比赛详情中的评论请求处理
- */
 package com.chen.website.controller;
 
 import com.chen.website.domain.Comment;
@@ -20,6 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * 前台比赛详情中的评论请求处理
+ * @author ChenetChen
+ * @since 2021/1/28 10:31
+ */
 @Controller
 public class CommentController {
 

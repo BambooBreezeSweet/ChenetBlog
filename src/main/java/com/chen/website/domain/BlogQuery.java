@@ -1,11 +1,10 @@
-/**
- * FileName: BlogQuery
- * Author:   嘉平十七
- * Date:     2021/6/18 10:26
- * Description: 博客查询实体类
- */
 package com.chen.website.domain;
 
+/**
+ * 博客查询实体类
+ * @author ChenetChen
+ * @since 2021/6/18 10:26
+ */
 public class BlogQuery {
     private String title;
     private Long typeId;

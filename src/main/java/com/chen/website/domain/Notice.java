@@ -1,14 +1,13 @@
-/**
- * FileName: Notice
- * Author:   嘉平十七
- * Date:     2021/8/17 17:28
- * Description: 公告实体类
- */
 package com.chen.website.domain;
 
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * 公告实体类
+ * @author ChenetChen
+ * @since 2021/8/17 17:28
+ */
 @Entity
 @Table(name = "notice")
 public class Notice {

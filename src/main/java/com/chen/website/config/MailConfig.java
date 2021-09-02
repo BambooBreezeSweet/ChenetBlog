@@ -1,14 +1,13 @@
-/**
- * FileName: MailConfig
- * Author:   嘉平十七
- * Date:     2021/6/18 13:50
- * Description: MailUtil工具类读取yml文件属性的配置类
- */
 package com.chen.website.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * MailUtil工具类
+ * @author ChenetChen
+ * @since 2021/6/18 13:50
+ */
 @Component
 public class MailConfig {
     @Value("${spring.mail.host}")

@@ -1,15 +1,14 @@
-/**
- * FileName: NoticeService
- * Author:   嘉平十七
- * Date:     2021/8/17 17:57
- * Description: 公告服务接口
- */
 package com.chen.website.service;
 
 import com.chen.website.domain.Notice;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+/**
+ * 公告服务接口
+ * @author ChenetChen
+ * @since 2021/8/17 17:57
+ */
 public interface NoticeService {
 
     //列出所有公告并分页

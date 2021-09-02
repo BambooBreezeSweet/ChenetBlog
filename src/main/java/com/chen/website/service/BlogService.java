@@ -1,9 +1,3 @@
-/**
- * FileName: BlogService
- * Author:   嘉平十七
- * Date:     2021/6/18 14:02
- * Description: 比赛服务类
- */
 package com.chen.website.service;
 
 import com.chen.website.domain.Blog;
@@ -14,6 +8,11 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 博客服务接口
+ * @author ChenetChen
+ * @since 2021/6/18 14:02
+ */
 public interface BlogService {
 
     //通过id获取博客

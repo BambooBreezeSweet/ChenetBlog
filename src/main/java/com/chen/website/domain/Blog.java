@@ -1,9 +1,3 @@
-/**
- * FileName: Blog
- * Author:   嘉平十七
- * Date:     2021/6/18 10:05
- * Description: 博客实体类
- */
 package com.chen.website.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 博客实体类
+ * @author ChenetChen
+ * @since 2021/6/18 10:05
+ */
 @Entity
 @Table(name = "blog")
 public class Blog implements Serializable {

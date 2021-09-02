@@ -1,15 +1,14 @@
-/**
- * FileName: UserService
- * Author:   嘉平十七
- * Date:     2021/6/18 10:29
- * Description:
- */
 package com.chen.website.service;
 
 import com.chen.website.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+/**
+ * 用户服务接口
+ * @author ChenetChen
+ * @since 2021/6/18 10:29
+ */
 public interface UserService {
     //列出所有用户并分页
     Page<User> listUsers(Pageable pageable);

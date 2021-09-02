@@ -1,9 +1,3 @@
-/**
- * FileName: Comment
- * Author:   嘉平十七
- * Date:     2021/6/18 10:15
- * Description:
- */
 package com.chen.website.domain;
 
 import org.hibernate.annotations.Cascade;
@@ -13,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 评论实体类
+ * @author ChenetChen
+ * @since 2021/6/18 10:15
+ */
 @Entity
 @Table(name = "comment")
 public class Comment {

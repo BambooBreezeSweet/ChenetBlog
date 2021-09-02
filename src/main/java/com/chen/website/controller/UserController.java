@@ -1,14 +1,8 @@
-/**
- * FileName: UserController
- * Author:   嘉平十七
- * Date:     2021/1/25 18:07
- * Description: 处理所有的用户操作请求
- */
 package com.chen.website.controller;
 
 import com.chen.website.domain.User;
 import com.chen.website.service.UserService;
-import com.chen.website.utils.MD5Utils;
+import com.chen.website.utils.SecurityUtils;
 import com.chen.website.utils.MailUtils;
 import com.chen.website.utils.RedisUtils;
 import com.chen.website.utils.VerifyCodeUtils;
@@ -23,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
+/**
+ * 处理所有的用户操作请求
+ * @author ChenetChen
+ * @since 2021/1/25 18:07
+ */
 @Controller
 public class UserController {
     @Autowired
@@ -67,8 +66,8 @@ public class UserController {
                         @RequestParam String password,
                         HttpSession session,
                         Model model){
-        User user1 = userService.checkUserByUsername(username, MD5Utils.code(password));
-        User user2 = userService.checkUserByEmail(username, MD5Utils.code(password));
+        User user1 = userService.checkUserByUsername(username, SecurityUtils.MD5Encrypt(password));
+        User user2 = userService.checkUserByEmail(username, SecurityUtils.MD5Encrypt(password));
         if (user1 != null){
             user1.setPassword(null);
             session.setAttribute("user",user1);
@@ -132,7 +131,7 @@ public class UserController {
         }if(!verCode.equals(ver)){
             model.addAttribute("message","验证码错误");
         }else {
-            userService.addUser(new User(username, MD5Utils.code(password),0,0,email,new Date()));
+            userService.addUser(new User(username, SecurityUtils.MD5Encrypt(password),0,0,email,new Date()));
             model.addAttribute("message","注册成功");
             return "login";
         }

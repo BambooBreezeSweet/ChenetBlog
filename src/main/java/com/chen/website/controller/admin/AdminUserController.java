@@ -1,15 +1,9 @@
-/**
- * FileName: AdminUserController
- * Author:   嘉平十七
- * Date:     2021/3/11 13:19
- * Description: 后台用户管理
- */
 package com.chen.website.controller.admin;
 
 import com.chen.website.domain.User;
 import com.chen.website.service.TypeService;
 import com.chen.website.service.UserService;
-import com.chen.website.utils.MD5Utils;
+import com.chen.website.utils.SecurityUtils;
 import com.chen.website.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +16,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * 后台用户管理
+ * @author ChenetChen
+ * @since 2021/3/11 13:19
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminUserController {
@@ -65,8 +64,8 @@ public class AdminUserController {
                               @RequestParam String password,
                               HttpSession session,
                               RedirectAttributes attributes){
-        User user1 = userService.checkUserByUsername(username, MD5Utils.code(password));
-        User user2 = userService.checkUserByEmail(username, MD5Utils.code(password));
+        User user1 = userService.checkUserByUsername(username, SecurityUtils.MD5Encrypt(password));
+        User user2 = userService.checkUserByEmail(username, SecurityUtils.MD5Encrypt(password));
         if (user1 != null && (user1.getRole()==1 || user1.getRole() == 2)){
             user1.setPassword(null);
             session.setAttribute("adminUser",user1);

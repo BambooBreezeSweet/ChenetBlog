@@ -1,9 +1,3 @@
-/**
- * FileName: UserRepository
- * Author:   嘉平十七
- * Date:     2021/1/29 16:32
- * Description:
- */
 package com.chen.website.dao;
 
 import com.chen.website.domain.User;
@@ -15,7 +9,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
+/**
+ * @author ChenetChen
+ * @since 2021/1/29 16:32
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
     /**

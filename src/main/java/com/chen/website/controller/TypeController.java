@@ -1,9 +1,3 @@
-/**
- * FileName: TypeController
- * Author:   嘉平十七
- * Date:     2021/6/18 14:35
- * Description: 处理分类相关的请求
- */
 package com.chen.website.controller;
 
 import com.chen.website.service.BlogService;
@@ -16,6 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * 处理分类相关的请求
+ * @author ChenetChen
+ * @since 2021/6/18 14:35
+ */
 @Controller
 public class TypeController {
 

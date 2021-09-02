@@ -1,9 +1,3 @@
-/**
- * FileName: IPFilter
- * Author:   嘉平十七
- * Date:     2021/7/22 16:52
- * Description: IP过滤，超过50次/s阈值禁止访问1小时，自动解除
- */
 package com.chen.website.filter;
 
 import com.chen.website.utils.IPUtils;
@@ -18,6 +12,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * IP过滤，超过50次/s阈值禁止访问1小时，自动解除
+ * @author ChenetChen
+ * @since 2021/7/22 16:52
+ */
 @WebFilter(urlPatterns = "/*")
 public class IPFilter implements Filter {
     //默认限制时间（单位：毫秒）

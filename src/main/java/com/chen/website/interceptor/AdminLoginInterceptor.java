@@ -1,9 +1,3 @@
-/**
- * FileName: AdminLoginInterceptor
- * Author:   嘉平十七
- * Date:     2021/6/18 13:52
- * Description: 管理员页面过滤，重定向到登录页面
- */
 package com.chen.website.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,8 +5,12 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 管理员页面拦截
+ * @author ChenetChen
+ * @since 2021/6/18 13:52
+ */
 public class AdminLoginInterceptor implements HandlerInterceptor {
-
     /**
      * 方法前调用
      * @param request

@@ -1,9 +1,3 @@
-/**
- * FileName: MvcConfig
- * Author:   嘉平十七
- * Date:     2021/6/18 13:51
- * Description:
- */
 package com.chen.website.config;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +8,11 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * MVC配置类
+ * @author ChenetChen
+ * @since 2021/6/18 13:51
+ */
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
@@ -36,11 +35,11 @@ public class MvcConfig implements WebMvcConfigurer {
      */
     @Bean
     public LocaleResolver localeResolver(){
-        return new com.chen.website.config.MyLocaleResolverConfig();
+        return new MyLocaleResolverConfig();
     }
 
     /**
-     * 文件上传
+     * 文件上传虚拟路径映射
      * @param registry
      */
     @Override

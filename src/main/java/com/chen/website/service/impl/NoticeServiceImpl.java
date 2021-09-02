@@ -1,9 +1,3 @@
-/**
- * FileName: NoticeServiceImpl
- * Author:   嘉平十七
- * Date:     2021/8/17 21:21
- * Description:
- */
 package com.chen.website.service.impl;
 
 import com.chen.website.dao.NoticeRepository;
@@ -18,6 +12,10 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+/**
+ * @author ChenetChen
+ * @since 2021/8/17 21:21
+ */
 @Service
 public class NoticeServiceImpl implements NoticeService {
     @Autowired

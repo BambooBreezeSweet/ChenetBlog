@@ -1,9 +1,3 @@
-/**
- * FileName: TypeServiceImpl
- * Author:   嘉平十七
- * Date:     2021/6/18 13:54
- * Description:
- */
 package com.chen.website.service.impl;
 
 import com.chen.website.dao.TypeRepository;
@@ -21,6 +15,10 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author ChenetChen
+ * @since 2021/6/18 13:54
+ */
 @Service
 public class TypeServiceImpl implements TypeService {
     @Autowired

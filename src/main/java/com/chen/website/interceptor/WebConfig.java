@@ -1,15 +1,14 @@
-/**
- * FileName: WebConfig
- * Author:   嘉平十七
- * Date:     2021/6/18 13:53
- * Description: 拦截配置
- */
 package com.chen.website.interceptor;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * 拦截配置
+ * @author ChenetChen
+ * @since 2021/6/18 13:53
+ */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 

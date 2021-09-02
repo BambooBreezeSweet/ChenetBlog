@@ -1,9 +1,3 @@
-/**
- * FileName: IndexController
- * Author:   嘉平十七
- * Date:     2021/6/18 14:29
- * Description: 前台首页的所有请求的处理类
- */
 package com.chen.website.controller;
 
 import com.chen.website.service.BlogService;
@@ -21,6 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * 前台首页的所有请求的处理类
+ * @author ChenetChen
+ * @since 2021/6/18 14:29
+ */
 @Controller
 public class IndexController {
 

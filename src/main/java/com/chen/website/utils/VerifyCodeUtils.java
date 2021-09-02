@@ -1,13 +1,12 @@
-/**
- * FileName: VerifyCode
- * Author:   嘉平十七
- * Date:     2021/2/2 18:56
- * Description: 验证码
- */
 package com.chen.website.utils;
 
 import java.util.Random;
 
+/**
+ * 验证码
+ * @author ChenetChen
+ * @since 2021/2/2 18:56
+ */
 public class VerifyCodeUtils {
 
     /**

@@ -1,9 +1,3 @@
-/**
- * FileName: MyBeanUtil
- * Author:   嘉平十七
- * Date:     2020/8/21 7:30
- * Description: BeanUtils工具类
- */
 package com.chen.website.utils;
 
 import org.springframework.beans.BeanWrapper;
@@ -13,6 +7,11 @@ import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * BeanUtils工具类
+ * @author ChenetChen
+ * @since 2020/8/21 7:30
+ */
 public class MyBeanUtils {
 
     /**

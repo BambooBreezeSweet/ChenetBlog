@@ -1,9 +1,3 @@
-/**
- * FileName: FileUtils
- * Author:   嘉平十七
- * Date:     2021/5/12 7:37
- * Description: 文件上传工具类
- */
 package com.chen.website.utils;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -11,6 +5,11 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
+/**
+ * 文件上传工具类
+ * @author ChenetChen
+ * @since 2021/5/12 7:37
+ */
 public class FileUtils {
 
     // 项目根路径下的目录  -- SpringBoot static 目录相当于是根路径下（SpringBoot 默认）

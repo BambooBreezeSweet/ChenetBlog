@@ -1,8 +1,8 @@
 /**
  * FileName: MarkdownUtil
  * Author:   嘉平十七
- * Date:     2020/8/21 10:54
- * Description: markdown转换成HTML
+ * Date:
+ * Description:
  */
 package com.chen.website.utils;
 
@@ -21,7 +21,9 @@ import org.commonmark.renderer.html.HtmlRenderer;
 import java.util.*;
 
 /**
- * Created by mazhao on 2019/10/22.
+ * markdown转换成HTML
+ * @author ChenetChen
+ * @since 2020/8/21 10:54
  */
 public class MarkdownUtils {
 

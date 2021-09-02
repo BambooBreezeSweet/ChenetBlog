@@ -1,9 +1,3 @@
-/**
- * FileName: RedisUtil
- * Author:   嘉平十七
- * Date:     2021/3/11 23:33
- * Description: Redis工具类
- */
 package com.chen.website.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +6,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Redis工具类
+ * @author ChenetChen
+ * @since 2021/3/11 23:33
+ */
 @Component
 public class RedisUtils {
 
