@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 443
   httpPort: 80
   portStatus: true #true表示80和443都能使用，false表示80转发到443
   ssl:
