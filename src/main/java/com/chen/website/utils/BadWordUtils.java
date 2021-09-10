@@ -4,6 +4,11 @@ import java.util.*;
 
 /**
  * 评论过滤工具类
+ * <p>提供了对外的{@link #filter(String)}方法</p>
+ * <pre>
+ *     {@link #filter(String)}方法，将字符串传入，
+ *     通过工具类中封装的静态方法处理字符串，返回脱敏后的字符串。
+ * </pre>
  * @author ChenetChen
  * @since 2021/4/29 13:52
  */

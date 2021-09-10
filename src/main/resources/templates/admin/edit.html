@@ -21,7 +21,7 @@
             <input type="hidden" name="id" th:value="${blog.id}">
             <div class="required field">
                 <div class="ui left labeled input">
-                    <input type="text" name="title" placeholder="标题" th:value="${blog.title}">
+                    <input type="text" name="title" placeholder="标题" th:placeholder="#{admin.title}" th:value="${blog.title}">
                 </div>
             </div>
 
@@ -33,11 +33,10 @@
 
             <div class="required field">
                 <div class="ui left labeled act ion input">
-                    <label class="ui compact teal basic label" style="text-align: center;width: 70px">分 类</label>
+                    <label class="ui compact teal basic label" style="text-align: center;width: 70px"><span th:text="#{admin.edit.type}">分 类</span></label>
                     <div class="ui fluid selection dropdown">
                         <input type="hidden" name="type.id" th:value="${blog.type}!=null ? ${blog.type.id}">
                         <i class="dropdown icon"></i>
-                        <div class="default text">分类</div>
                         <div class="menu">
                             <div class="item" data-value="1" th:each="type:${types}" th:data-value="${type.id}" th:text="${type.name}" >错误日志</div>
                         </div>
@@ -47,29 +46,29 @@
 
             <div class="required field">
                 <div class="ui labeled input">
-                    <label class="ui teal basic label" style="text-align: center;width: 70px">首 图</label>
+                    <label class="ui teal basic label" style="text-align: center;width: 70px"><span th:text="#{admin.edit.picture}">首 图</span></label>
                     <div class="ui action input">
                         <input id="blogPictureFile" name="blogPictureFile" style="display: none" type="file">
                         <input id="blogPictureFileLink" name="blogPictureFileLink" type="text" th:value="${blog.picture}">
-                        <a id="switch" class="ui button">切换</a>
+                        <a id="switch" class="ui button" th:text="#{admin.edit.switch}">切换</a>
                     </div>
                 </div>
             </div>
 
             <div class="required field">
-                <textarea name="description" th:text="${blog.description}" placeholder="博客描述" maxlength="200"></textarea>
+                <textarea name="description" th:text="${blog.description}" placeholder="博客描述" th:placeholder="#{admin.edit.description}" maxlength="200"></textarea>
             </div>
 
             <div class="ui checkbox">
                 <input type="checkbox" id="protocol" name="protocol" class="hidden">
-                <label for="protocol">我已同意<a href="#">《竹风博客网发布博客规范》</a></label>
+                <label for="protocol"><span th:text="#{registered.message.one}">我已阅读并同意</span><a href="#">《竹风博客网发布博客规范》</a></label>
             </div>
 
             <div class="ui error message"></div>
 
             <div class="ui right aligned container">
-                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
-                <button id="admin-publish-btn" type="button" class="ui teal button">发布</button>
+                <button type="button" class="ui button" onclick="window.history.go(-1)" th:text="#{admin.edit.cancel}">返回</button>
+                <button id="admin-publish-btn" type="button" class="ui teal button" th:text="#{admin.edit.send}">发布</button>
             </div>
         </form>
 

@@ -154,43 +154,42 @@
                 <input type="hidden" name="blog.id" th:value="${blog.id}">
                 <input type="hidden" name="parentComment.id" value="-1">
                 <div class="field">
-                    <textarea name="content" placeholder="输入评论..." th:text="#{blog.comment.enterComments}"></textarea>
+                    <textarea name="content" placeholder="输入评论..." th:placeholder="#{blog.comment.enterComments}"></textarea>
                 </div>
                 <div class="fields">
                     <div style="float: right" class="field m-mobile-wide m-margin-bottom-mini">
-                        <button id="commentPost-btn" type="button" style="float: right" class="ui teal button m-mobile-wide" th:text="#{blog.comment.send}"><i class="edit icon"></i>发送</button>
+                        <button id="commentPost-btn" type="button" style="float: right" class="ui teal button m-mobile-wide"><i class="edit icon"></i><span th:text="#{blog.comment.send}">发送</span></button>
                     </div>
                 </div>
             </div>
 
             <div class="ui mini modal">
                 <i class="close icon"></i>
-                <div class="header" th:text="#{blog.comment.delete.header}">
-                    删除评论
+                <div class="header">
+                    <span th:text="#{blog.comment.delete.header}">删除评论</span>
                 </div>
                 <div class="content">
                     <div class="description">
-                        <div class="ui header" th:text="#{blog.comment.delete.tip}">删除后不可恢复</div>
+                        <div class="ui header"><span th:text="#{blog.comment.delete.tip}">删除后不可恢复</span></div>
                     </div>
                 </div>
                 <div class="actions">
-                    <div class="ui red deny button" th:text="#{blog.comment.delete.no}">
-                        否
+                    <div class="ui red deny button">
+                        <span th:text="#{blog.comment.delete.no}">否</span>
                     </div>
                     <div class="ui positive right button">
-                        <a id="deleteComment" style="color: white" th:text="#{blog.comment.delete.yes}">是</a>
+                        <a id="deleteComment" style="color: white"><span th:text="#{blog.comment.delete.yes}">是</span></a>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
 <!-- 导航条 -->
 <div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none;">
     <div class="ui vertical icon buttons" th:fragment="toolbar">
-        <button type="button" class="ui toc teal button" th:text="#{blog.catalogue}">目录</button>
-        <a href="#comment-container" class="ui teal button" th:text="#{blog.comment}">评论</a>
+        <button type="button" class="ui toc teal button"><span th:text="#{blog.catalogue}">目录</span></button>
+        <a href="#comment-container" class="ui teal button"><span th:text="#{blog.comment}">评论</span></a>
         <button class="ui wechat icon button"><i class="weixin icon"></i></button>
         <button id="toTop-button" class="ui icon button"><i class="chevron up icon"></i></button>
     </div>
@@ -287,6 +286,7 @@
     /* 加载评论 */
     $(function () {
         $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/1");
+        //todo-chen 前端使用数组存储评论信息
          /*  /*中的在静态页面会忽略，“xxx”为静态页面中显示，thymeleaf会自动解析，替换掉整个内容 */
     });
 

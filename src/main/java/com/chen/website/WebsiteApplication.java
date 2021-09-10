@@ -6,10 +6,10 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
 @ServletComponentScan({"com.chen.blog.filter","com.chen.blog.listener"})
-public class BlogApplication {
+public class WebsiteApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BlogApplication.class, args);
+        SpringApplication.run(WebsiteApplication.class, args);
     }
 
 }

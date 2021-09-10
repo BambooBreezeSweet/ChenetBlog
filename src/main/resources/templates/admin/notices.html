@@ -15,8 +15,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="notice-input.html" th:href="@{/admin/notice/input}" class="item">新增</a>
-            <a href="notices.html" th:href="@{/admin/notices}" class="item active teal">列表</a>
+            <a href="notice-input.html" th:href="@{/admin/notice/input}" class="item" th:text="#{admin.new}">新增</a>
+            <a href="notices.html" th:href="@{/admin/notices}" class="item active teal" th:text="#{admin.list}">列表</a>
         </div>
     </div>
 </div>
@@ -27,10 +27,10 @@
         <table class="ui table">
             <thead>
             <tr>
-                <th style="text-align: center">序号</th>
-                <th style="text-align: center">标题</th>
-                <th style="text-align: center">发布时间</th>
-                <th style="text-align: center">操作</th>
+                <th style="text-align: center" th:text="#{admin.id}">序号</th>
+                <th style="text-align: center" th:text="#{admin.title}">标题</th>
+                <th style="text-align: center" th:text="#{admin.publicationTime}">发表时间</th>
+                <th style="text-align: center" th:text="#{admin.operate}">操作</th>
             </tr>
             </thead>
             <tobody>
@@ -39,8 +39,8 @@
                     <td style="text-align: center" th:text="${notice.title}">公益活动</td>
                     <td style="text-align: center" th:text="${#dates.format(notice.createTime,'yyyy-MM-dd')}">2021-1-20</td>
                     <td style="text-align: center">
-                        <a href="#" th:href="@{/admin/notice/{id}/input(id=${notice.id})}" class="ui mini basic teal button">编辑</a>
-                        <button th:onclick="deleteNotice([[${notice.id}]]);" class="ui mini basic red button">删除</button>
+                        <a href="#" th:href="@{/admin/notice/{id}/input(id=${notice.id})}" class="ui mini basic teal button" th:text="#{admin.edit}">编辑</a>
+                        <button th:onclick="deleteNotice([[${notice.id}]]);" class="ui mini basic red button" th:text="#{admin.delete}">删除</button>
                     </td>
                 </tr>
             </tobody>
@@ -51,42 +51,42 @@
                         <a th:href="@{/admin/notices(page=${notices.number}-1)}" class="item icon" th:unless="${notices.first}">
                             <span>
                                 <i class="left chevron icon"></i>
-                                上一页
+                                <span th:text="#{lastPage}">上一页</span>
                             </span>
                         </a>
                         <a th:href="@{/admin/notices(page=${notices.number}+1)}" class="item icon" th:unless="${notices.last}">
                             <span>
-                                下一页
+                                <span th:text="#{nextPage}">下一页</span>
                                 <i class="right chevron icon"></i>
                             </span>
                         </a>
                     </div>
-                    <a href="#" th:href="@{/admin/notice/input}" class="ui right floated teal basic button">新增</a>
+                    <a href="#" th:href="@{/admin/notice/input}" class="ui right floated teal basic button" th:text="#{admin.new}">新增</a>
                 </th>
             </tr>
             </tfoot>
         </table>
         <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
             <i class="close icon"></i>
-            <div class="header">提示：</div>
+            <div class="header"><span th:text="#{admin.tip.header}">提示：</span></div>
             <p th:text="${message}">操作提示</p>
         </div>
         <div class="ui mini modal">
             <i class="close icon"></i>
             <div class="header">
-                删除公告
+                <span th:text="#{admin.notices.delete.header}">删除公告</span>
             </div>
             <div class="content">
                 <div class="description">
-                    <div class="ui header">删除后不可恢复</div>
+                    <div class="ui header" th:text="#{admin.delete.tip}">删除后不可恢复</div>
                 </div>
             </div>
             <div class="actions">
                 <div class="ui red deny button">
-                    否
+                    <span th:text="#{admin.no}">否</span>
                 </div>
                 <div class="ui positive right button">
-                    <a id="deleteNotice" style="color: white">是</a>
+                    <a id="deleteNotice" style="color: white"><span th:text="#{admin.yes}">是</span></a>
                 </div>
             </div>
         </div>

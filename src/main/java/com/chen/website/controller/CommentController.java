@@ -59,10 +59,11 @@ public class CommentController {
         }else {
             comment.setUser(user);
         }
-        String content = BadWordUtils.filter(comment.getContent());
+        String content = BadWordUtils.filter(comment.getContent()); //敏感词过滤
         comment.setContent(content);
         commentService.saveComment(comment);
         return "redirect:/comments/"+blogId;
+        //return "blog :: commentList";
     }
 
     @PostMapping ("/comment/delete")

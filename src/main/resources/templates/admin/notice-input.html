@@ -20,7 +20,7 @@
             <input type="hidden" name="id" th:value="*{id}">
             <div class="required field">
                 <div class="ui left labeled input">
-                    <input type="text" name="title" placeholder="标题" th:value="*{title}">
+                    <input type="text" name="title" placeholder="标题" th:placeholder="#{admin.title}" th:value="*{title}">
                 </div>
             </div>
 
@@ -31,19 +31,19 @@
             </div>
 
             <div class="required field">
-                <textarea name="description" th:text="*{description}" placeholder="公告描述" maxlength="200"></textarea>
+                <textarea name="description" th:text="*{description}" placeholder="公告描述" th:placeholder="#{admin.notice.description}" maxlength="200"></textarea>
             </div>
 
             <div class="ui checkbox">
                 <input type="checkbox" id="protocol" name="protocol" class="hidden">
-                <label for="protocol">我已同意<a href="#">《竹风博客网发布公告规范》</a></label>
+                <label for="protocol"><span th:text="#{registered.message.one}">我已阅读并同意</span><a href="#">《竹风博客网发布公告规范》</a></label>
             </div>
 
             <div class="ui error message"></div>
 
             <div class="ui right aligned container">
-                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
-                <button id="admin-publish-btn" type="button" class="ui teal button">发布</button>
+                <button type="button" class="ui button" onclick="window.history.go(-1)" th:text="#{admin.edit.cancel}">返回</button>
+                <button id="admin-publish-btn" type="button" class="ui teal button" th:text="#{admin.edit.send}">发布</button>
             </div>
         </form>
 

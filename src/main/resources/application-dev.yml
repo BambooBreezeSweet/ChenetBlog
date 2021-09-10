@@ -7,6 +7,9 @@ server:
     key-store: classpath:chenetchen.ltd.pfx
     key-store-password: 6mcKnQ6f
     key-store-type: PKCS12
+  servlet:
+    session:
+      tracking-modes: cookie
 
 spring:
   application:

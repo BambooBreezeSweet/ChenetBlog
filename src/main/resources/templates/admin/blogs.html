@@ -15,8 +15,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" th:href="@{/admin/blog/input}" class="item">发布</a>
-            <a href="#" th:href="@{admin/blogs}" class="item active teal">列表</a>
+            <a href="#" th:href="@{/admin/blog/input}" class="item" th:text="#{admin.new}">新增</a>
+            <a href="#" th:href="@{admin/blogs}" class="item active teal" th:text="#{admin.list}">列表</a>
         </div>
     </div>
 </div>
@@ -28,20 +28,20 @@
             <input type="hidden" name="page">
             <div class="fields"><!-- inline变小 -->
                 <div class="field">
-                    <input type="text" name="title" placeholder="标题"/>
+                    <input type="text" name="title" placeholder="标题" th:placeholder="#{admin.title}"/>
                 </div>
                 <div class="field">
                     <div class="ui selection dropdown">
                         <input type="hidden" name="typeId">
                         <i class="dropdown icon"></i>
-                        <div class="default text">分类</div>
+                        <div class="default text"><span th:text="#{admin.types}">类型</span></div>
                         <div class="menu">
                             <div th:each="type:${types}" th:data-value="${type.id}" th:text="${type.name}" class="item" data-value="1">学科学术</div>
                         </div>
                     </div>
                 </div>
                 <div class="field">
-                    <button id="search-btn" type="button" class="ui teal basic button"><i class="search icon"></i>搜索</button>
+                    <button id="search-btn" type="button" class="ui teal basic button"><i class="search icon"></i><span th:text="#{admin.search}">搜索</span></button>
                 </div>
             </div>
         </div>
@@ -50,26 +50,26 @@
             <table th:fragment="blogList" class="ui teal compact table">
                 <thead>
                 <tr>
-                    <th style="text-align: center">序号</th>
-                    <th style="text-align: center">标题</th>
-                    <th style="text-align: center">类型</th>
-                    <th style="text-align: center">发布人</th>
-                    <th style="text-align: center">发布时间</th>
-                    <th style="text-align: center">操作</th>
+                    <th style="text-align: center" th:text="#{admin.id}">序号</th>
+                    <th style="text-align: center" th:text="#{admin.title}">标题</th>
+                    <th style="text-align: center" th:text="#{admin.types}">类型</th>
+                    <th style="text-align: center" th:text="#{admin.author}">作者</th>
+                    <th style="text-align: center" th:text="#{admin.publicationTime}">发表时间</th>
+                    <th style="text-align: center" th:text="#{admin.operate}">操作</th>
                 </tr>
                 </thead>
                 <tobody>
                     <tr th:each="blog,iterStat:${blogs}" th:if="${session.adminUser.role}==1 ? ${blog.user.id}==${session.adminUser.id} : ${session.adminUser.id}">
                         <!--iterStat为状态变量，默认为元素变量后加Stat-->
                         <td style="text-align: center" th:text="${iterStat.count}">1</td>
-                        <td style="text-align: center;width: 300px;word-break: break-all" th:text="${blog.title}">作文大赛</td>
-                        <td style="text-align: center" th:text="${blog.type.name}">文学演讲</td>
-                        <td style="text-align: center" th:text="${blog.user.username}">中国作家协会</td>
+                        <td style="text-align: center;width: 300px;word-break: break-all" th:text="${blog.title}">《荷塘月色》</td>
+                        <td style="text-align: center" th:text="${blog.type.name}">文学小说</td>
+                        <td style="text-align: center" th:text="${blog.user.username}">朱自清</td>
                         <td style="text-align: center" th:text="${#dates.format(blog.createTime,'yyyy-MM-dd')}">2020-8-17</td>
                         <td style="text-align: center">
-                            <a href="#" th:href="@{/admin/blog/{id}(id=${blog.id})}" class="ui mini basic blue button">查看</a>
-                            <a href="#" th:href="@{/admin/blog/{id}/input(id=${blog.id})}" class="ui mini basic teal button">编辑</a>
-                            <button th:onclick="deleteBlog([[${blog.id}]]);" class="ui mini basic red button">删除</button>
+                            <a href="#" th:href="@{/admin/blog/{id}(id=${blog.id})}" class="ui mini basic blue button" th:text="#{admin.blogs.see}">查看</a>
+                            <a href="#" th:href="@{/admin/blog/{id}/input(id=${blog.id})}" class="ui mini basic teal button" th:text="#{admin.edit}">编辑</a>
+                            <button th:onclick="deleteBlog([[${blog.id}]]);" class="ui mini basic red button" th:text="#{admin.delete}">删除</button>
                         </td>
                     </tr>
                 </tobody>
@@ -80,43 +80,43 @@
                             <a onclick="page(this)" th:attr="data-page=${blogs.number}-1" class="item icon" th:unless="${blogs.first}">
                                 <span>
                                     <i class="left chevron icon"></i>
-                                    上一页
+                                    <span th:text="#{lastPage}"></span>上一页
                                 </span>
                             </a>
                             <a onclick="page(this)" th:attr="data-page=${blogs.number}+1" class="item icon" th:unless="${blogs.last}">
                                 <span>
-                                    下一页
+                                    <span th:text="#{nextPage}"></span>下一页
                                     <i class="right chevron icon"></i>
                                 </span>
                             </a>
                         </div>
-                        <a th:href="@{/admin/blog/input}" class="ui right floated teal basic button">新增</a>
+                        <a th:href="@{/admin/blog/input}" class="ui right floated teal basic button" th:text="#{admin.new}">新增</a>
                     </th>
                 </tr>
                 </tfoot>
             </table>
             <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
                 <i class="close icon"></i>
-                <div class="header">提示：</div>
+                <div class="header"><span th:text="#{admin.tip.header}">提示：</span></div>
                 <p th:text="${message}">操作提示</p>
             </div>
             <div class="ui mini modal">
                 <i class="close icon"></i>
                 <div class="header">
-                    删除博客
+                    <span th:text="#{admin.blogs.delete.header}"></span>删除博客
                 </div>
                 <div class="content">
                     <div class="description">
-                        <div class="ui header">删除后不可恢复</div>
-                        <p>博客的相关评论将会被删除。</p>
+                        <div class="ui header" th:text="#{admin.delete.tip}">删除后不可恢复</div>
+                        <p th:text="#{admin.blogs.delete.message}">博客的相关评论将会被删除。</p>
                     </div>
                 </div>
                 <div class="actions">
                     <div class="ui red deny button">
-                        否
+                        <span th:text="#{admin.no}"></span>否
                     </div>
                     <div class="ui positive right button">
-                        <a id="deleteBlog" style="color: white">是</a>
+                        <a id="deleteBlog" style="color: white" th:text="#{admin.yes}">是</a>
                     </div>
                 </div>
             </div>

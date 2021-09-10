@@ -5,7 +5,6 @@ import com.chen.website.service.NoticeService;
 import com.chen.website.service.TypeService;
 import com.chen.website.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -39,14 +38,11 @@ public class IndexController {
     @Autowired
     private NoticeService noticeService;
 
-    @Autowired
-    private MessageSource messageSource;
-
     /**
      * 首页定位
-     * @param pageable
-     * @param model
-     * @return
+     * @param pageable 分页参数
+     * @param model 视图
+     * @return 首页
      */
     @GetMapping({"/","/index"})
     public String index(@PageableDefault(size = 5,sort = {"createTime"},direction = Sort.Direction.DESC)Pageable pageable, Model model, Locale locale){
@@ -65,7 +61,7 @@ public class IndexController {
 
     /**
      * 后台首页定位
-     * @return
+     * @return 后台首页
      */
     @GetMapping("/admin/index")
     public String index_admin(){
@@ -74,8 +70,8 @@ public class IndexController {
 
     /**
      * 归档页面
-     * @param model
-     * @return
+     * @param model 视图
+     * @return 归档页面
      */
     @GetMapping("/archives")
     public String archives(Model model){
@@ -87,9 +83,9 @@ public class IndexController {
 
     /**
      * 公告通知页面
-     * @param pageable
-     * @param model
-     * @return
+     * @param pageable 分页参数
+     * @param model 视图
+     * @return 公告页面
      */
     @GetMapping("/notices")
     public String notices(@PageableDefault(size = 5,sort = {"createTime"},direction = Sort.Direction.DESC)Pageable pageable,Model model){

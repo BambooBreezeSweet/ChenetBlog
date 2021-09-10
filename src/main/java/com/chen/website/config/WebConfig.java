@@ -1,15 +1,13 @@
 package com.chen.website.config;
 
 import com.chen.website.interceptor.AdminLoginInterceptor;
+import com.chen.website.interceptor.BlogInterceptor;
 import com.chen.website.interceptor.UserInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
@@ -48,17 +46,16 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/user/**")
                 .excludePathPatterns("/user/verCode");
         //博客详情页面
-//        registry.addInterceptor(new BlogInterceptor())
-//                .addPathPatterns("/blog/**");
+        registry.addInterceptor(new BlogInterceptor())
+                .addPathPatterns("/blog/**");
 
         registry.addInterceptor(localeChangeInterceptor());
     }
 
     /**
      * 区域信息解析器手动创建会覆盖系统自动的，所以自己添加到容器中
-     * @return
+     * @return localeResolver
      */
-
     @Bean
     public LocaleResolver localeResolver(){
         SessionLocaleResolver localeResolver = new SessionLocaleResolver();
@@ -75,7 +72,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * 文件上传虚拟路径映射
-     * @param registry
+     * @param registry 请求
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -94,14 +91,14 @@ public class WebConfig implements WebMvcConfigurer {
      * allowedHeaders：允许所有的请求header访问，可以自定义设置任意请求头信息，如："X-YAUTH-TOKEN"
      * maxAge：配置客户端缓存预检请求的响应的时间（以秒为单位）。默认设置为1800秒（30分钟）。
      * 链接：https://www.jianshu.com/p/7705dffe4274
-     * @param registry
+     * @param registry 请求
      */
-    /*@Override
+    @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOriginPatterns("*")
                 .allowCredentials(true)
                 .allowedMethods("GET","POST","DELETE","PUT")
                 .allowedHeaders("*");
-    }*/
+    }
 }

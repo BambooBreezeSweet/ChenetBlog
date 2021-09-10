@@ -15,8 +15,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="type-input.html" th:href="@{/admin/type/input}" class="item">新增</a>
-            <a href="types.html" th:href="@{/admin/types}" class="item active teal">列表</a>
+            <a href="type-input.html" th:href="@{/admin/type/input}" class="item" th:text="#{admin.new}">新增</a>
+            <a href="types.html" th:href="@{/admin/types}" class="item active teal" th:text="#{admin.list}">列表</a>
         </div>
     </div>
 </div>
@@ -27,11 +27,11 @@
         <table class="ui table">
             <thead>
             <tr>
-                <th style="text-align: center">序号</th>
-                <th style="text-align: center">名称</th>
-                <th style="text-align: center">所属博客</th>
-                <th style="text-align: center">创建时间</th>
-                <th style="text-align: center">操作</th>
+                <th style="text-align: center" th:text="#{admin.id}">序号</th>
+                <th style="text-align: center" th:text="#{admin.types.name}">名称</th>
+                <th style="text-align: center" th:text="#{admin.types.blogs}">所属博客</th>
+                <th style="text-align: center" th:text="#{admin.types.createTime}">创建时间</th>
+                <th style="text-align: center" th:text="#{admin.operate}">操作</th>
             </tr>
             </thead>
             <tobody>
@@ -41,8 +41,8 @@
                     <td style="text-align: center" th:text="${#arrays.length(type.blogs)}+' 篇'">1</td>
                     <td style="text-align: center" th:text="${#dates.format(type.createTime,'yyyy-MM-dd')}">2021-1-20</td>
                     <td style="text-align: center">
-                        <a href="#" th:href="@{/admin/type/{id}/input(id=${type.id})}" class="ui mini basic teal button">编辑</a>
-                        <button th:onclick="deleteType([[${type.id}]]);" class="ui mini basic red button">删除</button>
+                        <a href="#" th:href="@{/admin/type/{id}/input(id=${type.id})}" class="ui mini basic teal button" th:text="#{admin.edit}">编辑</a>
+                        <button th:onclick="deleteType([[${type.id}]]);" class="ui mini basic red button" th:text="#{admin.delete}">删除</button>
                     </td>
                 </tr>
             </tobody>
@@ -53,30 +53,30 @@
                         <a th:href="@{/admin/types(page=${types.number}-1)}" class="item icon" th:unless="${types.first}">
                             <span>
                                 <i class="left chevron icon"></i>
-                                上一页
+                                <span th:text="#{lastPage}">上一页</span>
                             </span>
                         </a>
                         <a th:href="@{/admin/types(page=${types.number}+1)}" class="item icon" th:unless="${types.last}">
                             <span>
-                                下一页
+                                <span th:text="#{nextPage}">下一页</span>
                                 <i class="right chevron icon"></i>
                             </span>
                         </a>
                     </div>
-                    <a href="#" th:href="@{/admin/type/input}" class="ui right floated teal basic button">新增</a>
+                    <a href="#" th:href="@{/admin/type/input}" class="ui right floated teal basic button" th:text="#{admin.new}">新增</a>
                 </th>
             </tr>
             </tfoot>
         </table>
         <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
             <i class="close icon"></i>
-            <div class="header">提示：</div>
+            <div class="header"><span th:text="#{admin.tip.header}">提示：</span></div>
             <p th:text="${message}">操作提示</p>
         </div>
         <div class="ui mini modal">
             <i class="close icon"></i>
             <div class="header">
-                删除分类
+                <span th:text="#{admin.types.delete.header}"></span>删除分类
             </div>
             <div class="content">
                 <div class="description">
