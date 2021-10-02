@@ -22,12 +22,12 @@
 <nav th:fragment="menu(n)" class="ui segment m-padded-tb-mini">
     <div class="ui container">
         <div class="ui secondary stackable menu">
-            <h1 class="ui header item"><a href="index.html" th:href="@{/admin/index}" class="m-black" th:text="#{_fragment_admin.header}">管理后台</a></h1>
-            <a href="index.html" th:href="@{/admin/index}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'" th:text="#{_fragment_admin.home}"><i class="home icon"></i>首页</a>
-            <a href="blogs.html" th:href="@{/admin/blogs}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon" th:text="#{_fragment_admin.blogs}"></i>博客管理</a>
-            <a href="types.html" th:href="@{/admin/types}" th:if="${session.adminUser.role == 2}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'" th:text="#{_fragment_admin.types}"><i class="tags icon"></i>分类管理</a>
-            <a href="types.html" th:href="@{/admin/users}" th:if="${session.adminUser.role == 2}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="user icon" th:text="#{_fragment_admin.user}"></i>用户管理</a>
-            <a href="types.html" th:href="@{/admin/notices}" th:if="${session.adminUser.role == 2}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'" th:text="#{_fragment_admin.notices}"><i class="bell icon"></i>公告管理</a>
+            <h1 class="ui header item"><a href="index.html" th:href="@{/admin/index}" class="m-black"><span th:text="#{_fragment_admin.header}">管理后台</span></a></h1>
+            <a href="index.html" th:href="@{/admin/index}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="home icon"></i><span th:text="#{_fragment_admin.home}">首页</span></a>
+            <a href="blogs.html" th:href="@{/admin/blogs}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i><span th:text="#{_fragment_admin.blogs}">博客管理</span></a>
+            <a href="types.html" th:href="@{/admin/types}" th:if="${session.adminUser.role == 2}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i><span th:text="#{_fragment_admin.types}">分类管理</span></a>
+            <a href="types.html" th:href="@{/admin/users}" th:if="${session.adminUser.role == 2}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="user icon"></i><span  th:text="#{_fragment_admin.user}">用户管理</span></a>
+            <a href="types.html" th:href="@{/admin/notices}" th:if="${session.adminUser.role == 2}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="bell icon"></i><span th:text="#{_fragment_admin.notices}">公告管理</span></a>
             <div class="ui m-item simple dropdown item m-mobile-hide">
                 <i class="world icon"></i>
                 <span class="text" th:text="#{language}">选择语言</span>
