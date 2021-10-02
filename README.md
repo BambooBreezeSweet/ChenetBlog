@@ -23,7 +23,7 @@ Windows下可以直接下载源码，进行编译运行即可，需要注意的�
 
 ### Linux下
 
-Linux下需要在需要对照SpringBoot配置文件中的文件上传路径，构建对应的目录（或者选择修改亦可），同时同样保证对应的软件安装成功且配置正确即可。
+Linux下需要在需要对照Spring Boot配置文件中的文件上传路径，构建对应的目录（或者选择修改亦可），同时同样保证对应的软件安装成功且配置正确即可。
 
 ## 功能模块
 ### 普通用户功能介绍
@@ -79,14 +79,14 @@ Linux下需要在需要对照SpringBoot配置文件中的文件上传路径，�
 - Spring Security
 - Hibernate
 #### 前端框架模板及脚本
-- Thymeleaf
+- Thymeleaf模板引擎
 - [Semantic UI中文官网](http://www.semantic-ui.cn/) 
-- [编辑器 Markdown](https://pandao.github.io/editor.md/)
-- [目录生成 Tocbot](https://tscanlin.github.io/tocbot/)
-- [内容排版 typo.css](https://github.com/sofish/typo.css)
-- [滚动侦测 waypoints](http://imakewebthings.com/waypoints/)
-- [平滑滚动 jquery.scrollTo](https://github.com/flesler/jquery.scrollTo)
-- [二维码生成 qrcode.js](https://davidshimjs.github.io/qrcodejs/)
+- [Markdown编辑器 ](https://pandao.github.io/editor.md/)
+- [Tocbot目录生成](https://tscanlin.github.io/tocbot/)
+- [typo.css内容排版](https://github.com/sofish/typo.css)
+- [waypoints滚动侦测 ](http://imakewebthings.com/waypoints/)
+- [jquery.scrollTo平滑滚动](https://github.com/flesler/jquery.scrollTo)
+- [qrcode.js二维码生成 ](https://davidshimjs.github.io/qrcodejs/)
 
 
 ## 目录说明
