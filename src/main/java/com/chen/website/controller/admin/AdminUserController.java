@@ -108,13 +108,25 @@ public class AdminUserController {
      * @return
      */
     @GetMapping("/user/delete")
-    public String delete(Long id, RedirectAttributes attributes,Model model){
-        User userBak = userService.findUserById(id);
-        redisUtils.set("user"+id,userBak,120); //使用redis备份120秒
+    public String delete(Long id, RedirectAttributes attributes){
         userService.deleteUser(id);
-        attributes.addFlashAttribute("message","删除成功");
+        attributes.addFlashAttribute("message","禁用成功");
         return "redirect:/admin/users";
     }
+
+    /**
+     * 恢复禁用用户
+     * @param id
+     * @param attributes
+     * @return
+     */
+    @GetMapping("/user/regain")
+    public String regain(Long id, RedirectAttributes attributes){
+        userService.regainUser(id);
+        attributes.addFlashAttribute("message","恢复成功");
+        return "redirect:/admin/users";
+    }
+
 
     /**
      * 后台修改用户权限

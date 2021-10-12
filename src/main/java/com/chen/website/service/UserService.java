@@ -31,6 +31,8 @@ public interface UserService {
     //更新权限
     String upgradeRole(Long id);
     String demotionRole(Long id);
-    //删除用户
+    //禁用用户
     void deleteUser(Long id);
+    //恢复用户
+    void regainUser(Long id);
 }

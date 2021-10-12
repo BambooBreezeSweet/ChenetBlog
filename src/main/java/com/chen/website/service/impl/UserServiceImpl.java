@@ -99,10 +99,16 @@ public class UserServiceImpl implements UserService {
         return "更新成功";
     }
 
-    //删除用户
+    //禁用用户
     @Transactional
     @Override
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        userRepository.deleteUserById(id);
+    }
+
+    @Transactional
+    @Override
+    public void regainUser(Long id) {
+        userRepository.regainUser(id);
     }
 }

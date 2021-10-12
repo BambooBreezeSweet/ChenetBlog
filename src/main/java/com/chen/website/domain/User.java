@@ -35,6 +35,8 @@ public class User implements Serializable {
     private Date createTime;
     //角色
     private Integer role;
+    //用户状态
+    private Integer state;
     //发布的博客
     @JsonIgnore
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
@@ -44,12 +46,13 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password, Integer avatar, Integer role, String email, Date createTime) {
+    public User(String username, String password, String email, Integer avatar, Integer role, Integer state, Date createTime) {
         this.username = username;
         this.password = password;
+        this.email = email;
         this.avatar = avatar;
         this.role = role;
-        this.email = email;
+        this.state = state;
         this.createTime = createTime;
     }
 
@@ -64,6 +67,7 @@ public class User implements Serializable {
                 ", description='" + description + '\'' +
                 ", createTime=" + createTime +
                 ", role=" + role +
+                ", state=" + state +
                 '}';
     }
 
@@ -129,6 +133,14 @@ public class User implements Serializable {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public List<Blog> getBlogs() {

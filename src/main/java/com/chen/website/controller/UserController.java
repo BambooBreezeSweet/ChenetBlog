@@ -37,7 +37,7 @@ public class UserController {
 
     /**
      * 登录跳转按钮
-     * @return
+     * @return 页面
      */
     @GetMapping("/toLogin")
     public String toLogin(){
@@ -46,7 +46,7 @@ public class UserController {
 
     /**
      * 注册跳转按钮
-     * @return
+     * @return 页面
      */
     @GetMapping("/toRegistered")
     public String toRegistered(){
@@ -55,11 +55,11 @@ public class UserController {
 
     /**
      * 登录
-     * @param username
-     * @param password
-     * @param session
-     * @param model
-     * @return
+     * @param username 用户名
+     * @param password 密码
+     * @param session session
+     * @param model 视图
+     * @return 页面
      */
     @PostMapping("/login")
     public String login(@RequestParam String username,
@@ -68,11 +68,11 @@ public class UserController {
                         Model model){
         User user1 = userService.checkUserByUsername(username, SecurityUtils.MD5Encrypt(password));
         User user2 = userService.checkUserByEmail(username, SecurityUtils.MD5Encrypt(password));
-        if (user1 != null){
+        if (user1 != null && user1.getState() == 0){
             user1.setPassword(null);
             session.setAttribute("user",user1);
             return "redirect:/index";
-        }else if (user2 != null){
+        }else if (user2 != null && user2.getState() == 0){
             user2.setPassword(null);
             session.setAttribute("user",user2);
             return "redirect:/index";
@@ -86,14 +86,13 @@ public class UserController {
     /**
      * 验证码
      * @param email 邮箱，用于发送验证码
-     * @param model
-     * @return
+     * @param model 视图
+     * @return 页面
      */
     @RequestMapping("/verCode")
     public String verCode(String email,Model model){
         String ver = VerifyCodeUtils.getVerCode(6);
-        //存入redis，并设置过期时间
-        redisUtils.set("verCode",ver,120);
+        redisUtils.setString("verCode",ver,120);
         try {
             MailUtils.sendMail(email,"竹风博客注册",ver);
         } catch (Exception e) {
@@ -105,12 +104,12 @@ public class UserController {
 
     /**
      * 用户注册
-     * @param username
-     * @param password
-     * @param email
-     * @param verCode
-     * @param model
-     * @return
+     * @param username 用户名
+     * @param password 密码
+     * @param email 邮箱
+     * @param verCode 验证码
+     * @param model 视图
+     * @return 页面
      */
     @PostMapping("/registered")
     public String addUser(@RequestParam String username,
@@ -123,7 +122,7 @@ public class UserController {
         }
         User userByUsername = userService.findUserByUsername(username);
         User userByEmail = userService.findUserByEmail(email);
-        String ver = (String) redisUtils.get("verCode");
+        String ver = (String) redisUtils.getString("verCode");
         if (userByUsername != null){
             model.addAttribute("message","用户名已注册");
         }if (userByEmail != null){
@@ -131,7 +130,7 @@ public class UserController {
         }if(!verCode.equals(ver)){
             model.addAttribute("message","验证码错误");
         }else {
-            userService.addUser(new User(username, SecurityUtils.MD5Encrypt(password),0,0,email,new Date()));
+            userService.addUser(new User(username, SecurityUtils.MD5Encrypt(password),email, 0,0 ,0, new Date()));
             model.addAttribute("message","注册成功");
             return "login";
         }
@@ -140,8 +139,8 @@ public class UserController {
 
     /**
      * 前台退出登录
-     * @param session
-     * @return
+     * @param session session
+     * @return 页面
      */
     @GetMapping("/logout")
     public String logout(HttpSession session){
@@ -155,9 +154,9 @@ public class UserController {
      * @param email 邮箱
      * @param avatar 头像，使用可选模式，为每个头像赋值
      * @param description 个人简介
-     * @param session
-     * @param model
-     * @return
+     * @param session session
+     * @param model 视图
+     * @return 页面
      */
     @PostMapping("/user/update")
     public String update(@RequestParam String username,
@@ -166,17 +165,19 @@ public class UserController {
                          @RequestParam String description,
                          HttpSession session,Model model){
         User user = (User) session.getAttribute("user");
-        if (userService.findUserByUsername(username) == null){
+
+        if (userService.findUserByUsername(username) == null || user.getUsername().equals(username)) {
             user.setUsername(username);
             model.addAttribute("message","更改成功");
-        }else if (user.getUsername().equals(username)){ }else {
-            model.addAttribute("message","用户名更改失败");
+        } else {
+            model.addAttribute("message","用户名已存在");
         }
-        if (userService.findUserByEmail(email) == null){
+
+        if (userService.findUserByEmail(email) == null || user.getEmail().equals(email)) {
             user.setEmail(email);
             model.addAttribute("message","更改成功");
-        }else if (user.getEmail().equals(email)){}else {
-            model.addAttribute("message","邮箱更改失败");
+        } else {
+            model.addAttribute("message","邮箱已注册");
         }
         user.setAvatar(avatar);
         user.setDescription(description);
@@ -189,8 +190,8 @@ public class UserController {
     /**
      * 用户个人中心
      * @param userId 用户id，通过前台传递参数，控制是当前登录账号还是他人账号
-     * @param model
-     * @return
+     * @param model 视图
+     * @return 页面
      */
     @GetMapping("/user/userInfo")
     public String userInfo(Long userId, Model model){

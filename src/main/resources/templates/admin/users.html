@@ -26,6 +26,7 @@
                     <th style="text-align: center">创建时间</th>
                     <th style="text-align: center">发布博客</th>
                     <th style="text-align: center">操作</th>
+                    <th style="text-align: center">状态</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,9 +41,10 @@
                     <td style="text-align: center">
                         <a href="#" th:href="@{/admin/user/{id}/{n}/updateRole(id=${user.id},n=1)}" class="ui mini basic blue button">升级权限</a>
                         <a href="#" th:href="@{/admin/user/{id}/{n}/updateRole(id=${user.id},n=0)}" class="ui mini basic teal button">降级权限</a>
-                        <button th:onclick="deleteUser([[${user.id}]]);" class="ui mini basic red button">删除</button>
+                        <button th:onclick="deleteUser([[${user.id}]]);" class="ui mini basic red button">禁用</button>
+                        <a href="#" th:href="@{/admin/user/regain(id=${user.id})}" class="ui mini basic green button">恢复</a>
                     </td>
-
+                    <td style="text-align: center" th:text="${user.state} == 0 ? '正常' : '已禁用'">正常</td>
                 </tr>
                 </tbody>
                 <tfoot>
@@ -68,12 +70,11 @@
             <div class="ui mini modal">
                 <i class="close icon"></i>
                 <div class="header">
-                    删除账户
+                    禁用账户
                 </div>
                 <div class="content">
                     <div class="description">
-                        <div class="ui header">删除后不可恢复</div>
-                        <p>账户发布的博客将会被删除。</p>
+                        <p>账户发布的博客将会被隐藏。</p>
                     </div>
                 </div>
                 <div class="actions">
