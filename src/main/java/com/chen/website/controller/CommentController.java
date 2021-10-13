@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 
 /**
- * 前台比赛详情中的评论请求处理
+ * 前台博客详情中的评论请求处理
  * @author ChenetChen
  * @since 2021/1/28 10:31
  */

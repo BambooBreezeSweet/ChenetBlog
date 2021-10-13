@@ -34,6 +34,8 @@ public class Blog implements Serializable {
     //创建时间
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
+    //博客审核状态，0为未审核
+    private Integer state;
     //发布人
     @JsonIgnore
     @ManyToOne
@@ -60,6 +62,7 @@ public class Blog implements Serializable {
                 ", views=" + views +
                 ", description='" + description + '\'' +
                 ", createTime=" + createTime +
+                ", state=" + state +
                 '}';
     }
 
@@ -117,6 +120,14 @@ public class Blog implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public User getUser() {

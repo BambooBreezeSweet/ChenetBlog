@@ -16,6 +16,10 @@ import java.util.List;
  * @since 2021/1/29 16:36
  */
 public interface BlogRepository extends JpaRepository<Blog,Long>, JpaSpecificationExecutor<Blog> {
+
+    @Query("select b from Blog b where b.state = 1")
+    Page<Blog> findAllBlog(Pageable pageable);
+
     /**
      * 更新浏览次数
      * @param id
@@ -27,11 +31,11 @@ public interface BlogRepository extends JpaRepository<Blog,Long>, JpaSpecificati
     int updateViews(Long id);
 
     /**
-     * 通过浏览数排序查询热门比赛
+     * 通过浏览数排序查询热门博客
      * @param pageable
      * @return
      */
-    @Query("select b from Blog b order by b.views desc")
+    @Query("select b from Blog b where b.state = 1 order by b.views desc")
     List<Blog> findTop(Pageable pageable);
 
     /**
@@ -40,7 +44,7 @@ public interface BlogRepository extends JpaRepository<Blog,Long>, JpaSpecificati
      * @param pageable
      * @return
      */
-    @Query("select b from Blog b where b.title like ?1 or b.content like ?1 or b.user.username like ?1")
+    @Query("select b from Blog b where b.title like ?1 or b.content like ?1 or b.user.username like ?1 and b.state = 1")
     Page<Blog> findBlogByQuery(String query, Pageable pageable);
 
     /**
@@ -49,14 +53,14 @@ public interface BlogRepository extends JpaRepository<Blog,Long>, JpaSpecificati
      * @param pageable
      * @return
      */
-    @Query("select b from Blog b where b.type.name like ?1")
+    @Query("select b from Blog b where b.type.name like ?1 and b.state = 1")
     Page<Blog> findBlogByTypeName(String query, Pageable pageable);
 
     /**
      * 通过年份归档
      * @return
      */
-    @Query("select function('date_format',b.createTime,'%Y') as year from Blog b group by function('date_format',b.createTime,'%Y') order by function('date_format',b.createTime,'%Y') desc")
+    @Query("select function('date_format',b.createTime,'%Y') as year from Blog b where b.state = 1 group by function('date_format',b.createTime,'%Y') order by function('date_format',b.createTime,'%Y') desc")
     List<String> findBlogsByGroupYears();
 
     /**
@@ -64,7 +68,7 @@ public interface BlogRepository extends JpaRepository<Blog,Long>, JpaSpecificati
      * @param year
      * @return
      */
-    @Query("select b from Blog b where function('date_format',b.createTime,'%Y') = ?1 ")
+    @Query("select b from Blog b where function('date_format',b.createTime,'%Y') = ?1 and b.state = 1")
     List<Blog> findBlogsByYear(String year);
 
     /**
@@ -73,7 +77,7 @@ public interface BlogRepository extends JpaRepository<Blog,Long>, JpaSpecificati
      * @param userId
      * @return
      */
-    @Query("select b from Blog b where b.user.id = ?1")
+    @Query("select b from Blog b where b.user.id = ?1 and b.state = 1")
     List<Blog> findBlogByUserId(Long userId);
 
 }

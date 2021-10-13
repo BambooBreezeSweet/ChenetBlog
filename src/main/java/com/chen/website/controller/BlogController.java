@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 
 /**
- * 处理比赛相关请求
+ * 处理博客相关请求
  * @author ChenetChen
  * @since 2021/1/31 15:42
  */

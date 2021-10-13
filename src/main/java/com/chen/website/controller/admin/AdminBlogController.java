@@ -43,7 +43,7 @@ public class AdminBlogController {
     }
 
     /**
-     * 后台获取所有比赛并分页显示
+     * 后台获取所有博客并分页显示
      * @param pageable
      * @param blogQuery
      * @param model
@@ -57,7 +57,7 @@ public class AdminBlogController {
     }
 
     /**
-     * 后台比赛页面的搜索功能
+     * 后台博客页面的搜索功能
      * @param pageable
      * @param blogQuery
      * @param model
@@ -70,7 +70,7 @@ public class AdminBlogController {
     }
 
     /**
-     * 后台查看比赛
+     * 后台查看博客
      * @param id
      * @param model
      * @return
@@ -83,7 +83,7 @@ public class AdminBlogController {
     }
 
     /**
-     * 后台编辑比赛
+     * 后台编辑博客
      * @param id
      * @param model
      * @return
@@ -97,7 +97,35 @@ public class AdminBlogController {
     }
 
     /**
-     * 后台删除比赛
+     * 跳转到审核博客
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/blog/{id}/auditing")
+    public String auditing(@PathVariable Long id, Model model){
+        setType(model);
+        Blog blog = blogService.getBlogById(id);
+        model.addAttribute("blog",blog);    //拿到tagIds
+        return "admin/edit";
+    }
+
+    /**
+     * 审核博客
+     * @param id 博客id
+     * @param n 博客审核状态
+     * @return 转发到博客管理页面
+     */
+    @GetMapping("/blog/{id}/auditing/{n}")
+    public String auditing(@PathVariable Long id, @PathVariable Integer n){
+        Blog blog = blogService.getBlogById(id);
+        blog.setState(n);//todo-chen 下一步错误，跳转后没有blogs，导致页面模板错误，值也没有存入
+        blogService.saveBlog(blog);
+        return "forward:/admin/blogs";
+    }
+
+    /**
+     * 后台删除博客
      * 前端最初拼接的th:href无效，所以需要拼接href，因为th标签的解析在js之前，所以占位符也失效，抛出StringToLong的异常。
      * @param id
      * @param attributes
@@ -111,7 +139,7 @@ public class AdminBlogController {
     }
 
     /**
-     * 后台跳转到发布比赛
+     * 后台跳转到发布博客
      * @param model
      * @return
      */
@@ -123,7 +151,7 @@ public class AdminBlogController {
     }
 
     /**
-     * 后台发布比赛
+     * 后台发布博客
      * @param blog
      * @param attributes
      * @param session
@@ -146,6 +174,7 @@ public class AdminBlogController {
         }
         blog.setUser((User) session.getAttribute("adminUser"));
         blog.setType(typeService.getTypeById(blog.getType().getId()));
+        blog.setState(0);
         Blog b;
 
         //处理view为0
