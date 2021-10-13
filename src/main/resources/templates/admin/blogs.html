@@ -55,6 +55,7 @@
                     <th style="text-align: center" th:text="#{admin.types}">类型</th>
                     <th style="text-align: center" th:text="#{admin.author}">作者</th>
                     <th style="text-align: center" th:text="#{admin.publicationTime}">发表时间</th>
+                    <th style="text-align: center" th:text="#{admin.state}">状态</th>
                     <th style="text-align: center" th:text="#{admin.operate}">操作</th>
                 </tr>
                 </thead>
@@ -66,10 +67,12 @@
                         <td style="text-align: center" th:text="${blog.type.name}">文学小说</td>
                         <td style="text-align: center" th:text="${blog.user.username}">朱自清</td>
                         <td style="text-align: center" th:text="${#dates.format(blog.createTime,'yyyy-MM-dd')}">2020-8-17</td>
+                        <td style="text-align: center" th:text="${blog.state} == 0 ?'未审核' : (${blog.state} == 1 ? '审核通过' : '审核未通过')">未审核</td>
                         <td style="text-align: center">
                             <a href="#" th:href="@{/admin/blog/{id}(id=${blog.id})}" class="ui mini basic blue button" th:text="#{admin.blogs.see}">查看</a>
                             <a href="#" th:href="@{/admin/blog/{id}/input(id=${blog.id})}" class="ui mini basic teal button" th:text="#{admin.edit}">编辑</a>
                             <button th:onclick="deleteBlog([[${blog.id}]]);" class="ui mini basic red button" th:text="#{admin.delete}">删除</button>
+                            <a href="#" th:href="@{/admin/blog/{id}/auditing(id=${blog.id})}" class="ui mini basic green button" th:text="#{admin.auditing}">审核</a>
                         </td>
                     </tr>
                 </tobody>

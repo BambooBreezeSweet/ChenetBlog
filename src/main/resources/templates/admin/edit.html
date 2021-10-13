@@ -35,10 +35,10 @@
                 <div class="ui left labeled act ion input">
                     <label class="ui compact teal basic label" style="text-align: center;width: 70px"><span th:text="#{admin.edit.type}">分 类</span></label>
                     <div class="ui fluid selection dropdown">
-                        <input type="hidden" name="type.id" th:value="${blog.type}!=null ? ${blog.type.id}">
+                        <input type="hidden" name="type.id" th:value="${blog.type} != null ? ${blog.type.id}">
                         <i class="dropdown icon"></i>
                         <div class="menu">
-                            <div class="item" data-value="1" th:each="type:${types}" th:data-value="${type.id}" th:text="${type.name}" >错误日志</div>
+                            <div class="item" data-value="1" th:each="type:${types}" th:data-value="${type.id}" th:text="${type.name}" >测试分类</div>
                         </div>
                     </div>
                 </div>
@@ -68,6 +68,8 @@
 
             <div class="ui right aligned container">
                 <button type="button" class="ui button" onclick="window.history.go(-1)" th:text="#{admin.edit.cancel}">返回</button>
+                <a href="#" th:href="@{/admin/blog/{id}/auditing/{n}(id=${blog.id},n=2)}" type="button" class="ui red button" th:text="#{admin.auditing.cancel}">驳回审核</a>
+                <a href="#" th:href="@{/admin/blog/{id}/auditing/{n}(id=${blog.id},n=1)}" type="button" class="ui blue button" th:text="#{admin.auditing.pass}">审核通过</a>
                 <button id="admin-publish-btn" type="button" class="ui teal button" th:text="#{admin.edit.send}">发布</button>
             </div>
         </form>
@@ -89,7 +91,6 @@
             width: "100%",
             height: 640,
             syncScrolling: "single",
-
             path: "/lib/editormd/lib/"
         });
     });
