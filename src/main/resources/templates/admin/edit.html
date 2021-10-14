@@ -32,11 +32,12 @@
             </div>
 
             <div class="required field">
-                <div class="ui left labeled act ion input">
+                <div class="ui left labeled action input">
                     <label class="ui compact teal basic label" style="text-align: center;width: 70px"><span th:text="#{admin.edit.type}">分 类</span></label>
                     <div class="ui fluid selection dropdown">
                         <input type="hidden" name="type.id" th:value="${blog.type} != null ? ${blog.type.id}">
                         <i class="dropdown icon"></i>
+                        <div class="default text">分类</div>
                         <div class="menu">
                             <div class="item" data-value="1" th:each="type:${types}" th:data-value="${type.id}" th:text="${type.name}" >测试分类</div>
                         </div>
