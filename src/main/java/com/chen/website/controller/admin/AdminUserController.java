@@ -66,11 +66,11 @@ public class AdminUserController {
                               RedirectAttributes attributes){
         User user1 = userService.checkUserByUsername(username, SecurityUtils.MD5Encrypt(password));
         User user2 = userService.checkUserByEmail(username, SecurityUtils.MD5Encrypt(password));
-        if (user1 != null && (user1.getRole()==1 || user1.getRole() == 2)){
+        if (user1 != null && (user1.getRole()==1 || user1.getRole() == 2) && user1.getState() == 0){
             user1.setPassword(null);
             session.setAttribute("adminUser",user1);
             return "admin/index";
-        }else if (user2 != null && (user2.getRole()==1 || user2.getRole() == 2)){
+        }else if (user2 != null && (user2.getRole()==1 || user2.getRole() == 2) && user2.getState() == 0){
             user2.setPassword(null);
             session.setAttribute("adminUser",user2);
             return "admin/index";
