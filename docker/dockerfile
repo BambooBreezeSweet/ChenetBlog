@@ -1,0 +1,8 @@
+#Dockerfile
+FROM jdk11:latest
+MAINTAINER chenetchen<chenaichenet@yeah.net>
+VOLUME /tmp
+ADD *.jar app.jar
+RUN bash -c "touch /app.jar"
+EXPOSE 9001
+ENTRYPOINT ["java","-jar","app.jar"]
