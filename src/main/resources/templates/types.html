@@ -4,74 +4,63 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>分类</title>
-    <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../static/lib/semantic/semantic.min.css">
-    <link rel="stylesheet" th:href="@{/css/my.css}" href="../static/css/my.css"/>
-    <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../static/images/material/favicon.ico">
 </head>
 <body>
-<!-- 导航 -->
 <nav th:replace="_fragment :: menu(2)" class="ui segment m-padded-tb-mini"></nav>
-
-<!-- 中间内容 -->
 <div class=" m-container m-padded-tb-large">
     <div class="ui container">
-        <!-- 头 -->
         <div class="ui top attached segment">
             <div class="ui middle aligned two column grid">
                 <div class="column">
                     <h3 class="ui teal header" th:text="#{types.header}">分类</h3>
                 </div>
                 <div class="right aligned column">
-                    共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${types.totalElements}"> 10 </h2> 个
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${types.totalElements}"></h2> 个
                 </div>
             </div>
         </div>
-
         <div class="ui attached segment m-padded-tb-large">
             <div class="ui labeled button m-margin-tb-tiny" tabindex="0" th:each="type:${types}">
-                <a th:href="@{/search/{name}(name=${type.name})}" class="ui basic teal button"><i class="tags icon"></i><span th:text="${type.name}"> 公益活动 </span></a>
-                <a class="ui basic left pointing teal label" th:text="${#arrays.length(type.blogs)}">3</a>
+                <a th:href="@{/search/{name}(name=${type.name})}" class="ui basic teal button"><i class="tags icon"></i><span th:text="${type.name}">  </span></a>
+                <a class="ui basic left pointing teal label" th:text="${#arrays.length(type.blogs)}"></a>
             </div>
         </div>
-
         <div class="ui top attached teal segment">
             <div class="ui vertical segment m-padded" th:each="blog:${blogs}">
                 <div class="ui mobile reversed stackable grid">
                     <div class="eleven wide column">
-                        <a class="ui header" th:text="${blog.title}" th:href="@{/blog/{id}(id=${blog.id})}">中国扶贫基金会志愿者招募</a>
-                        <p class="m-text" th:text="${#strings.abbreviate(blog.description,70)}">长期有效</p>
+                        <a class="ui header" th:text="${blog.title}" th:href="@{/blog/{id}(id=${blog.id})}"></a>
+                        <p class="m-text" th:text="${#strings.abbreviate(blog.description,70)}"></p>
                         <div class="ui stackable grid">
                             <div class="eleven wide column">
                                 <div class="ui mini horizontal link list">
                                     <div class="item" th:replace="_fragment::avatar(${blog.user.avatar},~{::#username},~{})">
-                                        <img src="../static/images/me.jpg" class="ui avatar image" alt="头像">
+                                        <img src="#" class="ui avatar image" alt="头像">
                                         <div id="username" class="content">
-                                            <a href="#" class="header" th:text="${blog.user.username}">Chenet</a>
+                                            <a href="#" class="header" th:text="${blog.user.username}"></a>
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <i class="calendar alternate outline icon"></i><span th:text="${#dates.format(blog.createTime,'yyyy-MM-dd')}">2021-1-20</span>
+                                        <i class="calendar alternate outline icon"></i><span th:text="${#dates.format(blog.createTime,'yyyy-MM-dd')}"></span>
                                     </div>
                                     <div class="item">
-                                        <i class="eye icon"></i><span th:text="${blog.views}">200</span>
+                                        <i class="eye icon"></i><span th:text="${blog.views}"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="five wide column right aligned">
-                                <a href="#" class="ui teal basic label m-padded-mini m-text-thin" th:text="${blog.type.name}">公益活动</a>
+                                <a href="#" class="ui teal basic label m-padded-mini m-text-thin" th:text="${blog.type.name}"></a>
                             </div>
                         </div>
                     </div>
                     <div class="five wide column">
                         <a href="#" target="_blank">
-                            <img src="http://cdn1.52jingsai.com/portal/202012/29/171742imrdr6crj4pmrjbc.jpg" th:src="@{${blog.picture}}" class="ui rounded image" alt="博客图片">
+                            <img src="#" th:src="@{${blog.picture}}" class="ui rounded image" alt="博客图片">
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!--翻页-->
         <div class="ui bottom attached segment">
             <div class="ui middle aligned two column grid">
                 <div class="column">
@@ -96,15 +85,11 @@
 </div>
 <br>
 <br>
-
-<!-- 底部 -->
 <footer th:replace="_fragment :: footer"  class="ui inverted vertical segment m-padded-tb-large-half"></footer>
 <script th:src="@{/js/jquery-3.5.1.min.js}" src="../static/js/jquery-3.5.1.min.js"></script>
 <script th:src="@{/lib/semantic/semantic.min.js}" src="../static/lib/semantic/semantic.min.js"></script>
 <script>
-    /* 通过按钮中的class值定位到按钮 */
     $('.menu.toggle').click(function () {
-        /* 点击去除m-mobile-hide样式 */
         $('.m-item').toggleClass('m-mobile-hide');
     });
     $('.ui.dropdown').dropdown({

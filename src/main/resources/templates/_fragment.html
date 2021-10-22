@@ -5,20 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title th:replace="${title}">头文件集合</title>
     <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../static/lib/semantic/semantic.min.css">
-    <!--自定义CSS-->
     <link rel="stylesheet" th:href="@{/css/my.css}" href="../static/css/my.css"/>
-    <!-- 文本格式 -->
     <link rel="stylesheet" th:href="@{/css/typo.css}" href="../static/css/typo.css">
-    <!-- 目录生成 -->
     <link rel="stylesheet" th:href="@{/lib/tocbot/tocbot.css}" href="../static/lib/tocbot/tocbot.css">
-    <!--markdown插件-->
     <link rel="stylesheet" th:href="@{/lib/editormd/css/editormd.min.css}" href="../static/lib/editormd/css/editormd.min.css">
-    <!--图标-->
     <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../static/images/material/favicon.ico">
 </head>
 <body>
 
-<!--导航-->
 <nav th:fragment="menu(n)" class="ui segment m-padded-tb-mini">
     <div class="ui container">
         <div class="ui secondary stackable menu">
@@ -43,7 +37,6 @@
                     <a th:href="@{/locale(lang=en_US)}"><div class="item"><span th:text="#{English}">英文</span></div></a>
                 </div>
             </div>
-            <!--搜索栏-->
             <div class="m-item right item m-mobile-hide">
                 <form name="search" action="#" th:action="@{/search}" method="post" >
                     <div class="ui icon input">
@@ -52,17 +45,15 @@
                     </div>
                 </form>
             </div>
-            <!--登录注册-->
             <div id="loginAndReg" class="ui secondary stackable menu" th:if="${session.user} == null">
                 <a href="login.html" th:href="@{/toLogin}" class="m-item item m-mobile-hide m-black" th:text="#{_fragment.login}">登录</a>
                 <a href="registered.html" th:href="@{/toRegistered}" class="m-item item m-mobile-hide m-black" th:text="#{_fragment.registered}">注册</a>
             </div>
-            <!--用户头像和用户名-->
             <div id="users" class="right menu m-item m-mobile-hide" th:if="${session.user} != null">
                 <div class="ui dropdown item">
                     <div class="text" th:replace="_fragment :: avatar(${session.user.avatar},~{},~{::#uname})">
                         <img src="../static/images/me.jpg" class="ui avatar image" alt="用户头像">
-                        <span id="uname" th:text="${session.user.username}">陈十七</span>
+                        <span id="uname" th:text="${session.user.username}"></span>
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
@@ -78,7 +69,6 @@
     </div>
 </nav>
 
-<!--图片-->
 <div class="text item" th:switch="${n}" th:fragment="images(n)">
     <img class="ui image" src="../static/images/avatar/avatar1.png" th:src="@{/images/avatar/avatar1.png}" th:case="'0'" alt="头像">
     <img class="ui image" src="../static/images/avatar/avatar2.png" th:src="@{/images/avatar/avatar2.png}" th:case="'1'" alt="头像">
@@ -111,7 +101,6 @@
     <img class="ui image" src="../static/images/avatar/avatar29.png" th:src="@{/images/avatar/avatar29.png}" th:case="'28'" alt="头像">
     <img class="ui image" src="../static/images/avatar/avatar30.png" th:src="@{/images/avatar/avatar30.png}" th:case="'29'" alt="头像">
 </div>
-<!--头像-->
 <div style="text-align: center" class="text item" th:switch="${n}" th:fragment="avatar(n,content,span)">
     <img class="ui avatar image" src="../static/images/avatar/avatar1.png" th:src="@{/images/avatar/avatar1.png}" th:case="'0'" alt="头像">
     <img class="ui avatar image" src="../static/images/avatar/avatar2.png" th:src="@{/images/avatar/avatar2.png}" th:case="'1'" alt="头像">
@@ -143,13 +132,9 @@
     <img class="ui avatar image" src="../static/images/avatar/avatar28.png" th:src="@{/images/avatar/avatar28.png}" th:case="'27'" alt="头像">
     <img class="ui avatar image" src="../static/images/avatar/avatar29.png" th:src="@{/images/avatar/avatar29.png}" th:case="'28'" alt="头像">
     <img class="ui avatar image" src="../static/images/avatar/avatar30.png" th:src="@{/images/avatar/avatar30.png}" th:case="'29'" alt="头像">
-
     <div class="content" th:replace="${content}"></div>
-
     <span th:replace="${span}"></span>
 </div>
-
-<!--底部-->
 <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-large-half">
     <div class="ui center aligned container">
         <div class="ui inverted divided stackable grid">
@@ -218,6 +203,5 @@
         </p>
     </div>
 </footer>
-
 </body>
 </html>

@@ -5,20 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title th:replace="${title}">头文件集合</title>
     <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../../static/lib/semantic/semantic.min.css">
-    <!--自定义CSS-->
     <link rel="stylesheet" th:href="@{/css/my.css}" href="../../static/css/my.css"/>
-    <!-- 文本格式 -->
     <link rel="stylesheet" th:href="@{/css/typo.css}" href="../../static/css/typo.css">
-    <!-- 目录生成 -->
     <link rel="stylesheet" th:href="@{/lib/tocbot/tocbot.css}" href="../../static/lib/tocbot/tocbot.css">
-    <!--markdown插件-->
     <link rel="stylesheet" th:href="@{/lib/editormd/css/editormd.min.css}" href="../../static/lib/editormd/css/editormd.min.css">
-    <!--图标-->
     <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../../static/images/material/favicon.ico">
 </head>
 <body>
-
-<!-- 导航 -->
 <nav th:fragment="menu(n)" class="ui segment m-padded-tb-mini">
     <div class="ui container">
         <div class="ui secondary stackable menu">
@@ -39,7 +32,7 @@
             <div class="right menu m-item m-mobile-hide" th:if="${session.adminUser} != null">
                 <div class="ui dropdown item">
                     <div class="text" th:replace="_fragment::avatar(${session.adminUser.avatar},~{},~{::#username})">
-                        <img src="../../static/images/me.jpg" class="ui avatar image" alt="头像">
+                        <img src="#" class="ui avatar image" alt="头像">
                         <span id="username" href="#" class="header m-black" th:text="${session.adminUser.username}">陈十七</span>
                     </div>
                     <i class="dropdown icon"></i>
@@ -54,8 +47,6 @@
         </div>
     </div>
 </nav>
-
-<!--底部-->
 <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-large-half">
     <div class="ui center aligned container">
         <div class="ui inverted divided stackable grid">

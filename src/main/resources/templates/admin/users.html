@@ -4,18 +4,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0" name="viewport">
     <title>用户管理</title>
-    <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../../static/lib/semantic/semantic.min.css">
-    <link rel="stylesheet" th:href="@{/css/my.css}" href="../../static/css/my.css"/>
-    <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../../static/images/material/favicon.ico">
 </head>
 <body>
-<!-- 导航 -->
 <nav class="ui segment m-padded-tb-mini" th:replace="admin/_fragment_admin :: menu(4)"></nav>
-
-<!-- 中间内容 -->
 <div class=" m-container m-padded-tb-large">
     <div class="ui container">
-        <!--表格-->
         <div id="table-container">
             <table class="ui teal compact table" th:fragment="userList">
                 <thead>
@@ -31,7 +24,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="user,iterStat:${userList}">
-                    <!--iterStat为状态变量，默认为元素变量后加Stat-->
                     <td style="text-align: center" th:text="${iterStat.count}">1</td>
                     <td style="text-align: center" th:text="${user.username}">陈十七</td>
                     <td style="text-align: center" th:text="${user.role}==0?'普通用户':(${user.role==1?'管理员':'系统管理员'})">系统管理员</td>
@@ -86,48 +78,37 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
 <br>
 <br>
-
-<!-- 底部 -->
 <footer th:replace="admin/_fragment_admin :: footer" class="ui inverted vertical segment m-padded-tb-large-half"></footer>
 <script th:src="@{/js/jquery-3.5.1.min.js}" src="../../static/js/jquery-3.5.1.min.js"></script>
 <script th:src="@{/lib/semantic/semantic.min.js}" src="../../static/lib/semantic/semantic.min.js"></script>
 <script>
-    /* 通过按钮中的class值定位到按钮 */
     $('.menu.toggle').click(function () {
-        /* 点击去除m-mobile-hide样式 */
         $('.m-item').toggleClass('m-mobile-hide');
     });
-
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
-
     $('.message .close').on('click', function () {
         $(this).closest('.message').transition('fade');
     });
-
     function deleteUser(userId) {
         $('.ui.mini.modal').modal('show');
         $("#deleteUser").attr("href","user/delete?id="+userId);
     }
-
     function page(obj) {
         $("[name='page']").val($(obj).data("page"));    //赋值
         loaddate();
     }
-
     function loaddate() {
         $('#table-container').load("/admin/users/search",{
             page:$("[name='page']").val()
         });
     }
-
 </script>
 </body>
 </html>
