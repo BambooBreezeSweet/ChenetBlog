@@ -107,7 +107,7 @@ public class AdminBlogController {
         setType(model);
         Blog blog = blogService.getBlogById(id);
         model.addAttribute("blog",blog);    //拿到tagIds
-        return "admin/edit";
+        return "admin/auditing";
     }
 
     /**
