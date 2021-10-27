@@ -103,7 +103,7 @@
                         <div class="ui fluid vertical menu">
                             <a href="#" class="item" th:each="hotType:${hotTypes}" th:href="@{/search/{typename}(typename=${hotType.name})}">
                                 <span th:text="${hotType.name}"></span>
-                                <div class="ui teal basic left pointing label" th:text="${#arrays.length(hotType.blogs)}">10</div>
+                                <div class="ui teal basic left pointing label" th:text="${#arrays.length(hotType.blogs)}"></div>
                             </a>
                         </div>
                     </div>

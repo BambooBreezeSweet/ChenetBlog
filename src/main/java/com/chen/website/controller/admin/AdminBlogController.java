@@ -105,8 +105,7 @@ public class AdminBlogController {
     @GetMapping("/blog/{id}/auditing")
     public String auditing(@PathVariable Long id, Model model){
         setType(model);
-        Blog blog = blogService.getBlogById(id);
-        model.addAttribute("blog",blog);    //拿到tagIds
+        model.addAttribute("blog",blogService.getAndConvert(id));    //拿到tagIds
         return "admin/auditing";
     }
 
