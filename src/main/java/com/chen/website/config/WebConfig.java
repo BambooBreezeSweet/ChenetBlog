@@ -75,8 +75,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //博客图片虚拟路径映射
         registry.addResourceHandler("/upload/blogPictures/**")
-                .addResourceLocations("file:"+System.getProperty("user.dir")+blogPictureFileWindowsPath);  //Windows下
-                //.addResourceLocations("file:"+ blogPictureFileLinuxPath);  //Linux下
+                //.addResourceLocations("file:"+System.getProperty("user.dir")+blogPictureFileWindowsPath);  //Windows下
+                .addResourceLocations("file:"+ blogPictureFileLinuxPath);  //Linux下
     }
 
     /**
