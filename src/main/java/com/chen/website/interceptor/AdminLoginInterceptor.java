@@ -24,6 +24,7 @@ public class AdminLoginInterceptor implements HandlerInterceptor {
                              HttpServletResponse response,
                              Object handler) throws Exception {
         //判断用户是否登录
+        //todo-chen 此处可以进行权限判断，并在请求头中设置参数
         if (request.getSession().getAttribute("adminUser") == null){
             response.sendRedirect("/admin");
             return false;

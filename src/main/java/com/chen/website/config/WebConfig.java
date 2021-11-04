@@ -1,8 +1,7 @@
 package com.chen.website.config;
 
 import com.chen.website.interceptor.AdminLoginInterceptor;
-import com.chen.website.interceptor.BlogInterceptor;
-import com.chen.website.interceptor.UserInterceptor;
+import com.chen.website.interceptor.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,12 +41,10 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/admin")
                 .excludePathPatterns("/admin/login");
         //用户页面
-        registry.addInterceptor(new UserInterceptor())
+        registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/user/**")
+                .addPathPatterns("/blog/**")
                 .excludePathPatterns("/user/verCode");
-        //博客详情页面
-        registry.addInterceptor(new BlogInterceptor())
-                .addPathPatterns("/blog/**");
 
         registry.addInterceptor(localeChangeInterceptor());
     }
@@ -78,8 +75,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //博客图片虚拟路径映射
         registry.addResourceHandler("/upload/blogPictures/**")
-                //.addResourceLocations("file:"+System.getProperty("user.dir")+blogPictureFileWindowsPath);  //Windows下
-                .addResourceLocations("file:"+ blogPictureFileLinuxPath);  //Linux下
+                .addResourceLocations("file:"+System.getProperty("user.dir")+blogPictureFileWindowsPath);  //Windows下
+                //.addResourceLocations("file:"+ blogPictureFileLinuxPath);  //Linux下
     }
 
     /**

@@ -67,9 +67,9 @@
                                     <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}"></span>
                                 </div>
                                 <div class="text" th:text="${comment.content}"></div>
-                                <div class="actions">
+                                <div class="actions" th:if="${session.user != null}">
                                     <a class="reply" data-commentid="1" data-commentusername="Matt" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" onclick="reply(this)" th:text="#{blog.comment.reply}">回复</a>
-                                    <a class="reply" th:if="${session.user.id == comment.user.id || session.user.role == 2 || session.user.id == comment.blog.user.id}" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${comment.id}]]);" th:text="#{blog.comment.delete}">删除</a>
+                                    <a class="reply" th:if="${comment.user.id == session.user.id || 2 == session.user.role  || comment.blog.user.id ==  session.user.id}" th:attr="data-commentid=${comment.id},data-commentusername=${comment.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${comment.id}]]);" th:text="#{blog.comment.delete}">删除</a>
                                 </div>
                             </div>
                             <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
@@ -88,9 +88,9 @@
                                                 <span class="date" th:text="${#dates.format(reply.createTime,'yyyy-MM-dd HH:mm')}"></span>
                                             </div>
                                             <div class="text" th:text="${reply.content}"></div>
-                                            <div class="actions">
+                                            <div class="actions" th:if="${session.user != null}">
                                                 <a class="reply" data-commentid="1" data-commentusername="Matt" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" onclick="reply(this)" th:text="#{blog.comment.reply}">回复</a>
-                                                <a class="delete" th:if="${session.user.id == reply.user.id || session.user.role == 2 || session.user.id == reply.blog.user.id}" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${reply.id}]]);" th:text="#{blog.comment.delete}">删除</a>
+                                                <a class="delete" th:if="${reply.user.id == session.user.id || 2 ==  session.user.role || reply.blog.user.id == session.user.id}" th:attr="data-commentid=${reply.id},data-commentusername=${reply.user.username}" th:onclick="deleteComment([[${comment.blog.id}]],[[${reply.id}]]);" th:text="#{blog.comment.delete}">删除</a>
                                             </div>
                                         </div>
                                     </div>

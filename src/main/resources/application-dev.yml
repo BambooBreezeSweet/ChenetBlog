@@ -1,5 +1,5 @@
 server:
-  port: 443
+  port: 9001
   httpPort: 80
   portStatus: true #true表示80和443都能使用，false表示80转发到443
   ssl:
@@ -18,7 +18,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/website?useUnicode=true&serverTimezone=UTC
     username: root
-    password: chenaichenet
+    password: 123456
   thymeleaf:
     mode: HTML
     cache: false
@@ -34,7 +34,7 @@ spring:
     templatePath: templates/mailTemplate.html
   redis:
     host: 127.0.0.1
-    password: chenaichenet
+    #password: chenaichenet
     port: 6379
     database: 0
     jedis:
