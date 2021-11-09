@@ -4,6 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>竹风小站</title>
+    <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../static/lib/semantic/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/my.css}" href="../static/css/my.css"/>
+    <link rel="stylesheet" th:href="@{/css/typo.css}" href="../static/css/typo.css">
+    <link rel="stylesheet" th:href="@{/lib/tocbot/tocbot.css}" href="../static/lib/tocbot/tocbot.css">
+    <link rel="stylesheet" th:href="@{/lib/editormd/css/editormd.min.css}" href="../static/lib/editormd/css/editormd.min.css">
+    <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../static/images/material/favicon.ico">
 </head>
 <body>
 <!-- 导航 -->
@@ -95,7 +101,7 @@
                                 <h5><i class="th large icon"></i><span th:text="#{index.hotTypes}">热门分类</span></h5>
                             </div>
                             <div class="right aligned column">
-                                <a href="types.html" th:href="@{/types}" th:text="#{index.more}">更多<i class="angle double right icon"></i></a>
+                                <a href="types.html" class="m-black" th:href="@{/types}" th:text="#{index.more}">更多 <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
@@ -117,7 +123,7 @@
                                 <h5><i class="th large icon"></i><span th:text="#{index.hotBlogs}">热门博客</span></h5>
                             </div>
                             <div class="right aligned column">
-                                <a href="#" th:href="@{/types}" th:text="#{index.more}">更多 <i class="angle double right icon"></i></a>
+                                <a href="#" class="m-black" th:href="@{/types}" th:text="#{index.more}">更多 <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>

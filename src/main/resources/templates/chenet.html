@@ -4,6 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>用户详情</title>
+    <link rel="stylesheet" th:href="@{/lib/semantic/semantic.min.css}" href="../static/lib/semantic/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/my.css}" href="../static/css/my.css"/>
+    <link rel="stylesheet" th:href="@{/css/typo.css}" href="../static/css/typo.css">
+    <link rel="stylesheet" th:href="@{/lib/tocbot/tocbot.css}" href="../static/lib/tocbot/tocbot.css">
+    <link rel="stylesheet" th:href="@{/lib/editormd/css/editormd.min.css}" href="../static/lib/editormd/css/editormd.min.css">
+    <link rel="icon" th:href="@{/images/material/favicon.ico}" href="../static/images/material/favicon.ico">
 </head>
 <body>
 <nav th:replace="_fragment :: menu(null)" class="ui segment m-padded-tb-mini"></nav>
@@ -18,41 +24,42 @@
                     <div class="content">
                         <span class="header">陈十七</span>
                         <div class="meta">
-                            <span class="date">2021</span>年加入
-                            <div style="float: right"><i class="china flag"></i></div>
+                            <p class="date">Chenet</p>
+                            <span class="date m-black">吾生也有涯，而知也无涯 。以有涯随无涯，虽殆已，然乐也。</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="eleven wide column">
                 <div class="ui top attached segment">
-                    <div class="ui header"><p>陈十七</p></div>
+                    <div class="ui header"><p>关于我</p></div>
                 </div>
                 <div class="ui attached segment">
-                    <p>现居长沙</p>
-                    <p>21届湖南农业大学计算机专业学生</p>
-                    <p>为人乐观向上，热爱学习，兴趣爱好广泛，喜欢阅读、思考。</p>
-                </div>
-                <div class="ui attached segment">
-                    <div class="ui orange basic label">编程</div>
-                    <div class="ui orange basic label">写作</div>
-                    <div class="ui orange basic label">运动</div>
+                    <p>🌏 现居长沙</p>
+                    <p>🍻 21届湖南农业大学计算机专业学生</p>
+                    <p>⚡ 为人乐观向上，热爱学习，兴趣爱好广泛，喜欢阅读、思考。</p>
+                    <p>🏃 乒乓球、篮球、骑行、中国象棋、拳击</p>
                 </div>
                 <div class="ui attached segment">
                     <div class="ui teal basic label">Java</div>
                     <div class="ui teal basic label">Python</div>
                     <div class="ui teal basic label">C++</div>
+                    <div class="ui teal basic label">Golang</div>
+                    <div class="ui orange basic label">编程</div>
+                    <div class="ui orange basic label">写作</div>
+                    <div class="ui orange basic label">运动</div>
+                    <div class="ui orange basic label">书法</div>
+                    <div class="ui orange basic label">绘画</div>
                 </div>
                 <div class="ui bottom attached segment">
                     <a href="https://github.com/chenaichenet" class="ui circular icon button"><i class="github icon"></i></a>
-                    <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
-                    <a href="#" class="ui qq circular icon button" data-content="QQ:1950679747" data-position="bottom center"><i class="qq icon"></i></a>
-                </div>
-                <div class="ui wechat-QR flowing popup transit hidden">
-                    <img th:src="@{/images/QR.jpg}" src="../static/images/material/QR.jpg" class="ui rounded image" style="width: 100px;" alt="二维码">
+                    <a href="https://twitter.com/chenetchen?s=09" class="ui circular icon button"><i class="twitter icon"></i></a>
+                    <a href="https://t.me/ChenetChen" class="ui circular icon button"><i class="telegram icon"></i></a>
+                    <a href="https://weibo.com/u/5857775309" class="ui circular icon button"><i class="weibo icon"></i></a>
+                    <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzkxMjI0MTk5MA==&scene=124#wechat_redirect" class="ui circular icon button"><i class="wechat icon"></i></a>
+                    <a href="https://qm.qq.com/cgi-bin/qm/qr?k=ioVWN2a0zTe6igwPcR6HiGkiX4nT3fM8&jump_from=webapi" class="ui circular icon button"><i class="qq icon"></i></a>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -68,11 +75,6 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
-    $('.wechat').popup({
-        popup: $('.wechat-QR'),
-        position: 'bottom center'
-    });
-    $('.qq').popup();
 </script>
 </body>
 </html>
