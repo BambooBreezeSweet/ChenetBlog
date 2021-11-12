@@ -11,6 +11,9 @@ server:
     session:
       tracking-modes: cookie
 
+project:
+  version: 1.1.0
+
 spring:
   application:
     name: ChenetWebsite
@@ -18,7 +21,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/website?useUnicode=true&serverTimezone=UTC
     username: root
-    password: chenaichenet
+    password: 123456
   thymeleaf:
     mode: HTML
     cache: false
@@ -53,9 +56,10 @@ spring:
     encoding: UTF-8
 
 uploadFile:
+  choose: 0 #0表示Windows下，1表示Linux下
   images:
-    linux-path: /root/project/ChenetWebsite/src/main/resources/static/upload/blogPictures/   #Linux下上传文件所在路径
     windows-path: \\src\\main\\resources\\static\\upload\\blogPictures\\   #Windows下上传文件所在路径
+    linux-path: /root/project/ChenetWebsite/src/main/resources/static/upload/blogPictures/   #Linux下上传文件所在路径
 
 ipFilter:
   limited-time: 600000 #默认限制时间（毫秒）
