@@ -46,6 +46,7 @@ public class IndexController {
      */
     @GetMapping({"/","/index"})
     public String index(@PageableDefault(size = 5,sort = {"createTime"},direction = Sort.Direction.DESC)Pageable pageable, Model model, Locale locale){
+        //todo-chen pageable参数混乱，应固定在某一层中生成
         model.addAttribute("types",typeService.listType(pageable));
         model.addAttribute("blogs", blogService.listBlog(pageable));//查询所有比赛并分页
         model.addAttribute("hotTypes",typeService.listTypeTop(5));  //前6个分类

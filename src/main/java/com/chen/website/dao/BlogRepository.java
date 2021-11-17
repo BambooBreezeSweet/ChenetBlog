@@ -80,4 +80,7 @@ public interface BlogRepository extends JpaRepository<Blog,Long>, JpaSpecificati
     @Query("select b from Blog b where b.user.id = ?1 and b.state = 1")
     List<Blog> findBlogByUserId(Long userId);
 
+    @Query("select count(b) from Blog b where b.state = 1")
+    long countBlogs();
+
 }
