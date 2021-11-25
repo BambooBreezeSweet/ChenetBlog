@@ -29,13 +29,13 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public Notice getNoticeById(Long id) {
-        return noticeRepository.getById(id);
+        return noticeRepository.getOne(id);
     }
 
     @Transactional
     @Override
     public Notice getAndConvert(Long id) {
-        Notice notice = noticeRepository.getById(id);
+        Notice notice = noticeRepository.getOne(id);
         Notice newNotice = new Notice();
         BeanUtils.copyProperties(notice,newNotice);
         String content = newNotice.getContent();
@@ -50,7 +50,7 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public Notice editNotice(Long id, Notice notice) {
-        Notice n = noticeRepository.getById(id);
+        Notice n = noticeRepository.getOne(id);
         BeanUtils.copyProperties(notice,n);
         return noticeRepository.save(n);
     }

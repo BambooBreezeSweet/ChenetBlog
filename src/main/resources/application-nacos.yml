@@ -1,0 +1,11 @@
+nacos:
+  config:
+    type: yaml
+    server-addr: 127.0.0.1:8848
+    username: nacos
+    password: chenaichenet
+    context-path: nacos
+    data-id: ChenetWebsite
+    auto-refresh: true
+    bootstrap:
+      enable: true

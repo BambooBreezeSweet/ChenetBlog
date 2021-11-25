@@ -1,6 +1,6 @@
 package com.chen.website.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MailConfig {
-    @Value("${spring.mail.host}")
+    @NacosValue(value = "${spring.mail.host}", autoRefreshed = true)
     private String mailHost;
-    @Value("${spring.mail.username}")
+    @NacosValue(value = "${spring.mail.username}", autoRefreshed = true)
     private String username;
-    @Value("${spring.mail.password}")
+    @NacosValue(value = "${spring.mail.password}", autoRefreshed = true)
     private String password;
-    @Value("${spring.mail.templatePath}")
+    @NacosValue(value = "${spring.mail.templatePath}", autoRefreshed = true)
     private String TemplatesPath;
 
 

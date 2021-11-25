@@ -68,7 +68,7 @@ public class TypeServiceImpl implements TypeService {
     //更新分类
     @Override
     public Type updateType(Long id, Type type) {
-        Type t = typeRepository.getById(id);
+        Type t = typeRepository.getOne(id);
         BeanUtils.copyProperties(type,t);
         return typeRepository.save(t);
     }

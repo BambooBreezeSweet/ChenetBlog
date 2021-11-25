@@ -1,12 +1,15 @@
 package com.chen.website.config;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.chen.website.interceptor.AdminLoginInterceptor;
 import com.chen.website.interceptor.LoginInterceptor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
@@ -21,10 +24,10 @@ import java.util.Locale;
 public class WebConfig implements WebMvcConfigurer {
 
     //定义文件路径
-    @Value("${uploadFile.images.linux-path}")
+    @NacosValue(value = "${uploadFile.images.linux-path}", autoRefreshed = true)
     private String blogPictureFileLinuxPath;
 
-    @Value("${uploadFile.images.windows-path}")
+    @NacosValue(value = "${uploadFile.images.windows-path}", autoRefreshed = true)
     private String blogPictureFileWindowsPath;
 
     @Override
@@ -90,12 +93,12 @@ public class WebConfig implements WebMvcConfigurer {
      * 链接：https://www.jianshu.com/p/7705dffe4274
      * @param registry 请求
      */
-    @Override
+/*    @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOriginPatterns("*")
                 .allowCredentials(true)
                 .allowedMethods("GET","POST","DELETE","PUT")
                 .allowedHeaders("*");
-    }
+    }*/
 }

@@ -1,10 +1,10 @@
 package com.chen.website.config;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,13 +16,13 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class SSLConfig {
-    @Value("${server.httpPort}")
+    @NacosValue(value = "${server.httpPort}", autoRefreshed = true)
     int httpPort;
 
-    @Value("${server.port}")
+    @NacosValue(value = "${server.port}", autoRefreshed = true)
     int httpsPort;
 
-    @Value("${server.portStatus}")
+    @NacosValue(value = "${server.portStatus}", autoRefreshed = true)
     boolean status;
 
     @Bean

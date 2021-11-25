@@ -46,7 +46,7 @@ public class BlogServiceImpl implements BlogService {
     @Transactional
     @Override
     public Blog getAndConvert(Long id) {
-        Blog blog = blogRepository.getById(id);
+        Blog blog = blogRepository.getOne(id);
         Blog newBlog = new Blog();
         BeanUtils.copyProperties(blog,newBlog);
         String content = newBlog.getContent();
@@ -181,7 +181,7 @@ public class BlogServiceImpl implements BlogService {
     @Transactional
     @Override
     public Blog updateBlog(Long id, Blog blog) {
-        Blog blogCopy = blogRepository.getById(id);
+        Blog blogCopy = blogRepository.getOne(id);
         BeanUtils.copyProperties(blog,blogCopy, MyBeanUtils.getNullPropertyNames(blog));
         blogCopy.setCreateTime(new Date());
         return blogRepository.save(blogCopy);

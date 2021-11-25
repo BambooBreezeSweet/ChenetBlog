@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
     //更新用户信息
     @Override
     public String updateUser(User user) {
-        User userCopy = userRepository.getById(user.getId());
+        User userCopy = userRepository.getOne(user.getId());
         BeanUtils.copyProperties(user,userCopy, MyBeanUtils.getNullPropertyNames(user));
         userRepository.save(userCopy);
         return "更新成功";
