@@ -44,7 +44,7 @@
                         <li><span th:text="#{blog.author}">作者：</span><span th:text="${blog.user.username}">陈十七</span><a href="#" th:href="'mailto:'+${blog.user.email}" th:text="#{blog.author.contact}">（联系作者）</a></li>
                         <li><span th:text="#{blog.publicationTime}">发表时间：</span><span th:text="${#dates.format(blog.createTime,'yyyy-MM-dd')}"></span></li>
                         <li><span></span></li>
-                        <li th:text="#{blog.other}">转载：请联系作者授权</li>
+                        <li><span th:text="#{blog.other}">版权：本文版权归作者</span><span th:text="${blog.user.username}">陈十七</span><span th:text="#{blog.other2}">和竹风小站共有，欢迎转载。未经作者同意必须保留此段声明，且在文章页面明显位置给出原文链接，否则保留追究法律责任的权利。</span></li>
                     </ui>
                 </div>
             </div>
