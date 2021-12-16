@@ -4,7 +4,6 @@ import com.chen.website.dao.UserRepository;
 import com.chen.website.domain.User;
 import com.chen.website.service.UserService;
 import com.chen.website.utils.MyBeanUtils;
-import com.chen.website.utils.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

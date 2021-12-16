@@ -10,11 +10,11 @@
 
 该项目采用了IntelliJ IDEA作为开发工具，使用Spring Boot框架基于MVC框架进行开发，使用MySQL数据库，利用HTML，JavaScript，Ajax，Thymeleaf模板引擎和Semantic UI完成界面设计。
 
-> 地址：https://www.chenaichenet.ltd
+> 地址：https://chenaichenet.ltd
 
 > 项目相关博客：
 
->Bilibili视频地址:
+> Bilibili视频地址:
 
 ## 部署说明
 ### Windows

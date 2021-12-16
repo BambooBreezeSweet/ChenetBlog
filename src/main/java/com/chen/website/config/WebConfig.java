@@ -46,7 +46,8 @@ public class WebConfig implements WebMvcConfigurer {
         //用户页面
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/user/**")
-                .addPathPatterns("/blog/**")
+                .addPathPatterns("/comment")
+
                 .excludePathPatterns("/user/verCode");
 
         registry.addInterceptor(localeChangeInterceptor());

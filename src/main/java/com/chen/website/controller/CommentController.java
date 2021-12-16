@@ -63,9 +63,16 @@ public class CommentController {
         comment.setContent(content);
         commentService.saveComment(comment);
         return "redirect:/comments/"+blogId;
+        //todo-chen 此处需要修改成返回局部，而你不是重定义到页面，减少资源消耗
         //return "blog :: commentList";
     }
 
+    /**
+     * 删除评论
+     * @param blogId
+     * @param commentId
+     * @return
+     */
     @PostMapping ("/comment/delete")
     public String deleteComment(Long blogId,Long commentId){
         commentService.deleteComment(commentId);
