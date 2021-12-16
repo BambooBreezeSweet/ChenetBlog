@@ -4,7 +4,9 @@ server:
   portStatus: true #true表示80和443都能使用，false表示80转发到443
   ssl:
     enabled: true
-    
+    key-store: 
+    key-store-password: 
+    key-store-type: 
   servlet:
     session:
       tracking-modes: cookie
