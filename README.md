@@ -108,7 +108,6 @@ src/main/resources
 - static                  静态资源
 - templates               页面模板
 application.yml           配置文件
-*.pfx                     SSL证书
 ```
 
 ## 免责声明
